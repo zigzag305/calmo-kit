@@ -1,0 +1,83 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 38%, #6a2118 0%, #3a110c 52%, #140706 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 108px;
+      gap: 44px;
+    }
+    #crisis-tag {
+      font-family: monospace;
+      font-size: 28px;
+      letter-spacing: 0.25em;
+      color: #39ff14;
+      font-weight: 700;
+    }
+    #crisis-card {
+      width: 780px;
+      height: 780px;
+      border-radius: 56px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    }
+    #crisis-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #crisis-meta {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    #crisis-title {
+      font-size: 86px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+    #crisis-specs {
+      font-size: 32px;
+      color: #e2e8f0;
+    }
+    #crisis-price {
+      padding: 16px 42px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #080b10;
+      font-size: 40px;
+      font-weight: 800;
+    }
+  </style>
+
+  <div id="root" data-composition-id="scene-crisis" data-width="1080" data-height="1920">
+    <div id="crisis-tag">01 // FLAGSHIP EDITION</div>
+    <div id="crisis-card">
+      <img id="crisis-img" src="assets/images/kit-crisis.jpg" alt="72H Crisis Pack" />
+    </div>
+    <div id="crisis-meta">
+      <h2 id="crisis-title">72H CRISIS PACK</h2>
+      <p id="crisis-specs">32 Waterproof Pieces · 25-Yr Meals · Trauma &amp; Radio</p>
+      <div id="crisis-price">$189 USD</div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#crisis-tag", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.1);
+    tl.fromTo("#crisis-card", { opacity: 0, scale: 0.86, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.65, ease: "power4.out" }, 0.2);
+    tl.fromTo("#crisis-title", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.55);
+    tl.fromTo("#crisis-specs", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.8);
+    tl.fromTo("#crisis-price", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 1.05);
+    window.__timelines["scene-crisis"] = tl;
+  </script>
+</template>

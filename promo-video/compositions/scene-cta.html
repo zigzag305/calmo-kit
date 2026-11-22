@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #070b12;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 160px 108px;
+      text-align: center;
+      gap: 36px;
+    }
+    #cta-frame {
+      position: absolute;
+      inset: 110px 84px;
+      border: 2px solid rgba(56, 189, 248, 0.25);
+      border-radius: 44px;
+      pointer-events: none;
+    }
+    #cta-sys {
+      font-family: monospace;
+      font-size: 28px;
+      letter-spacing: 0.24em;
+      color: #39ff14;
+      font-weight: 700;
+    }
+    #cta-brand {
+      font-size: 124px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+    }
+    #cta-url {
+      padding: 26px 56px;
+      border-radius: 999px;
+      background: #39ff14;
+      color: #070b12;
+      font-family: monospace;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+    #cta-sub {
+      font-size: 30px;
+      color: #94a3b8;
+      letter-spacing: 0.06em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="scene-cta" data-width="1080" data-height="1920">
+    <div id="cta-frame"></div>
+    <div id="cta-sys">CALMO.SYS // VIRTUAL 3D STORE</div>
+    <h2 id="cta-brand" data-var-text="brandName">CALMO KIT</h2>
+    <div id="cta-url" data-var-text="domainUrl">WWW.CALMOKIT.COM</div>
+    <p id="cta-sub" data-var-text="ctaSub">FREE SHIPPING OVER $99 · EXPLORE IN 3D</p>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#cta-frame", { opacity: 0, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0.05);
+    tl.fromTo("#cta-sys", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.2);
+    tl.fromTo("#cta-brand", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power4.out" }, 0.35);
+    tl.fromTo("#cta-url", { opacity: 0, y: 30, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.7);
+    tl.fromTo("#cta-sub", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 1.05);
+    window.__timelines["scene-cta"] = tl;
+  </script>
+</template>

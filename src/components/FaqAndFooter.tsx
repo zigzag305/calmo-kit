@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Mail, ShieldCheck } from 'lucide-react';
 import { Lang } from '../types';
 import { getCopy } from '../i18n/translations';
+import { submitCalmoLead } from '../lib/calmoApi';
 
 interface FaqAndFooterProps {
   lang: Lang;
@@ -11,13 +12,24 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
   const copy = getCopy(lang);
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [email, setEmail] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    setSubscribed(true);
-    setEmail('');
+    if (!email.trim() || submitting) return;
+    setSubmitting(true);
+    try {
+      await submitCalmoLead({
+        email: email.trim(),
+        lang,
+        leadType: 'newsletter',
+      });
+      setSubscribed(true);
+      setEmail('');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (

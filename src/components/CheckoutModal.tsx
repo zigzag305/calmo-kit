@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { X, Lock, CheckCircle2 } from 'lucide-react';
+import { X, Lock, CheckCircle2, Loader2 } from 'lucide-react';
 import { CartItem, Currency, Lang } from '../types';
 import { formatPrice } from '../utils/currency';
 import { getCopy } from '../i18n/translations';
+import {
+  isCalmoBackendConfigured,
+  submitCalmoCheckout,
+} from '../lib/calmoApi';
 
 interface CheckoutModalProps {
   open: boolean;
@@ -27,6 +31,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [country, setCountry] = useState('United States');
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [confirmedRef, setConfirmedRef] = useState<string | null>(null);
 
   if (!open) return null;
@@ -38,17 +44,33 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const shippingUsd = subtotalUsd >= 99 ? 0 : 12;
   const totalUsd = subtotalUsd + shippingUsd;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    /**
-     * LIVE PAYMENT HOOK:
-     * To connect live Stripe Checkout or Shopify Storefront API later:
-     * Replace this simulated confirmation with a POST to your serverless checkout
-     * endpoint or redirect to a Stripe Payment Link / Shopify cart permalink.
-     */
-    const orderId = `CK-${Math.floor(100000 + Math.random() * 900000)}`;
-    setConfirmedRef(orderId);
-    onOrderComplete();
+    setSubmitting(true);
+    setErrorMsg(null);
+    try {
+      const result = await submitCalmoCheckout({
+        items,
+        currency,
+        lang,
+        customer: { name, email, address, city, country },
+      });
+
+      if (result.url) {
+        // Redirect to hosted Stripe Checkout session
+        window.location.href = result.url;
+        return;
+      }
+
+      setConfirmedRef(result.orderRef);
+      onOrderComplete();
+    } catch (err) {
+      setErrorMsg(
+        err instanceof Error ? err.message : 'Unable to process checkout'
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleDone = () => {
@@ -184,14 +206,26 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               </div>
             </div>
 
+            {errorMsg && (
+              <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-xl p-3">
+                {errorMsg}
+              </p>
+            )}
+
             <p className="text-[11px] text-slate-500 leading-relaxed bg-blue-50/70 border border-blue-100 rounded-xl p-3">
-              {copy.checkout.paymentNote}
+              {isCalmoBackendConfigured()
+                ? lang === 'es'
+                  ? 'Conectado a la función segura de Calmo Kit (aislada de otros proyectos).'
+                  : 'Connected to isolated Calmo Kit checkout backend.'
+                : copy.checkout.paymentNote}
             </p>
 
             <button
               type="submit"
-              className="w-full rounded-full bg-slate-950 hover:bg-slate-800 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
+              disabled={submitting}
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 hover:bg-slate-800 disabled:opacity-60 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
             >
+              {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
               {copy.checkout.placeOrder} · {formatPrice(totalUsd, currency)}
             </button>
           </form>

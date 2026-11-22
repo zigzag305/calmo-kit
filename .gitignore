@@ -6,3 +6,6 @@ dist-ssr
 .env
 .env.*
 !.env.example
+promo-video/.hyperframes
+promo-video/out
+promo-video/node_modules

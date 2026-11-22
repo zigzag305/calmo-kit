@@ -11,6 +11,7 @@ import {
 import { Currency, Lang, Product } from '../types';
 import { formatPrice } from '../utils/currency';
 import { getCopy } from '../i18n/translations';
+import { LineArtScenarioScene, ScenarioId } from './LineArtScenarioScene';
 
 interface ScenarioFinderProps {
   products: Product[];
@@ -88,8 +89,11 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
         {/* Recommended Loadout Card */}
         <div className="mt-8 rounded-3xl bg-gradient-to-br from-[#121926] to-[#0B1018] border border-white/10 p-6 sm:p-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Scenario Context */}
+            {/* Scenario Context + Live Animated Line-Art SVG Scene */}
             <div className="lg:col-span-4 space-y-4">
+              <LineArtScenarioScene
+                scenarioId={activeScenario.id as ScenarioId}
+              />
               <span className="inline-flex items-center rounded-full bg-[#39FF14]/15 border border-[#39FF14]/35 px-3 py-1 font-mono text-[10px] font-bold tracking-widest text-[#39FF14] uppercase">
                 {copy.scenarios.primaryPick}
               </span>
