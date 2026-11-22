@@ -21,6 +21,24 @@ export default function App() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [cartOpen, setCartOpen] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
+  const [stripeReturnOrderRef, setStripeReturnOrderRef] = useState<string | null>(
+    null
+  );
+
+  // Handle Stripe Checkout return (?checkout=success&ref=CK-... or ?checkout=cancelled)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('checkout');
+    const ref = params.get('ref');
+    if (status === 'success') {
+      setCartItems([]);
+      setStripeReturnOrderRef(ref || 'CK-PAID');
+      window.history.replaceState({}, '', window.location.pathname);
+    } else if (status === 'cancelled') {
+      setCartOpen(true);
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
 
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     try {
@@ -218,6 +236,49 @@ export default function App() {
         onClose={() => setCheckoutOpen(false)}
         onOrderComplete={() => setCartItems([])}
       />
+
+      {/* Stripe Return Order Confirmed Toast/Modal */}
+      {stripeReturnOrderRef && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4"
+          onClick={() => setStripeReturnOrderRef(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-3xl bg-white text-slate-950 p-8 text-center shadow-2xl space-y-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 font-bold text-2xl mx-auto">
+              ✓
+            </div>
+            <h3 className="font-display text-2xl font-bold">
+              {lang === 'pt'
+                ? 'Pagamento confirmado!'
+                : lang === 'es'
+                ? '¡Pago confirmado!'
+                : 'Payment confirmed!'}
+            </h3>
+            <p className="text-sm text-slate-600">
+              {lang === 'pt'
+                ? 'Recebemos o teu pedido na CalmoKit. Para dúvidas: hola@calmokit.eu.'
+                : lang === 'es'
+                ? 'Hemos recibido tu pedido en CalmoKit. Cualquier duda: hola@calmokit.eu.'
+                : 'Your CalmoKit order is confirmed. Questions? Email hola@calmokit.eu.'}
+            </p>
+            <div className="inline-block rounded-full bg-slate-100 px-4 py-1.5 font-mono text-xs font-bold text-slate-800">
+              Ref: {stripeReturnOrderRef}
+            </div>
+            <div>
+              <button
+                type="button"
+                onClick={() => setStripeReturnOrderRef(null)}
+                className="mt-2 rounded-full bg-slate-950 text-white px-7 py-3 text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition cursor-pointer"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
