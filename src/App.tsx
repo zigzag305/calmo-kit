@@ -16,7 +16,7 @@ const CART_STORAGE_KEY = 'calmo_kit_cart_v1';
 
 export default function App() {
   const [lang, setLang] = useState<Lang>('en');
-  const [currency, setCurrency] = useState<Currency>('USD');
+  const [currency, setCurrency] = useState<Currency>('EUR');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [cartOpen, setCartOpen] = useState(false);

@@ -60,7 +60,7 @@ export async function submitCalmoCheckout(params: {
           variant: i.product.variants.find((v) => v.id === i.variantId)?.name[
             params.lang
           ],
-          priceUsd: i.product.priceUsd,
+          priceEur: i.product.priceEur,
           quantity: i.quantity,
           image: i.product.image,
         })),

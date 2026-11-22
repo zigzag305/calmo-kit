@@ -18,7 +18,8 @@ interface CheckoutItem {
   sku: string;
   name: string;
   variant?: string;
-  priceUsd: number;
+  /** Unit price in EUR (catalogue base currency). */
+  priceEur: number;
   quantity: number;
   image?: string;
 }
@@ -52,7 +53,7 @@ serve(async (req) => {
 
   try {
     const body: CheckoutPayload = await req.json();
-    const { items, currency = "USD", customer } = body;
+    const { items, currency = "EUR", customer } = body;
 
     if (!items?.length) {
       return new Response(
@@ -64,12 +65,13 @@ serve(async (req) => {
       );
     }
 
-    const rate = currency === "EUR" ? 0.92 : 1;
-    const subtotalUsd = items.reduce(
-      (sum, item) => sum + item.priceUsd * item.quantity,
+    // Catalogue prices are in EUR; convert only when charging in USD.
+    const rate = currency === "USD" ? 1.09 : 1;
+    const subtotalEur = items.reduce(
+      (sum, item) => sum + item.priceEur * item.quantity,
       0
     );
-    const shippingUsd = subtotalUsd >= 99 ? 0 : 12;
+    const shippingEur = subtotalEur >= 69 ? 0 : 5.9;
     const orderRef = `CK-${Math.floor(100000 + Math.random() * 900000)}`;
     const baseUrl = getBaseUrl(req);
 
@@ -95,7 +97,7 @@ serve(async (req) => {
               images: imageUrl?.startsWith("http") ? [imageUrl] : [],
               metadata: { sku: item.sku, source_app: "calmo-kit" },
             },
-            unit_amount: Math.round(item.priceUsd * rate * 100),
+            unit_amount: Math.round(item.priceEur * rate * 100),
           },
           quantity: item.quantity,
         };
@@ -116,11 +118,11 @@ serve(async (req) => {
             shipping_rate_data: {
               type: "fixed_amount",
               fixed_amount: {
-                amount: Math.round(shippingUsd * rate * 100),
+                amount: Math.round(shippingEur * rate * 100),
                 currency: currency.toLowerCase(),
               },
               display_name:
-                shippingUsd === 0
+                shippingEur === 0
                   ? "Free Tracked Shipping"
                   : "Standard Tracked Shipping",
             },
@@ -154,9 +156,9 @@ serve(async (req) => {
             stripe_session_id: stripeSessionId,
             status: "pending",
             currency,
-            subtotal_cents: Math.round(subtotalUsd * rate * 100),
-            shipping_cents: Math.round(shippingUsd * rate * 100),
-            total_cents: Math.round((subtotalUsd + shippingUsd) * rate * 100),
+            subtotal_cents: Math.round(subtotalEur * rate * 100),
+            shipping_cents: Math.round(shippingEur * rate * 100),
+            total_cents: Math.round((subtotalEur + shippingEur) * rate * 100),
             customer_name: customer?.name ?? null,
             customer_email: customer?.email ?? "guest@calmokit.com",
             shipping_address: {

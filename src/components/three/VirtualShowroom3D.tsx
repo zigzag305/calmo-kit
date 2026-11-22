@@ -457,7 +457,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
                   {hoveredInfo.product.name[lang]}
                 </span>
                 <span className="font-mono text-xs font-bold text-[#39FF14]">
-                  {formatPrice(hoveredInfo.product.priceUsd, currency)}
+                  {formatPrice(hoveredInfo.product.priceEur, currency)}
                 </span>
                 <span className="inline-flex items-center gap-1 text-[10px] text-slate-300 border-l border-white/15 pl-2.5">
                   <Eye className="w-3 h-3" />

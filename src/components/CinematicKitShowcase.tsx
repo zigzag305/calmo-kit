@@ -140,11 +140,11 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                 {/* Price */}
                 <div className="mt-6 flex items-baseline gap-3">
                   <span className="font-display text-3xl sm:text-4xl font-bold text-white">
-                    {formatPrice(activeKit.priceUsd, currency)}
+                    {formatPrice(activeKit.priceEur, currency)}
                   </span>
-                  {activeKit.compareAtUsd && (
+                  {activeKit.compareAtEur && (
                     <span className="text-base text-white/45 line-through font-mono">
-                      {formatPrice(activeKit.compareAtUsd, currency)}
+                      {formatPrice(activeKit.compareAtEur, currency)}
                     </span>
                   )}
                 </div>

@@ -3,7 +3,7 @@ import { Lang } from '../types';
 export const translations = {
   en: {
     announcement:
-      'FREE SHIPPING OVER $99 · INTERACTIVE 3D KIT PREVIEW · CURATED KITS & VETTED GEAR',
+      'FREE SHIPPING OVER €69 IN PORTUGAL & SPAIN · INTERACTIVE 3D KIT PREVIEW · CURATED KITS & VETTED GEAR',
     announcementCta: 'Explore 3D Bay',
     nav: {
       kits: 'Flagship Kits',
@@ -18,7 +18,7 @@ export const translations = {
       headlineLine1: 'STAY CALM.',
       headlineLine2: 'STAY READY.',
       subcopy:
-        'Complete emergency, food, and survival kits curated for real-world situations — alongside individual vetted gear shipped worldwide.',
+        'Complete emergency, food, and survival kits curated for real-world situations — alongside individual vetted gear shipped from European warehouses.',
       primaryCta: 'SHOP FLAGSHIP KITS',
       secondaryCta: 'ENTER 3D SHOWROOM',
       trust1: 'Curated Bundles & Partner Gear',
@@ -139,7 +139,7 @@ export const translations = {
       specs: 'Technical Specifications',
       addToCart: 'Add to Cart',
       outOfStock: 'Out of Stock',
-      shipsWorldwide: 'Ships worldwide · Tracked delivery',
+      shipsWorldwide: 'Ships from Europe · Tracked delivery',
       curatedNote:
         'Curated by Calmo Kit — combines vetted top-tier emergency components into one ready-to-deploy loadout.',
       partnerNote:
@@ -193,7 +193,7 @@ export const translations = {
         },
         {
           q: 'How does shipping work for kits and partner gear?',
-          a: 'Orders over $99 qualify for free tracked shipping. Individual partner items may ship directly from vetted fulfillment warehouses so you receive each piece as quickly as possible.',
+          a: 'Orders over €69 qualify for free tracked shipping. Individual partner items may ship directly from vetted fulfillment warehouses so you receive each piece as quickly as possible.',
         },
         {
           q: 'Can I customize a kit for my family or business?',
@@ -217,7 +217,7 @@ export const translations = {
   },
   es: {
     announcement:
-      'ENVÍO GRATIS DESDE $99 · VISTA 3D INTERACTIVA · KITS CURADOS Y EQUIPO VERIFICADO',
+      'ENVÍO GRATIS DESDE 69 € EN ESPAÑA Y PORTUGAL · VISTA 3D INTERACTIVA · KITS CURADOS Y EQUIPO VERIFICADO',
     announcementCta: 'Explorar Sala 3D',
     nav: {
       kits: 'Kits Insignia',
@@ -353,7 +353,7 @@ export const translations = {
       specs: 'Especificaciones Técnicas',
       addToCart: 'Añadir al Carrito',
       outOfStock: 'Agotado',
-      shipsWorldwide: 'Envío internacional · Seguimiento incluido',
+      shipsWorldwide: 'Envío desde Europa · Seguimiento incluido',
       curatedNote:
         'Curado por Calmo Kit — reúne componentes confiables de emergencia en una solución lista para usar.',
       partnerNote:
@@ -407,7 +407,7 @@ export const translations = {
         },
         {
           q: '¿Cómo funciona el envío de los kits y el equipo aliado?',
-          a: 'Los pedidos desde $99 incluyen envío gratuito con seguimiento. Los productos individuales pueden enviarse directamente desde almacenes aliados verificados para agilizar la entrega.',
+          a: 'Los pedidos desde 69 € incluyen envío gratuito con seguimiento. Los productos individuales pueden enviarse directamente desde almacenes aliados verificados para agilizar la entrega.',
         },
         {
           q: '¿Puedo personalizar un kit para mi familia o empresa?',

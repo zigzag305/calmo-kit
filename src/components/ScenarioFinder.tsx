@@ -39,7 +39,7 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
 
   if (!primaryProduct || !addonProduct) return null;
 
-  const bundleTotal = primaryProduct.priceUsd + addonProduct.priceUsd;
+  const bundleTotal = primaryProduct.priceEur + addonProduct.priceEur;
 
   return (
     <section
@@ -140,7 +140,7 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
                   </p>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="font-mono text-sm font-bold text-white">
-                      {formatPrice(primaryProduct.priceUsd, currency)}
+                      {formatPrice(primaryProduct.priceEur, currency)}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:translate-x-0.5 transition" />
                   </div>
@@ -173,7 +173,7 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
                   </p>
                   <div className="mt-2 flex items-center gap-2">
                     <span className="font-mono text-sm font-bold text-white">
-                      {formatPrice(addonProduct.priceUsd, currency)}
+                      {formatPrice(addonProduct.priceEur, currency)}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover:translate-x-0.5 transition" />
                   </div>

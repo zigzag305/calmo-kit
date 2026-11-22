@@ -9,7 +9,12 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { CartItem, Currency, Lang, Product } from '../types';
-import { formatPrice, getFreeShippingThreshold } from '../utils/currency';
+import {
+  formatPrice,
+  getFreeShippingThreshold,
+  FREE_SHIPPING_EUR,
+  FLAT_SHIPPING_EUR,
+} from '../utils/currency';
 import { getCopy } from '../i18n/translations';
 
 interface CartDrawerProps {
@@ -40,15 +45,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const copy = getCopy(lang);
   if (!open) return null;
 
-  const subtotalUsd = items.reduce(
-    (sum, item) => sum + item.product.priceUsd * item.quantity,
+  const subtotalEur = items.reduce(
+    (sum, item) => sum + item.product.priceEur * item.quantity,
     0
   );
-  const freeThresholdUsd = 99;
-  const remainingUsd = Math.max(0, freeThresholdUsd - subtotalUsd);
-  const progressPct = Math.min(100, (subtotalUsd / freeThresholdUsd) * 100);
-  const shippingUsd = subtotalUsd === 0 || remainingUsd === 0 ? 0 : 12;
-  const totalUsd = subtotalUsd + shippingUsd;
+  const freeThresholdEur = FREE_SHIPPING_EUR;
+  const remainingEur = Math.max(0, freeThresholdEur - subtotalEur);
+  const progressPct = Math.min(100, (subtotalEur / freeThresholdEur) * 100);
+  const shippingEur = subtotalEur === 0 || remainingEur === 0 ? 0 : FLAT_SHIPPING_EUR;
+  const totalEur = subtotalEur + shippingEur;
 
   const showUpsell =
     upsellProduct && !items.some((i) => i.product.id === upsellProduct.id);
@@ -86,17 +91,17 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           <div className="px-6 py-3.5 bg-[#F5F5F7] border-b border-slate-200/80">
             <div className="flex items-center gap-2 text-xs font-medium text-slate-700">
               <Truck className="w-4 h-4 text-emerald-600 shrink-0" />
-              {remainingUsd === 0 ? (
+              {remainingEur === 0 ? (
                 <span className="text-emerald-700 font-semibold">
                   {copy.cart.freeShippingUnlocked}
                 </span>
               ) : (
                 <span>
                   <strong className="text-slate-950">
-                    {formatPrice(remainingUsd, currency)}
+                    {formatPrice(remainingEur, currency)}
                   </strong>{' '}
                   {copy.cart.freeShippingRemaining} (
-                  {formatPrice(getFreeShippingThreshold(currency), currency)})
+                  {formatPrice(getFreeShippingThreshold(), currency)})
                 </span>
               )}
             </div>
@@ -197,7 +202,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                         <span className="font-display text-sm font-bold text-slate-950">
                           {formatPrice(
-                            item.product.priceUsd * item.quantity,
+                            item.product.priceEur * item.quantity,
                             currency
                           )}
                         </span>
@@ -224,7 +229,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                         {upsellProduct.name[lang]}
                       </p>
                       <p className="text-xs text-slate-500">
-                        {formatPrice(upsellProduct.priceUsd, currency)}
+                        {formatPrice(upsellProduct.priceEur, currency)}
                       </p>
                     </div>
                     <button
@@ -247,19 +252,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <div className="space-y-1.5 text-sm">
               <div className="flex justify-between text-slate-600">
                 <span>{copy.cart.subtotal}</span>
-                <span>{formatPrice(subtotalUsd, currency)}</span>
+                <span>{formatPrice(subtotalEur, currency)}</span>
               </div>
               <div className="flex justify-between text-slate-600">
                 <span>{copy.cart.shipping}</span>
-                <span className={shippingUsd === 0 ? 'text-emerald-600 font-semibold' : ''}>
-                  {shippingUsd === 0
+                <span className={shippingEur === 0 ? 'text-emerald-600 font-semibold' : ''}>
+                  {shippingEur === 0
                     ? copy.cart.free
-                    : formatPrice(shippingUsd, currency)}
+                    : formatPrice(shippingEur, currency)}
                 </span>
               </div>
               <div className="flex justify-between text-base font-bold text-slate-950 pt-2 border-t border-slate-100">
                 <span>{copy.cart.total}</span>
-                <span>{formatPrice(totalUsd, currency)}</span>
+                <span>{formatPrice(totalEur, currency)}</span>
               </div>
             </div>
 

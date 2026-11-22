@@ -60,9 +60,9 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
     });
 
     if (sortBy === 'asc') {
-      list = [...list].sort((a, b) => a.priceUsd - b.priceUsd);
+      list = [...list].sort((a, b) => a.priceEur - b.priceEur);
     } else if (sortBy === 'desc') {
-      list = [...list].sort((a, b) => b.priceUsd - a.priceUsd);
+      list = [...list].sort((a, b) => b.priceEur - a.priceEur);
     }
     return list;
   }, [products, category, fulfillmentFilter, searchQuery, sortBy]);
@@ -260,15 +260,17 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                       <span className="font-mono text-[11px] uppercase tracking-wider text-slate-400">
                         {product.brand}
                       </span>
-                      <div className="inline-flex items-center gap-1 text-xs text-slate-500">
-                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                        <span className="font-medium text-slate-700">
-                          {product.rating.toFixed(1)}
-                        </span>
-                        <span className="text-slate-400">
-                          ({product.reviewCount})
-                        </span>
-                      </div>
+                      {product.reviewCount > 0 && (
+                        <div className="inline-flex items-center gap-1 text-xs text-slate-500">
+                          <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                          <span className="font-medium text-slate-700">
+                            {product.rating.toFixed(1)}
+                          </span>
+                          <span className="text-slate-400">
+                            ({product.reviewCount})
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     <h3 className="mt-1 font-display text-base font-semibold text-slate-950 group-hover:text-blue-600 transition">
@@ -281,11 +283,11 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                     <div className="mt-3 flex items-center justify-between">
                       <div className="flex items-baseline gap-2">
                         <span className="font-display text-base font-bold text-slate-950">
-                          {formatPrice(product.priceUsd, currency)}
+                          {formatPrice(product.priceEur, currency)}
                         </span>
-                        {product.compareAtUsd && (
+                        {product.compareAtEur && (
                           <span className="text-xs text-slate-400 line-through">
-                            {formatPrice(product.compareAtUsd, currency)}
+                            {formatPrice(product.compareAtEur, currency)}
                           </span>
                         )}
                       </div>

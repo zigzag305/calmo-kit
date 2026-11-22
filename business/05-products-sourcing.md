@@ -74,3 +74,17 @@ Expected once suppliers reply: Katadyn filters + Micropur tablets + Trek'n Eat m
 - **Fast (1–5 days):** Liofilizado & Co, MILITARY.EU (Poland, ships immediately), StockEtik (ES/PT warehouses, 3–5 days), EmerPlan (Spain), BigBuy (Spain).
 - **Slow (~2 weeks):** CJdropshipping from China. CJ EU warehouses had no stock of our items when filtered by "ship from Germany".
 - **Own stock route:** OEM kit (Risen/Yonoel) → sea freight → EU warehouse (CJ Germany or PT 3PL) → 2–4 day delivery.
+
+## MILITARY.EU ready kits (found 22 Nov) — Poland, ships immediately
+| Product | Retail | Link | Website use |
+|---|---|---|---|
+| Brytzky Tactical Polygon 36 L bug-out bag with equipment | €128.86 | https://military.eu/p/tm/brytzky-tactical-polygon-large-medium-bug-out-bag-36-l-coyote-with-equipment-2684631 | Primary source, 72H Crisis Pack (€149) |
+| Badger Outdoor Recon 40 L with equipment | €122.45 | https://military.eu/p/tm/badger-outdoor-recon-40-l-olive-medium-evacuation-backpack-with-equipment-2684622 | Alt source, 72H Crisis Pack |
+| Helikon Bail Out Bag 25 L with equipment | TBC | https://military.eu/p/tm/helikon-bail-out-bag-25-l-evacuation-backpack-shadow-grey-with-equipment-2685180 | Primary source, Wilderness Field Kit (€119) — ask for version without pepper spray |
+| First-aid kits (65 listed) | from €23.51 | military.eu → First-aid kits | Trauma/first-aid kit (€39.90) |
+| HELP BAG MAX | €661.17 | https://militaria.pl/en/p/help-bag-max-emergency-kit-shadow-black-852758 | Not on site (ultra-premium test) |
+
+Retail prices above are MILITARY.EU's own; B2B prices are asked in Monday's email. At €149 retail the 72H pack only works if the B2B price is well under retail — check margin when the price list arrives.
+
+## Website ↔ supplier map
+See the "Website products" and "On website as" columns in `business/data/calmokit-suppliers-products.xlsx`. Every product row now has **Supplier country** and **Source type** (EU dropship platform / EU B2B distributor / EU brand / Dropship agent / OEM bulk / Marketplace benchmark).
