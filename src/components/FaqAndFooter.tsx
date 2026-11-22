@@ -106,7 +106,7 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
               </p>
               <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400">
                 <ShieldCheck className="w-4 h-4 text-[#39FF14]" />
-                <span>www.calmokit.com</span>
+                <span>calmokit.eu</span>
               </div>
             </div>
 
@@ -180,7 +180,7 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
 
           <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <p>
-              © {new Date().getFullYear()} CALMO KIT (www.calmokit.com).{' '}
+              © {new Date().getFullYear()} CALMO KIT (calmokit.eu).{' '}
               {copy.footer.rights}
             </p>
             <p className="font-mono text-[11px] text-slate-600">

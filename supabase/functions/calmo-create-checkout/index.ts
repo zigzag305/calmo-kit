@@ -38,11 +38,11 @@ interface CheckoutPayload {
 
 const getBaseUrl = (req: Request): string => {
   const origin = req.headers.get("origin");
-  if (!origin) return "https://www.calmokit.com";
+  if (!origin) return "https://calmokit.eu";
   try {
     return new URL(origin).origin;
   } catch {
-    return "https://www.calmokit.com";
+    return "https://calmokit.eu";
   }
 };
 
@@ -160,7 +160,7 @@ serve(async (req) => {
             shipping_cents: Math.round(shippingEur * rate * 100),
             total_cents: Math.round((subtotalEur + shippingEur) * rate * 100),
             customer_name: customer?.name ?? null,
-            customer_email: customer?.email ?? "guest@calmokit.com",
+            customer_email: customer?.email ?? "guest@calmokit.eu",
             shipping_address: {
               address: customer?.address ?? "",
               city: customer?.city ?? "",

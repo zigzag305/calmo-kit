@@ -3,7 +3,7 @@ import Stripe from "https://esm.sh/stripe@14.21.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 /**
- * Isolated Stripe Webhook for CalmoKit (www.calmokit.com).
+ * Isolated Stripe Webhook for CalmoKit (calmokit.eu).
  * Updates ONLY `public.calmo_kit_orders` when Stripe confirms payment.
  * Never touches Supabase Auth or Cuyo Marketing tables.
  */
