@@ -42,6 +42,14 @@ Legend — **Dropship?**: Yes / Ask (unknown, asking) / Wholesale only / Affilia
 | **Kits de Emergência** | Kits | Ask | geral@kitsemergencias.pt · WhatsApp +351 927 076 282 | Portugal | Email (Portuguese) scheduled Thu 26 Nov 11:25 | Also a possible local competitor. |
 | **Droplo** | Dropship platform (EU suppliers) | Yes | droplo.com | Poland | Needs live website | Free B2B account; Basic €79/yr, Premium €249/yr. |
 
+## Added 22 Nov (evening)
+| Supplier | Category | Dropship? | Contact | Country | Status | Notes |
+|---|---|---|---|---|---|---|
+| **AliExpress sellers with Spain/EU warehouses** | Radios, V16 beacons, filters, blankets, car kits | Yes | AliExpress account / DSers | Spain, Poland, France | Order samples | Real per-product prices now; see 05-products. |
+| **Spocket** | EU/US supplier platform | Yes | spocket.co (Shopify app) | EU + US | Needs store | Product-level shipping estimates, samples; ~$39.99–99.99/month (free plan). |
+| **JBM (JBM Camp)** | First aid (DIN 13164), V16 beacons, safety | Ask | jbm@jbmcamp.com · +34 972 40 57 21 | Spain (Girona) | Email batch 3 | Spanish distributor, 30+ years, 7,000+ items. |
+| **Ortoprime SL** | First aid / medical | Ask | informacion@ortoprime.es | Spain (Madrid) | Backup | Sells on AliExpress, Leroy Merlin, MediaMarkt. |
+
 ## Questions we ask every supplier
 1. Do you dropship to end customers in PT/ES/EU? Blind shipping (no prices, our name on slip)? Per-order fee?
 2. Reseller price vs retail (discount %)? Minimum advertised price policy?
