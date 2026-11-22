@@ -207,7 +207,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                       src={product.image}
                       alt={product.name[lang]}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-contain p-4 bg-white transition-transform duration-500 group-hover:scale-105"
                     />
 
                     {/* Top badges: Fulfillment type + 3D interactive pill */}

@@ -31,8 +31,8 @@ export const PRODUCTS: Product[] = [
       es: 'KIT PRINCIPAL',
       en: 'HERO KIT',
     },
-    image: './images/kit-crisis.jpg',
-    imageTheme: 'dark',
+    image: './images/real/kit-crisis.jpg',
+    imageTheme: 'light',
     showcase: {
       order: '01',
       bgFrom: '#6A2118',
@@ -114,8 +114,8 @@ export const PRODUCTS: Product[] = [
       es: 'COMPACTO',
       en: 'COMPACT',
     },
-    image: './images/kit-wilderness.jpg',
-    imageTheme: 'dark',
+    image: './images/real/kit-wilderness.png',
+    imageTheme: 'light',
     showcase: {
       order: '02',
       bgFrom: '#1D4635',
@@ -197,8 +197,8 @@ export const PRODUCTS: Product[] = [
       es: 'ESENCIAL HOGAR',
       en: 'HOME ESSENTIAL',
     },
-    image: './images/kit-blackout.jpg',
-    imageTheme: 'dark',
+    image: './images/real/kit-blackout.png',
+    imageTheme: 'light',
     showcase: {
       order: '03',
       bgFrom: '#23324A',
@@ -277,8 +277,8 @@ export const PRODUCTS: Product[] = [
       es: 'HASTA 25 AÑOS',
       en: 'UP TO 25 YRS',
     },
-    image: './images/kit-food.jpg',
-    imageTheme: 'dark',
+    image: './images/real/kit-food.webp',
+    imageTheme: 'light',
     showcase: {
       order: '04',
       bgFrom: '#593A1A',
@@ -357,7 +357,7 @@ export const PRODUCTS: Product[] = [
       es: 'TOP COMPLEMENTO',
       en: 'TOP ADD-ON',
     },
-    image: './images/gear-filter.jpg',
+    image: './images/real/gear-filter.png',
     imageTheme: 'light',
     model3D: {
       type: 'water-filter',
@@ -408,7 +408,7 @@ export const PRODUCTS: Product[] = [
     priceEur: 39.9,
     rating: 0,
     reviewCount: 0,
-    image: './images/gear-medkit.jpg',
+    image: './images/real/gear-medkit.jpg',
     imageTheme: 'light',
     model3D: {
       type: 'trauma-kit',
@@ -458,7 +458,7 @@ export const PRODUCTS: Product[] = [
     priceEur: 39.9,
     rating: 0,
     reviewCount: 0,
-    image: './images/gear-radio.jpg',
+    image: './images/real/gear-radio.jpg',
     imageTheme: 'light',
     model3D: {
       type: 'weather-radio',
@@ -509,7 +509,7 @@ export const PRODUCTS: Product[] = [
     priceEur: 29.9,
     rating: 0,
     reviewCount: 0,
-    image: './images/gear-rations.jpg',
+    image: './images/real/gear-rations.webp',
     imageTheme: 'light',
     model3D: {
       type: 'meal-pouches',

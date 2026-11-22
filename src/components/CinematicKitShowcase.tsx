@@ -220,12 +220,12 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                     animate={{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }}
                     exit={{ opacity: 0, scale: 0.92, y: -14, filter: 'blur(6px)' }}
                     transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/15 shadow-[0_32px_90px_rgba(0,0,0,0.55)] animate-float-slow"
+                    className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/15 bg-white shadow-[0_32px_90px_rgba(0,0,0,0.55)] animate-float-slow"
                   >
                     <img
                       src={activeKit.image}
                       alt={activeKit.name[lang]}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain p-5"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
                     {activeKit.badge && (
