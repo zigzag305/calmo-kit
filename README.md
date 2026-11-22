@@ -1,5 +1,7 @@
 # CALMO KIT — Emergency, Survival & Food Preparedness Storefront (`www.calmokit.com`)
 
+> **Business context for humans and AI agents:** see [`AGENTS.md`](AGENTS.md) and [`business/`](business/README.md) — strategy, suppliers, products (links, costs, shipping), outreach and next actions.
+
 A modern, bilingual (**EN / ES**) e-commerce storefront built with **React, TypeScript, Vite, Tailwind CSS, Framer Motion, and Three.js**, combining:
 
 - **Cinematic Full-Bleed Alpine Hero & Color-Adaptive Kit Switcher** with depth-of-field variant navigation and an instant Photo / 3D stage toggle.
