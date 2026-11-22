@@ -1,5 +1,5 @@
-export type Lang = 'en' | 'es';
-export type Currency = 'USD' | 'EUR';
+export type Lang = 'pt' | 'es' | 'en';
+export type Currency = 'EUR' | 'USD';
 
 export type ProductCategory =
   | 'kits'
@@ -20,8 +20,9 @@ export type Model3DType =
   | 'meal-pouches';
 
 export interface LocalizedText {
-  en: string;
+  pt: string;
   es: string;
+  en: string;
 }
 
 export interface ProductVariant {

@@ -121,30 +121,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Search className="w-4 h-4" />
             </button>
 
-            {/* EN / ES Bilingual Toggle */}
+            {/* PT / ES / EN Trilingual Toggle */}
             <div className="flex items-center rounded-full bg-white/10 border border-white/15 p-0.5 text-[11px] font-mono">
-              <button
-                type="button"
-                onClick={() => setLang('en')}
-                className={`px-2 py-1 rounded-full transition cursor-pointer ${
-                  lang === 'en'
-                    ? 'bg-white text-black font-bold'
-                    : 'text-white/75 hover:text-white'
-                }`}
-              >
-                EN
-              </button>
-              <button
-                type="button"
-                onClick={() => setLang('es')}
-                className={`px-2 py-1 rounded-full transition cursor-pointer ${
-                  lang === 'es'
-                    ? 'bg-white text-black font-bold'
-                    : 'text-white/75 hover:text-white'
-                }`}
-              >
-                ES
-              </button>
+              {(['pt', 'es', 'en'] as const).map((code) => (
+                <button
+                  key={code}
+                  type="button"
+                  onClick={() => setLang(code)}
+                  className={`px-2 py-1 rounded-full uppercase transition cursor-pointer ${
+                    lang === code
+                      ? 'bg-white text-black font-bold'
+                      : 'text-white/75 hover:text-white'
+                  }`}
+                >
+                  {code}
+                </button>
+              ))}
             </div>
 
             {/* Currency Toggle */}
