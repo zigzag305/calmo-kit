@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #f4f1ea;
+      background-image:
+        linear-gradient(to right, rgba(17, 19, 23, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17, 19, 23, 0.06) 1px, transparent 1px);
+      background-size: 54px 54px;
+      padding: 210px 110px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    #prob-stamp {
+      align-self: flex-start;
+      padding: 14px 28px;
+      background: #d92d20;
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      transform: rotate(-2deg);
+    }
+    #prob-clock {
+      font-family: monospace;
+      font-size: 168px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #111317;
+      line-height: 0.9;
+    }
+    #prob-title {
+      font-size: 108px;
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
+      color: #111317;
+      white-space: pre-line;
+    }
+    #prob-sub {
+      font-size: 38px;
+      line-height: 1.35;
+      color: #374151;
+      border-left: 8px solid #d92d20;
+      padding-left: 28px;
+    }
+  </style>
+
+  <div id="root" data-composition-id="ed-problem" data-width="1080" data-height="1920">
+    <div id="prob-stamp">EMERGENCY BRIEF // 01</div>
+    <div>
+      <div id="prob-clock">72:00</div>
+      <h1 id="prob-title" data-var-text="headline">72 HOURS&#10;NO POWER.</h1>
+    </div>
+    <p id="prob-sub">What runs out first in a real blackout or evacuation?</p>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#prob-stamp", { opacity: 0, scale: 1.35, y: -30 }, { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "back.out(1.7)" }, 0.1);
+    tl.fromTo("#prob-clock", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.5, ease: "power4.out" }, 0.35);
+    tl.fromTo("#prob-title", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power4.out" }, 0.6);
+    tl.fromTo("#prob-sub", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 1.0);
+    window.__timelines["ed-problem"] = tl;
+  </script>
+</template>

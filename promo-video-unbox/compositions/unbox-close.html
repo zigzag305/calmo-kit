@@ -1,0 +1,64 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 200px 108px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 36px;
+    }
+    #uc-badge {
+      padding: 14px 32px;
+      border-radius: 999px;
+      background: rgba(57, 255, 20, 0.16);
+      border: 2px solid #39ff14;
+      color: #39ff14;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    #uc-title {
+      font-size: 92px;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+    #uc-pills {
+      font-size: 30px;
+      color: #cbd5e1;
+      letter-spacing: 0.08em;
+    }
+    #uc-cta {
+      padding: 26px 58px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #0f172a;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+  </style>
+
+  <div id="root" data-composition-id="unbox-close" data-width="1080" data-height="1920">
+    <div id="uc-badge">KITS OR INDIVIDUAL GEAR</div>
+    <h2 id="uc-title">READY FOR ANY SITUATION.</h2>
+    <p id="uc-pills">72H · BLACKOUT · FOOD · WILDERNESS</p>
+    <div id="uc-cta" data-var-text="storeDomain">WWW.CALMOKIT.COM</div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#uc-badge", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.35 }, 0.1);
+    tl.fromTo("#uc-title", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.25);
+    tl.fromTo("#uc-pills", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.6);
+    tl.fromTo("#uc-cta", { opacity: 0, scale: 0.88 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 0.8);
+    window.__timelines["unbox-close"] = tl;
+  </script>
+</template>

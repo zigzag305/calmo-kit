@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/vendor/three.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #060910;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #060910;
+      }
+      .story-shot {
+        position: absolute;
+        inset: -40px;
+        width: 1160px;
+        height: 2000px;
+        object-fit: cover;
+        opacity: 0;
+        z-index: 1;
+      }
+      #shot-scrim {
+        position: absolute;
+        inset: 0;
+        z-index: 3;
+        background: linear-gradient(
+          180deg,
+          rgba(6, 9, 16, 0.55) 0%,
+          rgba(6, 9, 16, 0.12) 45%,
+          rgba(6, 9, 16, 0.92) 100%
+        );
+      }
+      #lightning-flash {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        background: #e0f2fe;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #webgl-finale {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        z-index: 2;
+        opacity: 0;
+      }
+      /* Top urgent timestamp */
+      #time-badge {
+        position: absolute;
+        top: 175px;
+        left: 108px;
+        z-index: 10;
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 28px;
+        border-radius: 999px;
+        background: rgba(17, 24, 39, 0.85);
+        border: 2px solid rgba(239, 68, 68, 0.65);
+        font-family: monospace;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        color: #f87171;
+      }
+      /* Story captions */
+      #story-captions {
+        position: absolute;
+        left: 108px;
+        right: 108px;
+        bottom: 260px;
+        z-index: 12;
+      }
+      .sc-beat {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .sc-big {
+        font-size: 88px;
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        text-shadow: 0 10px 36px rgba(0, 0, 0, 0.9);
+      }
+      .sc-red { color: #ef4444; }
+      .sc-lime { color: #39ff14; }
+      .sc-sub {
+        font-size: 36px;
+        line-height: 1.3;
+        color: #e2e8f0;
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+      }
+      #sc-cta {
+        align-self: flex-start;
+        padding: 24px 52px;
+        border-radius: 999px;
+        background: #39ff14;
+        color: #060910;
+        font-family: monospace;
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        box-shadow: 0 0 44px rgba(57, 255, 20, 0.45);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- 3 AI-Generated Story Scenes with continuous handheld camera motion -->
+      <img id="shot-1" class="story-shot clip" data-start="0" data-duration="3.6" data-track-index="0" src="assets/images/story-1.jpg" alt="Sudden blackout" />
+      <img id="shot-2" class="story-shot clip" data-start="3.4" data-duration="3.8" data-track-index="0" src="assets/images/story-2.jpg" alt="Empty drawer scramble" />
+      <img id="shot-3" class="story-shot clip" data-start="7.0" data-duration="4.2" data-track-index="0" src="assets/images/story-3.jpg" alt="Grabbing Calmo 72H pack" />
+
+      <!-- Live 3D WebGL Finale Stage (11.0s -> 15.0s) -->
+      <canvas id="webgl-finale" width="1080" height="1920"></canvas>
+
+      <div id="shot-scrim"></div>
+      <div id="lightning-flash"></div>
+
+      <div id="time-badge" class="clip" data-start="0" data-duration="15" data-track-index="1">
+        02:14 AM // GRID FAILURE
+      </div>
+
+      <div id="story-captions">
+        <div id="beat-1" class="sc-beat clip" data-start="0.1" data-duration="3.4" data-track-index="2">
+          <div class="sc-big">POWER’S <span class="sc-red">OUT.</span></div>
+          <div class="sc-sub">2:14 AM. Storm hits. Cell signal drops.</div>
+        </div>
+
+        <div id="beat-2" class="sc-beat clip" data-start="3.5" data-duration="3.5" data-track-index="2">
+          <div class="sc-big">NO TIME TO <span class="sc-red">SEARCH.</span></div>
+          <div class="sc-sub">Dead batteries. Empty shelves. Pitch dark.</div>
+        </div>
+
+        <div id="beat-3" class="sc-beat clip" data-start="7.1" data-duration="3.9" data-track-index="2">
+          <div class="sc-big">GRAB <span class="sc-lime">ONE PACK.</span></div>
+          <div class="sc-sub">72H food, clean water, trauma &amp; solar radio.</div>
+        </div>
+
+        <div id="beat-4" class="sc-beat clip" data-start="11.0" data-duration="4.0" data-track-index="2">
+          <div class="sc-big">STAY CALM.<br /><span class="sc-lime">STAY READY.</span></div>
+          <div id="sc-cta">WWW.CALMOKIT.COM</div>
+        </div>
+      </div>
+
+      <!-- 4-Track Urgent Story Audio -->
+      <audio id="aud-hb" src="assets/audio/heartbeat.mp3" data-start="0" data-duration="15" data-volume="0.38" data-fade-in="0.2" data-fade-out="1.2"></audio>
+      <audio id="aud-imp1" src="assets/audio/impact.mp3" data-start="0.05" data-duration="3.2" data-volume="0.6"></audio>
+      <audio id="aud-imp2" src="assets/audio/impact.mp3" data-start="7.0" data-duration="3.2" data-volume="0.55"></audio>
+      <audio id="aud-vo" src="assets/audio/story-vo.wav" data-start="0.2" data-duration="14.5" data-volume="1.0"></audio>
+    </div>
+
+    <script>
+      // 3D WebGL Finale Setup (11.0s -> 15.0s)
+      const canvas = document.getElementById("webgl-finale");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(1080, 1920, false);
+      renderer.setPixelRatio(1);
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.1, 40);
+      camera.position.set(0, 1.3, 5.2);
+
+      scene.add(new THREE.HemisphereLight(0xcfe8ff, 0x0a1220, 1.1));
+      const key = new THREE.DirectionalLight(0xffffff, 2.3);
+      key.position.set(3, 6, 5);
+      scene.add(key);
+      const rim = new THREE.PointLight(0x39ff14, 3.0, 16);
+      rim.position.set(-3, 2, -2);
+      scene.add(rim);
+
+      const grid = new THREE.GridHelper(24, 24, 0x38bdf8, 0x13243a);
+      grid.position.y = -1.35;
+      scene.add(grid);
+
+      const pack = new THREE.Group();
+      const redMat = new THREE.MeshStandardMaterial({ color: 0xb92b27, roughness: 0.38, metalness: 0.22 });
+      const darkMat = new THREE.MeshStandardMaterial({ color: 0x181c24, roughness: 0.55, metalness: 0.3 });
+      const glowMat = new THREE.MeshStandardMaterial({ color: 0x39ff14, emissive: 0x39ff14, emissiveIntensity: 0.95 });
+
+      pack.add(new THREE.Mesh(new THREE.BoxGeometry(1.38, 1.9, 0.74), redMat));
+      const panel = new THREE.Mesh(new THREE.BoxGeometry(1.04, 1.28, 0.16), darkMat);
+      panel.position.set(0, -0.08, 0.36);
+      pack.add(panel);
+      const status = new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.06, 0.05), glowMat);
+      status.position.set(0, 0.72, 0.38);
+      pack.add(status);
+      pack.position.set(0, 0.22, 0);
+      scene.add(pack);
+
+      function render3D(t) {
+        camera.position.x = Math.sin(t * 0.65) * 4.8;
+        camera.position.z = Math.cos(t * 0.65) * 4.8;
+        camera.lookAt(0, 0.15, 0);
+        pack.rotation.y = t * 0.9;
+        pack.position.y = 0.22 + Math.sin(t * 2.5) * 0.08;
+        renderer.render(scene, camera);
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      const drv = { t: 0 };
+      tl.to(drv, { t: 15, duration: 15, ease: "none", onUpdate: () => render3D(drv.t) }, 0);
+
+      // Shot 1: Handheld push-in + storm lightning flash
+      tl.fromTo("#shot-1", { opacity: 0, scale: 1.0, x: 0 }, { opacity: 1, scale: 1.14, x: -24, duration: 3.5, ease: "power1.inOut" }, 0);
+      tl.to("#shot-1", { opacity: 0, duration: 0.25 }, 3.35);
+      tl.fromTo("#lightning-flash", { opacity: 0 }, { opacity: 0.65, duration: 0.07 }, 0.9);
+      tl.to("#lightning-flash", { opacity: 0, duration: 0.22 }, 0.97);
+
+      // Shot 2: Urgent flashlight drawer search (slight handheld shake + zoom)
+      tl.fromTo("#shot-2", { opacity: 0, scale: 1.12, x: 18 }, { opacity: 1, scale: 1.02, x: -18, duration: 3.6, ease: "power1.out" }, 3.4);
+      tl.to("#shot-2", { opacity: 0, duration: 0.25 }, 6.95);
+
+      // Shot 3: Confident grab-and-go action push
+      tl.fromTo("#shot-3", { opacity: 0, scale: 1.02, y: 18 }, { opacity: 1, scale: 1.13, y: -14, duration: 4.0, ease: "power2.out" }, 7.0);
+      tl.to("#shot-3", { opacity: 0, duration: 0.35 }, 10.85);
+
+      // Beat 4: Reveal Live 3D WebGL Crisis Pack
+      tl.fromTo("#webgl-finale", { opacity: 0 }, { opacity: 1, duration: 0.45 }, 10.9);
+
+      // Captions
+      const beats = [
+        { id: "#beat-1", s: 0.1, e: 3.4 },
+        { id: "#beat-2", s: 3.5, e: 7.0 },
+        { id: "#beat-3", s: 7.1, e: 10.9 },
+        { id: "#beat-4", s: 11.0, e: 15.0 },
+      ];
+      beats.forEach((b, idx) => {
+        tl.fromTo(b.id, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.3, ease: "power3.out" }, b.s);
+        if (idx < beats.length - 1) {
+          tl.to(b.id, { opacity: 0, y: -20, duration: 0.2 }, b.e - 0.2);
+        }
+      });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      render3D(0);
+    </script>
+  </body>
+</html>
