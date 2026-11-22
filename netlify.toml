@@ -1,0 +1,44 @@
+# Netlify build settings for calmokit.eu
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Public client values (safe to expose: the anon key ships in the browser bundle
+  # anyway, and every table has Row Level Security). Supabase project: Cuyo 2026.
+  # Secrets (Stripe, service role, Resend) live ONLY in Supabase function secrets.
+  VITE_CALMO_SUPABASE_URL = "https://ildovgtqalzyqzocbthz.supabase.co"
+  VITE_CALMO_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlsZG92Z3RxYWx6eXF6b2NidGh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1NDAzMzAsImV4cCI6MjA4NjExNjMzMH0.tuX7j5SlMg1IFiErRs-7Ab99SrwrK4C_cPyIxoOqdS0"
+
+# Send www and the Netlify subdomain to the main domain
+[[redirects]]
+  from = "https://www.calmokit.eu/*"
+  to = "https://calmokit.eu/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://calmokit.netlify.app/*"
+  to = "https://calmokit.eu/:splat"
+  status = 301
+  force = true
+
+# Single-page app: any unknown path loads the store
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

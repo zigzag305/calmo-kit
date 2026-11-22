@@ -75,7 +75,7 @@ serve(async (req) => {
           to: notifyTo,
           subject: `[Calmo Kit] New ${body.leadType ?? "newsletter"} lead`,
           html: `
-            <h2>New Calmo Kit Lead (www.calmokit.com)</h2>
+            <h2>New Calmo Kit Lead (calmokit.eu)</h2>
             <p><strong>Email:</strong> ${email}</p>
             ${body.name ? `<p><strong>Name:</strong> ${body.name}</p>` : ""}
             ${body.message ? `<p><strong>Message:</strong> ${body.message}</p>` : ""}
@@ -92,8 +92,8 @@ serve(async (req) => {
             : "Welcome to Calmo Kit — Your 10% code: CALMO10",
         html:
           body.lang === "es"
-            ? `<h2>Mantén la calma. Está preparado.</h2><p>Gracias por unirte a la lista de preparación de <strong>www.calmokit.com</strong>. Usa el código <strong>CALMO10</strong> en tu primer kit.</p>`
-            : `<h2>Stay Calm. Stay Ready.</h2><p>Thanks for joining the <strong>www.calmokit.com</strong> readiness list. Use code <strong>CALMO10</strong> for 10% off your first kit.</p>`,
+            ? `<h2>Mantén la calma. Está preparado.</h2><p>Gracias por unirte a la lista de preparación de <strong>calmokit.eu</strong>. Usa el código <strong>CALMO10</strong> en tu primer kit.</p>`
+            : `<h2>Stay Calm. Stay Ready.</h2><p>Thanks for joining the <strong>calmokit.eu</strong> readiness list. Use code <strong>CALMO10</strong> for 10% off your first kit.</p>`,
       });
     }
 

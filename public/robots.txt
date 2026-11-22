@@ -11,4 +11,4 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-Sitemap: https://www.calmokit.com/sitemap.xml
+Sitemap: https://calmokit.eu/sitemap.xml
