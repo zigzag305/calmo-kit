@@ -216,7 +216,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                     <img
                       src={activeKit.image}
                       alt={activeKit.name[lang]}
-                      className="w-full h-full object-contain p-5"
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
                     {activeKit.badge && (
