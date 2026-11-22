@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import Stripe from "https://esm.sh/stripe@14.21.0";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
+import { isExcludedPostcode } from "../_shared/calmoCatalog.ts";
 
 /**
  * Isolated Stripe Webhook for CalmoKit (calmokit.eu).
@@ -52,6 +53,15 @@ serve(async (req) => {
     }
 
     const orderRef = session.metadata?.order_ref;
+    const shipAddr = session.shipping_details?.address;
+    // Stripe can only limit by country; the islands, Ceuta and Melilla are
+    // excluded in the terms, so flag them for a manual refund/arrangement.
+    const needsReview = shipAddr
+      ? isExcludedPostcode(shipAddr.country ?? "", shipAddr.postal_code ?? "")
+      : false;
+    if (needsReview) {
+      console.warn(`Order ${orderRef} ships to an excluded region`, shipAddr);
+    }
     const { error } = await supabaseAdmin
       .from("calmo_kit_orders")
       .update({
@@ -60,7 +70,9 @@ serve(async (req) => {
         customer_email:
           session.customer_details?.email ?? session.customer_email ?? undefined,
         customer_name: session.customer_details?.name ?? undefined,
-        shipping_address: session.shipping_details?.address ?? undefined,
+        shipping_address: shipAddr
+          ? { ...shipAddr, review: needsReview ? "excluded_region" : null }
+          : undefined,
         updated_at: new Date().toISOString(),
       })
       .eq("order_ref", orderRef);

@@ -1,4 +1,4 @@
-# CALMO KIT — Emergency, Survival & Food Preparedness Storefront (`www.calmokit.com`)
+# CalmoKit — emergency preparedness store (`calmokit.eu`)
 
 > **Business context for humans and AI agents:** see [`AGENTS.md`](AGENTS.md) and [`business/`](business/README.md) — strategy, suppliers, products (links, costs, shipping), outreach and next actions.
 
@@ -40,7 +40,7 @@ To connect live payments:
 
 ---
 
-## Pushing to GitHub & Connecting `www.calmokit.com`
+## Pushing to GitHub & deploying `calmokit.eu`
 
 ### 1. Push to GitHub
 ```bash
@@ -52,15 +52,10 @@ git remote add origin https://github.com/<your-username>/calmo-kit.git
 git push -u origin main
 ```
 
-### 2. Deploy (Choose One)
+### 2. Deploy
 
-#### Option A — Vercel (Recommended, Free)
-1. Import your GitHub repo at [vercel.com/new](https://vercel.com/new).
-2. Framework preset: **Vite** (Build: `npm run build`, Output: `dist`).
-3. Go to **Project Settings → Domains** and add `www.calmokit.com` and `calmokit.com`.
-4. Add the DNS records Vercel provides at your domain registrar (`A` record for `@` and `CNAME` for `www`).
+The site is hosted on **Netlify** (project `calmokit`, domain `calmokit.eu`). Every merge to `main` deploys automatically; build settings, redirects, headers and the public Supabase keys live in [`netlify.toml`](netlify.toml). DNS is at Namecheap (ALIAS `@` → `apex-loadbalancer.netlify.com`, CNAME `www` → `calmokit.netlify.app`).
 
-#### Option B — GitHub Pages (Included Workflow)
-1. In your GitHub repo, go to **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-2. Push to `main` — the included [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and publishes automatically with `public/CNAME` (`www.calmokit.com`).
-3. At your domain registrar, point `www` (`CNAME`) to `<your-username>.github.io` and apex `@` (`A` records) to GitHub Pages IPs (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`).
+Optional build env vars for tracking (set in Netlify → Site configuration → Environment variables): `VITE_GA4_ID`, `VITE_GADS_ID`, `VITE_GADS_PURCHASE_LABEL`, `VITE_GADS_ADD_TO_CART_LABEL`, `VITE_GADS_BEGIN_CHECKOUT_LABEL`. Nothing loads until a visitor accepts cookies.
+
+Legal pages: edit `legal/*.md` or `legal/company.json`, then run `python3 scripts/legal/build_legal.py` and commit `public/legal/`.

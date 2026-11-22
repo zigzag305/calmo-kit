@@ -11,6 +11,8 @@ import { FaqAndFooter } from './components/FaqAndFooter';
 import { ProductDetailModal } from './components/ProductDetailModal';
 import { CartDrawer } from './components/CartDrawer';
 import { CheckoutModal } from './components/CheckoutModal';
+import { CookieBanner } from './components/CookieBanner';
+import { trackAddToCart, trackPurchaseOnReturn, trackViewItem } from './lib/analytics';
 
 const CART_STORAGE_KEY = 'calmo_kit_cart_v1';
 
@@ -33,6 +35,7 @@ export default function App() {
     if (status === 'success') {
       setCartItems([]);
       setStripeReturnOrderRef(ref || 'CK-PAID');
+      if (ref) trackPurchaseOnReturn(ref);
       window.history.replaceState({}, '', window.location.pathname);
     } else if (status === 'cancelled') {
       setCartOpen(true);
@@ -81,6 +84,7 @@ export default function App() {
     quantity = 1
   ) => {
     const chosenVariant = variantId ?? product.variants[0]?.id ?? 'default';
+    trackAddToCart(product, quantity, chosenVariant);
     setCartItems((prev) => {
       const idx = prev.findIndex(
         (item) =>
@@ -97,6 +101,7 @@ export default function App() {
   };
 
   const handleAddBundle = (bundleProducts: Product[]) => {
+    bundleProducts.forEach((p) => trackAddToCart(p, 1, p.variants[0]?.id));
     setCartItems((prev) => {
       const next = [...prev];
       bundleProducts.forEach((product) => {
@@ -140,6 +145,10 @@ export default function App() {
       )
     );
   };
+
+  useEffect(() => {
+    if (selectedProduct) trackViewItem(selectedProduct);
+  }, [selectedProduct]);
 
   const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
   const upsellProduct = PRODUCTS.find((p) => p.id === 'gear-water-filter');
@@ -279,6 +288,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <CookieBanner lang={lang} />
     </div>
   );
 }

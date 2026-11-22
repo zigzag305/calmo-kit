@@ -3,11 +3,18 @@ import { ChevronDown, Mail, ShieldCheck } from 'lucide-react';
 import { Lang } from '../types';
 import { getCopy } from '../i18n/translations';
 import { BrandLogo } from './BrandLogo';
+import { openCookieSettings } from '../lib/consent';
 import { submitCalmoLead } from '../lib/calmoApi';
 
 interface FaqAndFooterProps {
   lang: Lang;
 }
+
+const LEGAL_LINKS = {
+  es: { notice: 'Aviso legal', terms: 'Condiciones de venta', returns: 'Devoluciones (14 días)', privacy: 'Privacidad', cookies: 'Cookies', settings: 'Configurar cookies', complaints: 'Libro de Reclamaciones (PT)', formNote: 'Solo usamos tu correo para novedades y ofertas; puedes darte de baja cuando quieras.', anchors: ['aviso-legal', 'condiciones', 'devoluciones', 'privacidad', 'cookies'] },
+  pt: { notice: 'Informação legal', terms: 'Condições de venda', returns: 'Devoluções (14 dias)', privacy: 'Privacidade', cookies: 'Cookies', settings: 'Configurar cookies', complaints: 'Livro de Reclamações', formNote: 'Só usamos o seu email para novidades e ofertas; pode cancelar quando quiser.', anchors: ['aviso-legal', 'condicoes', 'devolucoes', 'privacidade', 'cookies'] },
+  en: { notice: 'Legal notice', terms: 'Terms of sale', returns: 'Returns (14 days)', privacy: 'Privacy', cookies: 'Cookies', settings: 'Cookie settings', complaints: 'Complaints book (PT)', formNote: 'We only use your email for updates and offers; unsubscribe any time.', anchors: ['aviso-legal', 'terms', 'returns', 'privacy', 'cookies'] },
+} as const;
 
 export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
   const copy = getCopy(lang);
@@ -162,6 +169,12 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
                   </button>
                 </form>
               )}
+              <p className="mt-2 text-[12px] text-stone-400">
+                {LEGAL_LINKS[lang].formNote}{' '}
+                <a href={`/legal/${lang}.html#${LEGAL_LINKS[lang].anchors[3]}`} className="underline hover:text-white">
+                  {LEGAL_LINKS[lang].privacy}
+                </a>
+              </p>
             </div>
           </div>
 
@@ -170,6 +183,27 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
               © {new Date().getFullYear()} CalmoKit (calmokit.eu).{' '}
               {copy.footer.rights}
             </p>
+            {/* Legal pages are static HTML in public/legal (built from legal/*.md). */}
+            <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+              {([
+                [LEGAL_LINKS[lang].notice, 0],
+                [LEGAL_LINKS[lang].terms, 1],
+                [LEGAL_LINKS[lang].returns, 2],
+                [LEGAL_LINKS[lang].privacy, 3],
+                [LEGAL_LINKS[lang].cookies, 4],
+              ] as const).map(([label, i]) => (
+                <a key={label} href={`/legal/${lang}.html#${LEGAL_LINKS[lang].anchors[i]}`} className="hover:text-white">
+                  {label}
+                </a>
+              ))}
+              <button type="button" onClick={openCookieSettings} className="hover:text-white cursor-pointer">
+                {LEGAL_LINKS[lang].settings}
+              </button>
+              {/* Mandatory link for online sellers to Portuguese consumers (DL 156/2005). */}
+              <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" className="hover:text-white">
+                {LEGAL_LINKS[lang].complaints}
+              </a>
+            </nav>
           </div>
         </div>
       </footer>

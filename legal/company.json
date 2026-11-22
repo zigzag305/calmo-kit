@@ -1,0 +1,8 @@
+{
+  "_comment": "Fill these in, then run: python3 scripts/legal/build_legal.py. They are shown publicly on calmokit.eu/legal (the law requires it), so they are also visible in this public repo.",
+  "TITULAR": "",
+  "NIF": "",
+  "DIRECCION": "",
+  "REGISTRO": "",
+  "EMAIL": "hola@calmokit.eu"
+}

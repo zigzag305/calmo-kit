@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { X, Lock, CheckCircle2, Loader2 } from 'lucide-react';
 import { CartItem, Currency, Lang } from '../types';
+import { rememberPendingOrder, trackBeginCheckout } from '../lib/analytics';
 import { formatPrice, FREE_SHIPPING_EUR, FLAT_SHIPPING_EUR } from '../utils/currency';
 import { getCopy } from '../i18n/translations';
-import {
-  isCalmoBackendConfigured,
-  submitCalmoCheckout,
-} from '../lib/calmoApi';
+import { submitCalmoCheckout } from '../lib/calmoApi';
 
 interface CheckoutModalProps {
   open: boolean;
@@ -30,7 +28,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   const [email, setEmail] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
-  const [country, setCountry] = useState('Portugal / España');
+  const [country, setCountry] = useState<'ES' | 'PT'>(lang === 'pt' ? 'PT' : 'ES');
   const [submitting, setSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [confirmedRef, setConfirmedRef] = useState<string | null>(null);
@@ -48,6 +46,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     e.preventDefault();
     setSubmitting(true);
     setErrorMsg(null);
+    trackBeginCheckout(items);
     try {
       const result = await submitCalmoCheckout({
         items,
@@ -57,6 +56,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       });
 
       if (result.url) {
+        rememberPendingOrder(result.orderRef, items, result.totalCents);
         // Redirect to hosted Stripe Checkout session
         window.location.href = result.url;
         return;
@@ -195,14 +195,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   placeholder={copy.checkout.city}
                   className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
                 />
-                <input
+                {/* Only ES and PT: the checkout function refuses anything else. */}
+                <select
                   required
-                  type="text"
+                  aria-label={copy.checkout.country}
                   value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  placeholder={copy.checkout.country}
+                  onChange={(e) => setCountry(e.target.value === 'PT' ? 'PT' : 'ES')}
                   className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
-                />
+                >
+                  <option value="ES">{lang === 'pt' ? 'Espanha' : lang === 'en' ? 'Spain' : 'España'}</option>
+                  <option value="PT">Portugal</option>
+                </select>
               </div>
             </div>
 
@@ -212,18 +215,21 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               </p>
             )}
 
-            <p className="text-[11px] text-stone-500 leading-relaxed bg-emerald-50/70 border border-emerald-100 rounded-xl p-3">
-              {isCalmoBackendConfigured()
-                ? lang === 'es'
-                  ? 'Conectado a la función segura de CalmoKit (aislada de otros proyectos).'
-                  : 'Connected to isolated CalmoKit checkout backend.'
-                : copy.checkout.paymentNote}
+            {/* Terms must be available before the order (Directive 2011/83 art. 8). */}
+            <p className="text-[12px] text-stone-600 leading-relaxed bg-[#F4F1EA] rounded-xl p-3">
+              {lang === 'pt' ? (
+                <>Ao continuar aceita as <a className="underline text-[#0B6E4F]" href="/legal/pt.html#condicoes" target="_blank" rel="noopener">condições de venda</a> e a <a className="underline text-[#0B6E4F]" href="/legal/pt.html#privacidade" target="_blank" rel="noopener">política de privacidade</a>. Paga na página segura da Stripe. Tem 14 dias para devolver.</>
+              ) : lang === 'en' ? (
+                <>By continuing you accept the <a className="underline text-[#0B6E4F]" href="/legal/en.html#terms" target="_blank" rel="noopener">terms of sale</a> and the <a className="underline text-[#0B6E4F]" href="/legal/en.html#privacy" target="_blank" rel="noopener">privacy policy</a>. You pay on Stripe&apos;s secure page. You have 14 days to return.</>
+              ) : (
+                <>Al continuar aceptas las <a className="underline text-[#0B6E4F]" href="/legal/es.html#condiciones" target="_blank" rel="noopener">condiciones de venta</a> y la <a className="underline text-[#0B6E4F]" href="/legal/es.html#privacidad" target="_blank" rel="noopener">política de privacidad</a>. Pagas en la página segura de Stripe. Tienes 14 días para devolverlo.</>
+              )}
             </p>
 
             <button
               type="submit"
               disabled={submitting}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 hover:bg-stone-800 disabled:opacity-60 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#0B6E4F] hover:bg-[#08513A] disabled:opacity-60 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
             >
               {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
               {copy.checkout.placeOrder} · {formatPrice(totalEur, currency)}

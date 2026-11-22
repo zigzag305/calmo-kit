@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShoppingBag, Menu, X, Search, Globe } from 'lucide-react';
+import { ShoppingBag, Menu, X, Search } from 'lucide-react';
 import { Currency, Lang } from '../types';
 import { getCopy } from '../i18n/translations';
 import { BrandLogo } from './BrandLogo';
@@ -17,8 +17,8 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   lang,
   setLang,
-  currency,
-  setCurrency,
+  currency: _currency,
+  setCurrency: _setCurrency,
   cartCount,
   onOpenCart,
   onQuickSearch,
@@ -123,17 +123,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </div>
 
-            {/* Currency Toggle */}
-            <button
-              type="button"
-              onClick={() => setCurrency(currency === 'USD' ? 'EUR' : 'USD')}
-              className="hidden sm:inline-flex items-center gap-1 rounded-full bg-white/10 border border-white/15 px-2.5 py-1 text-[11px] text-white/85 hover:bg-white/20 transition cursor-pointer"
-              title="Toggle Currency"
-            >
-              <Globe className="w-3 h-3 text-[#8FD1B4]" />
-              {currency}
-            </button>
-
             {/* Cart Button */}
             <button
               type="button"
@@ -197,16 +186,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {link.label}
                 </a>
               ))}
-            </div>
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs text-stone-400">Currency</span>
-              <button
-                type="button"
-                onClick={() => setCurrency(currency === 'USD' ? 'EUR' : 'USD')}
-                className="rounded-full bg-white/10 border border-white/15 px-3 py-1 text-xs text-white"
-              >
-                {currency} ({currency === 'USD' ? '$' : '€'})
-              </button>
             </div>
           </div>
         )}

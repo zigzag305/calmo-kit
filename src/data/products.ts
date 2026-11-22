@@ -1,9 +1,12 @@
 import { Product } from '../types';
 
+// Prices and SKUs come from the shared catalog so the site and checkout can't disagree.
+import { catalogPrice, catalogSku } from '../../supabase/functions/_shared/calmoCatalog';
+
 export const PRODUCTS: Product[] = [
   {
     id: 'calmo-crisis-72h',
-    sku: 'CK-72H-FAM',
+    sku: catalogSku('calmo-crisis-72h'),
     slug: '72h-family-kit',
     category: 'kits',
     fulfillment: 'curated-kit',
@@ -19,11 +22,11 @@ export const PRODUCTS: Product[] = [
       en: '32-piece complete household backpack for 1–2 people · EU 72H Standard',
     },
     description: {
-      pt: 'Pensada para a tranquilidade da sua família perante apagões, cheias ou saídas rápidas. Reúne 72 horas de refeições liofilizadas europeias, filtração de água, primeiros socorros certificados CE, manta térmica e rádio solar numa mochila organizada e impermeável.',
-      es: 'Diseñada para la tranquilidad de tu familia ante apagones, lluvias fuertes o salidas rápidas. Reúne 72 horas de comidas liofilizadas europeas, filtración de agua, botiquín certificado CE, manta térmica y radio solar en una mochila impermeable.',
-      en: 'Designed for calm household readiness during power outages, floods, or quick departures. Combines 72 hours of European freeze-dried meals, water filtration, CE-certified first aid, thermal blankets, and a solar crank radio inside one organized waterproof pack.',
+      pt: 'Pensada para a tranquilidade da sua família perante apagões, cheias ou saídas rápidas. Reúne 72 horas de refeições liofilizadas europeias, filtração de água, primeiros socorros com marcação CE, manta térmica e rádio solar numa mochila organizada e impermeável.',
+      es: 'Diseñada para la tranquilidad de tu familia ante apagones, lluvias fuertes o salidas rápidas. Reúne 72 horas de comidas liofilizadas europeas, filtración de agua, botiquín con marcado CE, manta térmica y radio solar en una mochila impermeable.',
+      en: 'Designed for calm household readiness during power outages, floods, or quick departures. Combines 72 hours of European freeze-dried meals, water filtration, CE-marked first aid, thermal blankets, and a solar crank radio inside one organized waterproof pack.',
     },
-    priceEur: 149,
+    priceEur: catalogPrice('calmo-crisis-72h'),
     rating: 0,
     reviewCount: 0,
     badge: {
@@ -66,7 +69,7 @@ export const PRODUCTS: Product[] = [
       { pt: '6x Refeições Liofilizadas Europeias (10–25 Anos)', es: '6x Comidas Liofilizadas Europeas (10–25 Años)', en: '6x European Freeze-Dried Meals (10–25 Yr)' },
       { pt: 'Filtro de Água 0.1 Micras + Bolsa Dobrável 1L', es: 'Filtro de Agua 0.1 Micras + Bolsa Plegable 1L', en: '0.1-Micron Water Filter + 1L Pouch' },
       { pt: 'Rádio Solar e Dínamo AM/FM + Power Bank 4000mAh', es: 'Radio Solar y Dinamo AM/FM + Power Bank 4000mAh', en: 'Solar & Crank AM/FM Radio + 4000mAh Bank' },
-      { pt: 'Botiquín Certificado CE (65 Peças)', es: 'Botiquín Certificado CE (65 Piezas)', en: 'CE-Certified First-Aid Pod (65 pcs)' },
+      { pt: 'Kit de Primeiros Socorros com Marcação CE (65 peças)', es: 'Botiquín con Marcado CE (65 piezas)', en: 'CE-Marked First-Aid Pod (65 pcs)' },
       { pt: '2x Mantas Térmicas + Lanterna Recarregável', es: '2x Mantas Térmicas + Linterna Recargable', en: '2x Thermal Blankets + Rechargeable Torch' },
     ],
     specs: [
@@ -86,7 +89,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'calmo-wilderness-pro',
-    sku: 'CK-CAR-PRO',
+    sku: catalogSku('calmo-wilderness-pro'),
     slug: 'car-outdoor-kit',
     category: 'kits',
     fulfillment: 'curated-kit',
@@ -106,7 +109,7 @@ export const PRODUCTS: Product[] = [
       es: 'Ideal para llevar en el coche o equipar pequeñas oficinas. Incluye mochila resistente de 28L, refugio térmico compacto, taza de titanio, multiherramienta, linterna frontal y botiquín impermeable.',
       en: 'Built to live neatly in your car trunk or small office. Pairs a 28L ripstop pack with a compact thermal shelter, titanium cup, multitool, headlamp, and waterproof first-aid pod.',
     },
-    priceEur: 119,
+    priceEur: catalogPrice('calmo-wilderness-pro'),
     rating: 0,
     reviewCount: 0,
     badge: {
@@ -169,7 +172,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'calmo-blackout-home',
-    sku: 'CK-BLK-PWR',
+    sku: catalogSku('calmo-blackout-home'),
     slug: 'home-blackout-kit',
     category: 'power-med',
     fulfillment: 'curated-kit',
@@ -189,7 +192,7 @@ export const PRODUCTS: Product[] = [
       es: 'Pensado para cortes eléctricos prolongados como el apagón ibérico. Carga móviles hasta 25 veces, mantiene el router Wi-Fi o iluminación en silencio y se recarga con el panel solar incluido.',
       en: 'Built for multi-hour or multi-day grid outages. Charges phones up to 25 times, keeps Wi-Fi routers and room lighting running silently indoors, and recharges from the included 60W folding solar panel.',
     },
-    priceEur: 249,
+    priceEur: catalogPrice('calmo-blackout-home'),
     rating: 0,
     reviewCount: 0,
     badge: {
@@ -249,7 +252,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'calmo-food-hydration',
-    sku: 'CK-FOOD-25Y',
+    sku: catalogSku('calmo-food-hydration'),
     slug: 'food-hydration-case',
     category: 'food-water',
     fulfillment: 'curated-kit',
@@ -269,7 +272,7 @@ export const PRODUCTS: Product[] = [
       es: 'Reserva alimentaria práctica y sabrosa de producción europea con etiquetado en ES/PT. Incluye 18 porciones liofilizadas (solo añade agua), cantimplora térmica de acero y doble purificación de agua.',
       en: 'Practical, flavorful European-made emergency nutrition with compliant EU allergen labels. Inside an IP67 sealed supply case: 18 freeze-dried servings (just add water), insulated stainless canteen, and dual water purification.',
     },
-    priceEur: 129,
+    priceEur: catalogPrice('calmo-food-hydration'),
     rating: 0,
     reviewCount: 0,
     badge: {
@@ -329,7 +332,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'gear-water-filter',
-    sku: 'PG-HYD-5000',
+    sku: catalogSku('gear-water-filter'),
     slug: 'portable-water-filter',
     category: 'food-water',
     fulfillment: 'partner-gear',
@@ -349,7 +352,7 @@ export const PRODUCTS: Product[] = [
       es: 'Convierte agua dudosa en agua potable en segundos. Compacto y ligero (65g), se enrosca directamente en la bolsa TPU incluida o en botellas estándar.',
       en: 'Drink safely from streams or emergency water reserves in seconds. Ultra-compact 65g body threads directly onto the included collapsible TPU pouch or standard bottles.',
     },
-    priceEur: 34.9,
+    priceEur: catalogPrice('gear-water-filter'),
     rating: 0,
     reviewCount: 0,
     badge: {
@@ -385,7 +388,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'gear-trauma-kit',
-    sku: 'PG-MED-CE85',
+    sku: catalogSku('gear-trauma-kit'),
     slug: 'ce-waterproof-first-aid-kit',
     category: 'power-med',
     fulfillment: 'partner-gear',
@@ -401,11 +404,11 @@ export const PRODUCTS: Product[] = [
       en: '85 CE-compliant medical items in a crush-resistant EVA pod',
     },
     description: {
-      pt: 'Estojo rígido EVA impermeável ideal para casa, carro ou escritório. Equipado com 85 artigos certificados CE: ligaduras, compressas estéreis, gel para queimaduras, antisséticos e tesoura médica.',
+      pt: 'Estojo rígido EVA impermeável ideal para casa, carro ou escritório. Equipado com 85 artigos com marcação CE: ligaduras, compressas estéreis, gel para queimaduras, antisséticos e tesoura médica.',
       es: 'Estuche rígido EVA impermeable ideal para hogar, coche u oficina. Equipado con 85 artículos con marcado CE: vendajes, gasas estériles, gel para quemaduras, antisépticos y tijeras médicas.',
       en: 'Crush-resistant waterproof EVA case for home, vehicle, or office. Stocked with 85 CE-compliant items including sterile gauze, compression bandages, burn gel, antiseptics, and trauma shears.',
     },
-    priceEur: 39.9,
+    priceEur: catalogPrice('gear-trauma-kit'),
     rating: 0,
     reviewCount: 0,
     image: './images/real/gear-medkit.jpg',
@@ -424,7 +427,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Artigos', es: 'Piezas', en: 'Piece Count' }, value: { pt: '85 Itens Médicos', es: '85 Artículos Médicos', en: '85 Medical Items' } },
       { label: { pt: 'Estojo', es: 'Carcasa', en: 'Shell' }, value: { pt: 'EVA Rígido Impermeável', es: 'EVA Rígido Impermeable', en: 'Waterproof Molded EVA' } },
       { label: { pt: 'Dimensões', es: 'Dimensiones', en: 'Dimensions' }, value: { pt: '21 × 14 × 7 cm', es: '21 × 14 × 7 cm', en: '21 × 14 × 7 cm' } },
-      { label: { pt: 'Certificação', es: 'Certificación', en: 'Compliance' }, value: { pt: 'Declaração CE / EU MDR', es: 'Declaración CE / EU MDR', en: 'EU MDR / CE Listed' } },
+      { label: { pt: 'Certificação', es: 'Certificación', en: 'Compliance' }, value: { pt: 'Marcação CE (declaração do fabricante)', es: 'Marcado CE (declaración del fabricante)', en: 'CE marking (manufacturer declaration)' } },
     ],
     inStock: true,
     sourcing: {
@@ -435,7 +438,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'gear-weather-radio',
-    sku: 'PG-RAD-EU4',
+    sku: catalogSku('gear-weather-radio'),
     slug: 'solar-crank-emergency-radio',
     category: 'survival',
     fulfillment: 'partner-gear',
@@ -455,7 +458,7 @@ export const PRODUCTS: Product[] = [
       es: 'El esencial nº 1 recomendado en apagones en Europa. Recibe emisoras AM/FM sin cobertura móvil y carga tu teléfono vía USB-C con batería de 4000mAh, panel solar o dinamo.',
       en: 'The #1 recommended blackout essential across Europe. Receives AM/FM broadcasts without mobile networks and charges phones via USB-C from its 4000mAh battery, solar panel, or hand crank.',
     },
-    priceEur: 39.9,
+    priceEur: catalogPrice('gear-weather-radio'),
     rating: 0,
     reviewCount: 0,
     image: './images/real/gear-radio.jpg',
@@ -486,7 +489,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'gear-meal-pack',
-    sku: 'PG-FOOD-EU3',
+    sku: catalogSku('gear-meal-pack'),
     slug: '72h-freeze-dried-meal-trio',
     category: 'food-water',
     fulfillment: 'partner-gear',
@@ -506,7 +509,7 @@ export const PRODUCTS: Product[] = [
       es: 'Comidas ligeras y nutritivas fabricadas en la Unión Europea con etiquetado conforme. Solo vierte agua caliente o fría en la bolsa, espera 8 minutos y disfruta.',
       en: 'Lightweight, nutrient-dense meals produced in the EU with compliant allergen labeling. Pour hot or cold water directly into the pouch, wait 8 minutes, and eat anywhere.',
     },
-    priceEur: 29.9,
+    priceEur: catalogPrice('gear-meal-pack'),
     rating: 0,
     reviewCount: 0,
     image: './images/real/gear-rations.webp',
