@@ -47,7 +47,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
     Math.sin(tick * 1.7) > 0.96 ? 0.92 : Math.sin(tick * 3.1) > 0.985 ? 0.65 : 0;
 
   return (
-    <div className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden border border-white/10 bg-[#0A0F18]">
+    <div className="relative w-full h-44 sm:h-48 rounded-2xl overflow-hidden border border-white/10 bg-[#161917]">
       <svg
         viewBox="0 0 360 150"
         className="w-full h-full select-none"
@@ -58,8 +58,8 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
       >
         <defs>
           <radialGradient id="calmoLanternGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#39FF14" stopOpacity="0.45" />
-            <stop offset="100%" stopColor="#39FF14" stopOpacity="0" />
+            <stop offset="0%" stopColor="#8FD1B4" stopOpacity="0.45" />
+            <stop offset="100%" stopColor="#8FD1B4" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="amberWarmGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#F59E0B" stopOpacity="0.5" />
@@ -77,7 +77,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
         {scenarioId === 'evacuation' && (
           <g
             fill="none"
-            stroke="#E2E8F0"
+            stroke="#E7E5E4"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -108,9 +108,9 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
                 width="12"
                 height="20"
                 rx="3"
-                stroke="#39FF14"
+                stroke="#8FD1B4"
                 strokeWidth="1.8"
-                fill="rgba(57,255,20,0.08)"
+                fill="rgba(11, 110, 79,0.08)"
               />
               {/* Head */}
               <circle cx="2" cy="-16" r="5" strokeWidth="1.8" />
@@ -149,7 +149,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
                   y1={46 + i * 24}
                   x2={x + 26}
                   y2={46 + i * 24}
-                  stroke="rgba(57,255,20,0.35)"
+                  stroke="rgba(11, 110, 79,0.35)"
                   strokeWidth="1.1"
                 />
               );
@@ -160,7 +160,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
         {scenarioId === 'blackout' && (
           <g
             fill="none"
-            stroke="#E2E8F0"
+            stroke="#E7E5E4"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -173,7 +173,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
             {/* Intermittent lightning bolt */}
             <path
               d="M 108 42 L 98 62 L 109 62 L 96 86"
-              stroke="#38BDF8"
+              stroke="#8FD1B4"
               strokeWidth="2"
               opacity={lightningOpacity}
             />
@@ -204,12 +204,12 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
                 y="45"
                 width="22"
                 height="18"
-                stroke="#39FF14"
+                stroke="#8FD1B4"
                 strokeWidth="1.8"
-                fill="rgba(57,255,20,0.22)"
+                fill="rgba(11, 110, 79,0.22)"
               />
-              <line x1="48" y1="45" x2="48" y2="63" stroke="#39FF14" strokeWidth="1.2" />
-              <line x1="37" y1="54" x2="59" y2="54" stroke="#39FF14" strokeWidth="1.2" />
+              <line x1="48" y1="45" x2="48" y2="63" stroke="#8FD1B4" strokeWidth="1.2" />
+              <line x1="37" y1="54" x2="59" y2="54" stroke="#8FD1B4" strokeWidth="1.2" />
             </g>
             {/* Ground line */}
             <line x1="0" y1="134" x2="360" y2="134" stroke="rgba(226,232,240,0.5)" strokeWidth="1.5" />
@@ -219,7 +219,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
         {scenarioId === 'food-reserve' && (
           <g
             fill="none"
-            stroke="#E2E8F0"
+            stroke="#E7E5E4"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -254,7 +254,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
             <g transform="translate(274, 88)">
               <path
                 d="M 0 -22 C 6 -12 10 -6 10 0 A 10 10 0 1 1 -10 0 C -10 -6 -6 -12 0 -22 Z"
-                stroke="#38BDF8"
+                stroke="#8FD1B4"
                 strokeWidth="1.7"
               />
               <ellipse
@@ -272,7 +272,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
         {scenarioId === 'wilderness' && (
           <g
             fill="none"
-            stroke="#E2E8F0"
+            stroke="#E7E5E4"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -288,7 +288,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
                 cx={sx}
                 cy={sy}
                 r={1.3 + Math.sin(tick * 2.5 + i) * 0.6}
-                fill="#E2E8F0"
+                fill="#E7E5E4"
                 stroke="none"
                 opacity={0.45 + Math.sin(tick * 2 + i) * 0.4}
               />
@@ -299,7 +299,7 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
                 <line x1="0" y1="0" x2={windSway * 0.3} y2="-16" strokeWidth="1.6" />
                 <path
                   d={`M ${-14 + windSway * 0.4} -16 L ${windSway} -54 L ${14 + windSway * 0.4} -16 Z`}
-                  stroke={idx === 1 ? 'rgba(57,255,20,0.65)' : 'rgba(148,163,184,0.65)'}
+                  stroke={idx === 1 ? 'rgba(11, 110, 79,0.65)' : 'rgba(148,163,184,0.65)'}
                   strokeWidth="1.5"
                 />
               </g>
@@ -309,20 +309,17 @@ export const LineArtScenarioScene: React.FC<LineArtScenarioSceneProps> = ({
               <circle cx="0" cy="-18" r="34" fill="url(#calmoLanternGlow)" stroke="none" />
               <path
                 d="M -32 0 L 0 -46 L 32 0 Z"
-                stroke="#39FF14"
+                stroke="#8FD1B4"
                 strokeWidth="1.9"
-                fill="rgba(57,255,20,0.08)"
+                fill="rgba(11, 110, 79,0.08)"
               />
-              <path d="M -9 0 L 0 -22 L 9 0" stroke="#39FF14" strokeWidth="1.5" />
+              <path d="M -9 0 L 0 -22 L 9 0" stroke="#8FD1B4" strokeWidth="1.5" />
             </g>
             <line x1="0" y1="126" x2="360" y2="126" stroke="rgba(226,232,240,0.55)" strokeWidth="1.6" />
           </g>
         )}
       </svg>
 
-      <div className="pointer-events-none absolute top-2.5 right-3 font-mono text-[9px] uppercase tracking-[0.2em] text-slate-400/80">
-        LIVE INK SVG
-      </div>
     </div>
   );
 };

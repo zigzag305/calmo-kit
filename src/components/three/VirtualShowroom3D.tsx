@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { Currency, Lang, Product, ProductCategory } from '../../types';
+import { BrandSymbol } from '../BrandLogo';
 import { buildProductModel } from './proceduralModels';
 import { formatPrice } from '../../utils/currency';
 import { getCopy } from '../../i18n/translations';
@@ -66,8 +67,8 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     const height = container.clientHeight || 620;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color('#070B12');
-    scene.fog = new THREE.FogExp2('#070B12', 0.042);
+    scene.background = new THREE.Color('#161917');
+    scene.fog = new THREE.FogExp2('#161917', 0.042);
 
     const camera = new THREE.PerspectiveCamera(42, width / height, 0.1, 60);
     camera.position.set(...BAY_CAMERA_PRESETS.all.pos);
@@ -87,7 +88,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     container.appendChild(renderer.domElement);
 
     // Tactical architectural lighting (KALLE cyber-slate aesthetic)
-    const ambient = new THREE.HemisphereLight('#b8dcff', '#0a1220', 0.9);
+    const ambient = new THREE.HemisphereLight('#F4F1EA', '#161917', 0.9);
     scene.add(ambient);
 
     const topSpot = new THREE.DirectionalLight('#ffffff', 2.2);
@@ -97,11 +98,11 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     topSpot.shadow.mapSize.height = 1024;
     scene.add(topSpot);
 
-    const cyanRim = new THREE.PointLight('#38BDF8', 2.4, 22);
+    const cyanRim = new THREE.PointLight('#D9CBB0', 2.4, 22);
     cyanRim.position.set(-7, 4, -4);
     scene.add(cyanRim);
 
-    const limeRim = new THREE.PointLight('#39FF14', 1.4, 18);
+    const limeRim = new THREE.PointLight('#3FA37A', 1.4, 18);
     limeRim.position.set(7, 3.5, -2);
     scene.add(limeRim);
 
@@ -109,7 +110,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(40, 26),
       new THREE.MeshStandardMaterial({
-        color: '#0A101A',
+        color: '#1C1F1D',
         roughness: 0.72,
         metalness: 0.25,
       })
@@ -119,7 +120,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     floor.receiveShadow = true;
     scene.add(floor);
 
-    const gridHelper = new THREE.GridHelper(32, 32, '#1E3A5F', '#0F233A');
+    const gridHelper = new THREE.GridHelper(32, 32, '#3A3F3B', '#262A27');
     gridHelper.position.y = 0;
     scene.add(gridHelper);
 
@@ -127,7 +128,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     const wallCurve = new THREE.Mesh(
       new THREE.CylinderGeometry(12.5, 12.5, 6.2, 36, 6, true, Math.PI * 0.65, Math.PI * 0.7),
       new THREE.MeshBasicMaterial({
-        color: '#1E3A5F',
+        color: '#3A3F3B',
         wireframe: true,
         transparent: true,
         opacity: 0.22,
@@ -173,7 +174,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
       const plinth = new THREE.Mesh(
         new THREE.CylinderGeometry(0.68, 0.78, 0.36, 28),
         new THREE.MeshStandardMaterial({
-          color: '#111927',
+          color: '#232724',
           roughness: 0.45,
           metalness: 0.65,
         })
@@ -184,7 +185,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
 
       // Neon-lime / cyan targeting halo ring
       const ringMat = new THREE.MeshBasicMaterial({
-        color: '#38BDF8',
+        color: '#D9CBB0',
         transparent: true,
         opacity: 0.55,
         side: THREE.DoubleSide,
@@ -326,15 +327,15 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
 
         const ringMat = entry.ring.material as THREE.MeshBasicMaterial;
         if (isHovered) {
-          ringMat.color.set('#39FF14');
+          ringMat.color.set('#3FA37A');
           ringMat.opacity = 1.0;
           entry.ring.scale.lerp(new THREE.Vector3(1.16, 1.16, 1.16), 0.14);
         } else if (isCategoryActive) {
-          ringMat.color.set(activeBayRef.current === 'all' ? '#38BDF8' : '#39FF14');
+          ringMat.color.set(activeBayRef.current === 'all' ? '#D9CBB0' : '#3FA37A');
           ringMat.opacity = activeBayRef.current === 'all' ? 0.5 : 0.85;
           entry.ring.scale.lerp(new THREE.Vector3(1, 1, 1), 0.12);
         } else {
-          ringMat.color.set('#1E293B');
+          ringMat.color.set('#292524');
           ringMat.opacity = 0.2;
           entry.ring.scale.lerp(new THREE.Vector3(0.92, 0.92, 0.92), 0.12);
         }
@@ -382,34 +383,26 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
   return (
     <section
       id="showroom"
-      className="relative bg-[#070B12] py-16 md:py-20 overflow-hidden border-y border-white/10"
+      className="relative bg-[#161917] py-16 md:py-20 overflow-hidden border-y border-white/10"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main KALLE-inspired HUD Frame */}
-        <div className="relative h-[580px] sm:h-[640px] lg:h-[680px] rounded-3xl overflow-hidden border border-sky-400/20 bg-[#070B12] shadow-[0_30px_100px_rgba(0,0,0,0.75)]">
+        <div className="relative h-[580px] sm:h-[640px] lg:h-[680px] rounded-3xl overflow-hidden border border-emerald-400/20 bg-[#161917] shadow-[0_30px_100px_rgba(0,0,0,0.75)]">
           {/* Interactive 3D WebGL Canvas */}
           <div
             ref={containerRef}
             className="w-full h-full cursor-grab active:cursor-grabbing"
           />
 
-          {/* Four L-shaped Tactical HUD Corner Reticle Brackets (Video 1 signature) */}
-          <div className="pointer-events-none absolute inset-4 sm:inset-6">
-            <span className="absolute top-0 left-0 w-7 h-7 border-t-2 border-l-2 border-[#39FF14]/80 rounded-tl-sm" />
-            <span className="absolute top-0 right-0 w-7 h-7 border-t-2 border-r-2 border-sky-400/60 rounded-tr-sm" />
-            <span className="absolute bottom-0 left-0 w-7 h-7 border-b-2 border-l-2 border-sky-400/60 rounded-bl-sm" />
-            <span className="absolute bottom-0 right-0 w-7 h-7 border-b-2 border-r-2 border-[#39FF14]/80 rounded-br-sm" />
-          </div>
-
           {/* Top HUD Header Bar */}
           <div className="pointer-events-none absolute top-6 sm:top-8 left-7 sm:left-10 right-7 sm:right-10 flex items-start justify-between gap-4">
             {/* Top-left active section code */}
             <div className="flex flex-col gap-1">
-              <div className="inline-flex items-center gap-2 font-mono text-[11px] sm:text-xs font-semibold tracking-widest text-[#39FF14]">
-                <span className="h-2 w-2 rounded-full bg-[#39FF14] animate-pulse" />
+              <div className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold tracking-wider text-[#8FD1B4]">
+                <span className="h-2 w-2 rounded-full bg-[#0B6E4F] animate-pulse" />
                 {copy.showroom.sectionCodes[activeBay]}
               </div>
-              <p className="hidden md:block text-xs text-slate-400 max-w-sm">
+              <p className="hidden md:block text-xs text-stone-400 max-w-sm">
                 {copy.showroom.instructions}
               </p>
             </div>
@@ -417,27 +410,18 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
             {/* Top-center pixel mark + wordmark (nod to KALLE Virtual Store) */}
             <div className="hidden sm:flex flex-col items-center text-center">
               <div className="flex items-center gap-2">
-                <div className="grid grid-cols-3 gap-0.5 p-0.5">
-                  {[1, 0, 1, 1, 1, 0, 1, 0, 1].map((lit, idx) => (
-                    <span
-                      key={idx}
-                      className={`w-1.5 h-1.5 rounded-[1px] ${
-                        lit ? 'bg-[#39FF14]' : 'bg-white/20'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="font-display text-lg font-bold tracking-[0.22em] text-white">
-                  CALMO
+                <BrandSymbol size={26} tone="reverse" />
+                <span className="font-display text-lg font-semibold text-white">
+                  CalmoKit
                 </span>
               </div>
-              <span className="font-mono text-[10px] tracking-[0.28em] text-slate-400 mt-0.5">
+              <span className="text-[10px] tracking-[0.06em] text-stone-400 mt-0.5">
                 {copy.showroom.subtitle}
               </span>
             </div>
 
             {/* Top-right system tag */}
-            <div className="font-mono text-[11px] sm:text-xs tracking-widest text-sky-300/80 bg-slate-900/70 backdrop-blur-md px-3 py-1.5 rounded-md border border-sky-400/20">
+            <div className="text-[11px] sm:text-xs tracking-wider text-emerald-300/80 bg-stone-900/70 backdrop-blur-md px-3 py-1.5 rounded-md border border-emerald-400/20">
               {copy.showroom.sysTag}
             </div>
           </div>
@@ -451,15 +435,15 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
                 top: Math.max(hoveredInfo.y, 90),
               }}
             >
-              <div className="flex items-center gap-3 rounded-full bg-[#0C131F]/95 border border-[#39FF14]/60 px-4 py-2 shadow-[0_12px_36px_rgba(0,0,0,0.65)] backdrop-blur-xl whitespace-nowrap">
-                <span className="h-2 w-2 rounded-full bg-[#39FF14]" />
-                <span className="font-mono text-xs font-bold uppercase tracking-wider text-white">
+              <div className="flex items-center gap-3 rounded-full bg-[#1C1F1D]/95 border border-[#8FD1B4]/60 px-4 py-2 shadow-[0_12px_36px_rgba(0,0,0,0.65)] backdrop-blur-xl whitespace-nowrap">
+                <span className="h-2 w-2 rounded-full bg-[#0B6E4F]" />
+                <span className="text-xs font-bold text-white">
                   {hoveredInfo.product.name[lang]}
                 </span>
-                <span className="font-mono text-xs font-bold text-[#39FF14]">
+                <span className="text-xs font-bold text-[#8FD1B4]">
                   {formatPrice(hoveredInfo.product.priceEur, currency)}
                 </span>
-                <span className="inline-flex items-center gap-1 text-[10px] text-slate-300 border-l border-white/15 pl-2.5">
+                <span className="inline-flex items-center gap-1 text-[10px] text-stone-300 border-l border-white/15 pl-2.5">
                   <Eye className="w-3 h-3" />
                   3D
                 </span>
@@ -469,7 +453,7 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
 
           {/* Bottom Floating Navigation Dock (Video 1 signature pill dock) */}
           <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 max-w-[94%]">
-            <div className="flex items-center gap-1 sm:gap-1.5 rounded-full bg-[#0E1624]/88 border border-white/15 p-1.5 backdrop-blur-xl shadow-[0_18px_50px_rgba(0,0,0,0.7)] overflow-x-auto">
+            <div className="flex items-center gap-1 sm:gap-1.5 rounded-full bg-[#1C1F1D]/88 border border-white/15 p-1.5 backdrop-blur-xl shadow-[0_18px_50px_rgba(0,0,0,0.7)] overflow-x-auto">
               {dockTabs.map((tab) => {
                 const isActive = activeBay === tab.id;
                 return (
@@ -477,18 +461,18 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
                     key={tab.id}
                     type="button"
                     onClick={() => handleSwitchBay(tab.id)}
-                    className={`px-3.5 sm:px-5 py-2 rounded-full font-mono text-[11px] sm:text-xs font-bold tracking-wider transition-all whitespace-nowrap cursor-pointer ${
+                    className={`px-3.5 sm:px-5 py-2 rounded-full text-[11px] sm:text-xs font-bold tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                       isActive
-                        ? 'bg-[#39FF14] text-black shadow-[0_0_24px_rgba(57,255,20,0.45)]'
-                        : 'text-slate-300 hover:text-white hover:bg-white/10'
+                        ? 'bg-[#0B6E4F] text-white'
+                        : 'text-stone-300 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     {tab.label}
                   </button>
                 );
               })}
-              <div className="hidden md:flex items-center gap-1.5 pl-2 pr-3 text-[11px] font-mono text-slate-400 border-l border-white/10">
-                <Sparkles className="w-3.5 h-3.5 text-[#39FF14]" />
+              <div className="hidden md:flex items-center gap-1.5 pl-2 pr-3 text-[11px] text-stone-400 border-l border-white/10">
+                <Sparkles className="w-3.5 h-3.5 text-[#8FD1B4]" />
                 <span>WebGL</span>
               </div>
             </div>

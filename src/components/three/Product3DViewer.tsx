@@ -52,9 +52,9 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
 
     const scene = new THREE.Scene();
     if (theme === 'light') {
-      scene.background = new THREE.Color('#F5F5F7');
+      scene.background = new THREE.Color('#F4F1EA');
     } else if (theme === 'dark') {
-      scene.background = new THREE.Color('#0B1018');
+      scene.background = new THREE.Color('#1C1F1D');
     } else {
       scene.background = null;
     }
@@ -81,7 +81,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
     // Studio 3-point lighting
     const hemiLight = new THREE.HemisphereLight(
       theme === 'light' ? '#ffffff' : '#cfe8ff',
-      theme === 'light' ? '#cbd5e1' : '#1e293b',
+      theme === 'light' ? '#D6D3D1' : '#292524',
       theme === 'light' ? 1.4 : 0.9
     );
     scene.add(hemiLight);
@@ -95,7 +95,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
     scene.add(keyLight);
 
     const rimLight = new THREE.DirectionalLight(
-      theme === 'light' ? '#93c5fd' : '#38bdf8',
+      theme === 'light' ? '#D9CBB0' : '#D9CBB0',
       1.1
     );
     rimLight.position.set(-4, 3, -4);
@@ -130,7 +130,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
     const turntableRing = new THREE.Mesh(
       new THREE.RingGeometry(1.18, 1.21, 64),
       new THREE.MeshBasicMaterial({
-        color: theme === 'light' ? '#CBD5E1' : '#38BDF8',
+        color: theme === 'light' ? '#D6D3D1' : '#D9CBB0',
         transparent: true,
         opacity: theme === 'light' ? 0.6 : 0.25,
         side: THREE.DoubleSide,
@@ -204,13 +204,13 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
 
       {/* Top-left subtle 3D badge */}
       <div
-        className={`pointer-events-none absolute top-3.5 left-3.5 flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] font-mono uppercase tracking-wider backdrop-blur-md ${
+        className={`pointer-events-none absolute top-3.5 left-3.5 flex items-center gap-1.5 rounded-full px-3 py-1 text-[11px] uppercase tracking-wider backdrop-blur-md ${
           isLight
-            ? 'bg-white/80 text-slate-700 border border-slate-200/80 shadow-xs'
+            ? 'bg-white/80 text-stone-700 border border-stone-200/80 shadow-xs'
             : 'bg-black/45 text-white/85 border border-white/15'
         }`}
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-[#39FF14] animate-pulse" />
+        <span className="h-1.5 w-1.5 rounded-full bg-[#0B6E4F] animate-pulse" />
         {badgeLabel}
       </div>
 
@@ -219,7 +219,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
         <span
           className={`rounded-full px-3 py-1 text-[11px] backdrop-blur-md ${
             isLight
-              ? 'bg-white/75 text-slate-500 border border-slate-200/70'
+              ? 'bg-white/75 text-stone-500 border border-stone-200/70'
               : 'bg-black/45 text-white/70 border border-white/10'
           }`}
         >
@@ -232,7 +232,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
             onClick={() => setAutoSpin((s) => !s)}
             className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium backdrop-blur-md transition cursor-pointer ${
               isLight
-                ? 'bg-white/85 text-slate-700 hover:bg-white border border-slate-200'
+                ? 'bg-white/85 text-stone-700 hover:bg-white border border-stone-200'
                 : 'bg-black/55 text-white/85 hover:bg-black/75 border border-white/15'
             }`}
             title={autoSpinLabel}
@@ -245,7 +245,7 @@ export const Product3DViewer: React.FC<Product3DViewerProps> = ({
             onClick={handleReset}
             className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium backdrop-blur-md transition cursor-pointer ${
               isLight
-                ? 'bg-white/85 text-slate-700 hover:bg-white border border-slate-200'
+                ? 'bg-white/85 text-stone-700 hover:bg-white border border-stone-200'
                 : 'bg-black/55 text-white/85 hover:bg-black/75 border border-white/15'
             }`}
             title={resetLabel}

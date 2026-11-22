@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Mail, ShieldCheck } from 'lucide-react';
 import { Lang } from '../types';
 import { getCopy } from '../i18n/translations';
+import { BrandLogo } from './BrandLogo';
 import { submitCalmoLead } from '../lib/calmoApi';
 
 interface FaqAndFooterProps {
@@ -37,11 +38,11 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
       {/* FAQ Section */}
       <section
         id="faq"
-        className="bg-white text-slate-950 py-20 lg:py-24 border-t border-slate-200"
+        className="bg-white text-stone-950 py-20 lg:py-24 border-t border-stone-200"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="font-mono text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+            <span className="text-xs font-semibold text-stone-500">
               {copy.faq.eyebrow}
             </span>
             <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight mt-2">
@@ -49,7 +50,7 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
             </h2>
           </div>
 
-          <div className="divide-y divide-slate-200 border-y border-slate-200">
+          <div className="divide-y divide-stone-200 border-y border-stone-200">
             {copy.faq.items.map((item, idx) => {
               const isOpen = openIdx === idx;
               return (
@@ -59,17 +60,17 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
                     onClick={() => setOpenIdx(isOpen ? null : idx)}
                     className="w-full flex items-center justify-between gap-4 text-left cursor-pointer"
                   >
-                    <span className="font-display text-base sm:text-lg font-semibold text-slate-950">
+                    <span className="font-display text-base sm:text-lg font-semibold text-stone-950">
                       {item.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180 text-slate-950' : ''
+                      className={`w-5 h-5 text-stone-400 shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 text-stone-950' : ''
                       }`}
                     />
                   </button>
                   {isOpen && (
-                    <p className="mt-3 text-sm text-slate-600 leading-relaxed pr-8">
+                    <p className="mt-3 text-sm text-stone-600 leading-relaxed pr-8">
                       {item.a}
                     </p>
                   )}
@@ -81,41 +82,27 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
       </section>
 
       {/* Dark Flagship Footer */}
-      <footer className="bg-[#070A10] text-white border-t border-white/10">
+      <footer className="bg-[#161917] text-white border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
             {/* Brand Column */}
             <div className="md:col-span-5 space-y-4">
-              <div className="flex items-center gap-2.5">
-                <div className="grid grid-cols-3 gap-[2.5px] p-1 rounded-md bg-white/5 border border-white/10">
-                  {[1, 1, 1, 1, 0, 0, 1, 1, 1].map((lit, i) => (
-                    <span
-                      key={i}
-                      className={`w-1.5 h-1.5 rounded-[1px] ${
-                        lit ? 'bg-[#39FF14]' : 'bg-white/20'
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="font-display text-lg font-bold tracking-[0.2em]">
-                  CALMO KIT
-                </span>
-              </div>
-              <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+              <BrandLogo size={30} tone="reverse" />
+              <p className="text-sm text-stone-400 max-w-sm leading-relaxed">
                 {copy.footer.tagline}
               </p>
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-slate-400">
-                <ShieldCheck className="w-4 h-4 text-[#39FF14]" />
+              <div className="inline-flex items-center gap-2 text-xs text-stone-400">
+                <ShieldCheck className="w-4 h-4 text-[#8FD1B4]" />
                 <span>calmokit.eu</span>
               </div>
             </div>
 
             {/* Links */}
             <div className="md:col-span-2 space-y-3">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-white/60">
+              <h4 className="text-xs text-white/60">
                 {copy.footer.shop}
               </h4>
-              <ul className="space-y-2 text-sm text-slate-400">
+              <ul className="space-y-2 text-sm text-stone-400">
                 <li>
                   <a href="#showcase" className="hover:text-white transition">
                     {copy.nav.kits}
@@ -144,11 +131,11 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
               <h4 className="font-display text-base font-bold">
                 {copy.footer.newsletterTitle}
               </h4>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-stone-400">
                 {copy.footer.newsletterDesc}
               </p>
               {subscribed ? (
-                <div className="rounded-xl bg-[#39FF14]/15 border border-[#39FF14]/40 px-4 py-3 text-xs font-medium text-[#39FF14]">
+                <div className="rounded-xl bg-[#0B6E4F]/15 border border-[#8FD1B4]/40 px-4 py-3 text-xs font-medium text-[#8FD1B4]">
                   {copy.footer.newsletterThanks}
                 </div>
               ) : (
@@ -157,19 +144,19 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
                   className="flex items-center gap-2 pt-1"
                 >
                   <div className="relative flex-1">
-                    <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                    <Mail className="w-4 h-4 text-stone-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={copy.footer.newsletterPlaceholder}
-                      className="w-full rounded-full bg-white/5 border border-white/15 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-[#39FF14]"
+                      className="w-full rounded-full bg-white/5 border border-white/15 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-[#8FD1B4]"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="rounded-full bg-[#39FF14] text-black hover:bg-[#66ff4d] px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition cursor-pointer shrink-0"
+                    className="rounded-full bg-[#0B6E4F] text-white hover:bg-[#08513A] px-5 py-2.5 text-xs font-bold transition cursor-pointer shrink-0"
                   >
                     {copy.footer.newsletterBtn}
                   </button>
@@ -178,13 +165,10 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
             <p>
-              © {new Date().getFullYear()} CALMO KIT (calmokit.eu).{' '}
+              © {new Date().getFullYear()} CalmoKit (calmokit.eu).{' '}
               {copy.footer.rights}
-            </p>
-            <p className="font-mono text-[11px] text-slate-600">
-              CALMO.SYS // PREPAREDNESS STOREFRONT v1.0
             </p>
           </div>
         </div>
