@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, Lock, CheckCircle2, Loader2 } from 'lucide-react';
 import { CartItem, Currency, Lang } from '../types';
-import { formatPrice } from '../utils/currency';
+import { formatPrice, FREE_SHIPPING_EUR, FLAT_SHIPPING_EUR } from '../utils/currency';
 import { getCopy } from '../i18n/translations';
 import {
   isCalmoBackendConfigured,
@@ -37,12 +37,12 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   if (!open) return null;
 
-  const subtotalUsd = items.reduce(
-    (sum, i) => sum + i.product.priceUsd * i.quantity,
+  const subtotalEur = items.reduce(
+    (sum, i) => sum + i.product.priceEur * i.quantity,
     0
   );
-  const shippingUsd = subtotalUsd >= 99 ? 0 : 12;
-  const totalUsd = subtotalUsd + shippingUsd;
+  const shippingEur = subtotalEur >= FREE_SHIPPING_EUR ? 0 : FLAT_SHIPPING_EUR;
+  const totalEur = subtotalEur + shippingEur;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -146,13 +146,13 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     {item.quantity}× {item.product.name[lang]}
                   </span>
                   <span className="font-mono font-semibold text-slate-950">
-                    {formatPrice(item.product.priceUsd * item.quantity, currency)}
+                    {formatPrice(item.product.priceEur * item.quantity, currency)}
                   </span>
                 </div>
               ))}
               <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-sm font-bold">
                 <span>{copy.cart.total}</span>
-                <span>{formatPrice(totalUsd, currency)}</span>
+                <span>{formatPrice(totalEur, currency)}</span>
               </div>
             </div>
 
@@ -226,7 +226,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-950 hover:bg-slate-800 disabled:opacity-60 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
             >
               {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
-              {copy.checkout.placeOrder} · {formatPrice(totalUsd, currency)}
+              {copy.checkout.placeOrder} · {formatPrice(totalEur, currency)}
             </button>
           </form>
         )}

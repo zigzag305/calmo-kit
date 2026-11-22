@@ -1,24 +1,23 @@
-# 09 · Next Actions (as of 22 Nov 2026)
+# 09 · Next Actions (as of 22 Nov 2026, night)
+
+Already done: accounts open on BigBuy, CJdropshipping, Alibaba; Liofilizado partnership form + Real Turmat retailer request sent; Risen replied; 15 supplier emails scheduled 23–30 Nov; website moved to EUR with real prices.
 
 ## Matias
 - [ ] Point the website domain to the host (keep email DNS records).
 - [ ] Paste the Portuguese Safe Kit message (Gmail draft "[Para formulário / Instagram]") into their form + Instagram DM.
-- [ ] Complete the Alibaba slider check once so the agent can search factories with EU stock.
-- [ ] Contabilista: CAE for online retail, VAT number / VIES / OSS, Art. 53.
-- [ ] Add alias `hola@calmokit.eu`; send a test email to it.
-- [ ] Confirm `calmokit.com` ownership; claim @calmokit social handles.
-- [ ] Once site is live: sign up to Droplo, dropshippingXL, Syncee, Awin (Water-to-Go 107764), HyperSKU.
-- [ ] Order samples when Risen/Yonoel/Rhino Rescue send prices.
+- [ ] Contabilista: CAE for online retail, VAT number / VIES / OSS, Art. 53 (unblocks Van Os, Katadyn, Ankorstore).
+- [ ] Pay the Risen sample on Alibaba (Trade Assurance) once the quote arrives.
+- [ ] Once site is live: sign up to Ankorstore, Faire, Spocket, Droplo, dropshippingXL, Syncee, Awin (Water-to-Go 107764).
 
 ## AI agent (Claude)
-- [ ] Monitor `matias@calmokit.eu` + Alibaba notification emails; summarise supplier replies; update the sheet Status.
-- [ ] Write CJdropshipping sourcing request (72h kit + logo bag + EU stock).
-- [ ] Alibaba batch 2 messages (Dragon Medical, Sicily, Yongyi, Firstar) for Matias to send.
-- [ ] Check BigBuy confirmation email.
-- [ ] Build a landed-cost / margin model per product once quotes arrive.
-- [ ] Review website content + product mix vs real supplier catalogue (PT/ES localisation, EUR pricing).
+- [ ] Mon 23: watch replies from Noodspullen, MILITARY.EU, Convar. MILITARY.EU reply → ask B2B price + dropship for Brytzky, Badger, Helikon, first-aid kits, Mil-Tec, Adventure Menu.
+- [ ] This week: post CJ sourcing request (branded 72h kit + quote to pre-stock 30–100 units in CJ Germany).
+- [ ] Find Bered B2B email; draft batch 3 for Tue 1 Dec.
+- [ ] Build landed-cost / margin table as soon as the first B2B price list arrives (MILITARY.EU or Risen).
+- [ ] When suppliers confirm: replace generic product contents/photos on the site with the real SKUs.
+- [ ] Before launch: server-side price check in the Stripe checkout function.
 
 ## Decision points coming
-1. Hero kit: EU-stocked (Liofilizado/MILITARY/EmerPlan) vs own-brand OEM (Risen/Yonoel) — decide after quotes + samples.
+1. Hero kit: EU-stocked (MILITARY.EU / Liofilizado / EmerPlan) vs own-brand OEM (Risen) — decide after B2B prices + sample.
 2. Food line: Convar / Katadyn Trek'n Eat / Lyofood / Real Turmat — decide after terms.
 3. Water line: LifeSaver (premium) vs Katadyn / LifeStraw.

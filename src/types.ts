@@ -43,8 +43,10 @@ export interface Product {
   name: LocalizedText;
   shortTagline: LocalizedText;
   description: LocalizedText;
-  priceUsd: number;
-  compareAtUsd?: number;
+  /** Retail price in EUR (base currency). */
+  priceEur: number;
+  /** Only set when a real previous price existed (EU Omnibus rules). */
+  compareAtEur?: number;
   rating: number;
   reviewCount: number;
   badge?: LocalizedText;
@@ -75,6 +77,13 @@ export interface Product {
   }[];
   inStock: boolean;
   featured?: boolean;
+  /** Internal sourcing notes (not shown to customers). See business/05-products-sourcing.md */
+  sourcing?: {
+    primary: string;
+    country: string;
+    fallback?: string;
+    status: 'confirmed' | 'pending-terms' | 'searching';
+  };
 }
 
 export interface CartItem {

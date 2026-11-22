@@ -180,23 +180,25 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               <div className="mt-2 flex items-center gap-4">
                 <div className="flex items-baseline gap-2.5">
                   <span className="font-display text-2xl font-bold text-slate-950">
-                    {formatPrice(product.priceUsd, currency)}
+                    {formatPrice(product.priceEur, currency)}
                   </span>
-                  {product.compareAtUsd && (
+                  {product.compareAtEur && (
                     <span className="text-sm text-slate-400 line-through">
-                      {formatPrice(product.compareAtUsd, currency)}
+                      {formatPrice(product.compareAtEur, currency)}
                     </span>
                   )}
                 </div>
-                <div className="inline-flex items-center gap-1 text-xs text-slate-600 border-l border-slate-200 pl-4">
-                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <span className="font-semibold text-slate-900">
-                    {product.rating.toFixed(1)}
-                  </span>
-                  <span className="text-slate-400">
-                    ({product.reviewCount})
-                  </span>
-                </div>
+                {product.reviewCount > 0 && (
+                  <div className="inline-flex items-center gap-1 text-xs text-slate-600 border-l border-slate-200 pl-4">
+                    <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                    <span className="font-semibold text-slate-900">
+                      {product.rating.toFixed(1)}
+                    </span>
+                    <span className="text-slate-400">
+                      ({product.reviewCount})
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Description */}
@@ -311,7 +313,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <ShoppingBag className="w-4 h-4" />
                   {product.inStock
                     ? `${copy.pdp.addToCart} · ${formatPrice(
-                        product.priceUsd * quantity,
+                        product.priceEur * quantity,
                         currency
                       )}`
                     : copy.pdp.outOfStock}

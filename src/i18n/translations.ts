@@ -3,7 +3,7 @@ import { Lang } from '../types';
 export const translations = {
   pt: {
     announcement:
-      'ENVIO GRÁTIS +€90 · ENTREGA 1–5 DIAS PORTUGAL & ESPANHA · RECOMENDAÇÃO UE 72H',
+      'ENVIO GRÁTIS +€69 · ENTREGA 1–5 DIAS PORTUGAL & ESPANHA · RECOMENDAÇÃO UE 72H',
     announcementCta: 'Explorar Sala 3D',
     nav: {
       kits: 'Kits 72H',
@@ -193,7 +193,7 @@ export const translations = {
         },
         {
           q: 'Qual é o prazo de entrega em Portugal e Espanha?',
-          a: 'Os kits principais são expedidos de armazéns europeus com entrega estimada em 1 a 5 dias úteis. Pedidos acima de €90 têm envio grátis.',
+          a: 'Os kits principais são expedidos de armazéns europeus com entrega estimada em 1 a 5 dias úteis. Pedidos acima de €69 têm envio grátis.',
         },
         {
           q: 'Posso comprar kits completos ou artigos avulsos para empresas?',
@@ -217,7 +217,7 @@ export const translations = {
   },
   es: {
     announcement:
-      'ENVÍO GRATIS +€90 · ENTREGA 1–5 DÍAS ESPAÑA Y PORTUGAL · RECOMENDACIÓN UE 72H',
+      'ENVÍO GRATIS +€69 · ENTREGA 1–5 DÍAS ESPAÑA Y PORTUGAL · RECOMENDACIÓN UE 72H',
     announcementCta: 'Explorar Sala 3D',
     nav: {
       kits: 'Kits 72H',
@@ -407,7 +407,7 @@ export const translations = {
         },
         {
           q: '¿Cuánto tarda el envío en España y Portugal?',
-          a: 'Los kits principales salen desde almacenes europeos con entrega en 1 a 5 días hábiles. Los pedidos desde €90 tienen envío gratuito.',
+          a: 'Los kits principales salen desde almacenes europeos con entrega en 1 a 5 días hábiles. Los pedidos desde €69 tienen envío gratuito.',
         },
         {
           q: '¿Puedo comprar kits completos o artículos sueltos para empresas?',
@@ -431,7 +431,7 @@ export const translations = {
   },
   en: {
     announcement:
-      'FREE SHIPPING OVER €90 · 1–5 DAY EU DELIVERY · EU 72H PREPAREDNESS READY',
+      'FREE SHIPPING OVER €69 · 1–5 DAY EU DELIVERY · EU 72H PREPAREDNESS READY',
     announcementCta: 'Explore 3D Bay',
     nav: {
       kits: '72H Kits',
@@ -621,7 +621,7 @@ export const translations = {
         },
         {
           q: 'How fast is delivery in Portugal and Spain?',
-          a: 'Our core kits ship from European warehouses with 1–5 business day delivery. Orders over €90 qualify for free tracked shipping.',
+          a: 'Our core kits ship from European warehouses with 1–5 business day delivery. Orders over €69 qualify for free tracked shipping.',
         },
         {
           q: 'Can I buy complete kits or individual items for my office?',

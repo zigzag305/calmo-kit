@@ -35,6 +35,33 @@ Source: Claude Sheet tab *Products* (snapshot 22 Nov 2026). Prices are supplier 
 | Kipit transparent travel first aid kit (48 pcs) | BigBuy | Clear travel first aid kit. ~48% margin per BigBuy. | €24.00 | 1 | Dropship (needs paid Wholesale Pack) | Check at checkout | Ships from Spain | bigbuy.eu → search "first aid kit" |
 | Trixie first aid kit 1929, 11 pcs | BigBuy | Small red first aid kit. ~52% margin per BigBuy. | €7.23 | 1 | Dropship (needs paid Wholesale Pack) | Check at checkout | Ships from Spain | bigbuy.eu → search "first aid kit" |
 
+
+## Added 22 Nov (evening): AliExpress sellers with EU/Spain stock + more
+Scraped with Apify (`pro100chok/aliexpress-scraper`, deliver to PT, EUR). Spain-shipped items show shipping cost only at checkout; delivery is an estimate until we order a sample.
+
+| Product | Supplier | What it is | Unit cost | How we buy | Shipping cost to PT | Delivery to PT | Fit | Link |
+|---|---|---|---|---|---|---|---|---|
+| V16 emergency beacon DGT 3.0 (data to 2038) | AliExpress, ships from Spain | Connected light that replaces the warning triangle in Spain (listings say mandatory from Jan 2026). 500 orders. | €13.99 | Dropship | At checkout | est. 3–7 days | **Hero (Spain)** | https://www.aliexpress.com/item/1005010692543431.html |
+| EBOX V16 beacon DGT 3.0 | AliExpress, ships from Spain | Branded V16 beacon, 270 orders, 4.8★ | €19.98 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005010349734911.html |
+| Multifunction emergency radio, torch, solar | KLACK Store (Spain) | Solar/crank radio from Spanish stock | €22.09 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005013316573271.html |
+| IPSDI solar crank radio 2000 mAh | AliExpress, ships from Spain | Radio + torch + phone charger, 248 orders | €24.99 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005013471042686.html |
+| Lenco MCR-113 solar emergency radio | AliExpress EU seller | Branded EU radio for premium kit | €42.72 | Dropship | At checkout | est. 3–7 days | Test | https://www.aliexpress.com/item/1005009316464446.html |
+| Inuitz survival water filter (5,000 L) | AliExpress, ships from Spain | Mid-tier personal filter | €40.99 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005012809606637.html |
+| Orache Cleanpill tablets (100) | AliExpress, ships from Spain | 1 tablet treats up to 25 L | €19.99 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005012379217256.html |
+| AKARURE thermal blankets ×10 | AliExpress, ships from Spain | Foil blankets 210×130 cm | €14.95 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005008769919228.html |
+| GKFLY car jump starter + power bank | GKFLY Europe, ships from Poland | Starts car, charges phones; 178 orders | €27.99–89.75 | Dropship | At checkout | est. 4–8 days | Add-on | https://www.aliexpress.com/item/1005008388695949.html |
+| EAFC roadside emergency kit | AliExpress EU seller | Jump starter, air pump, tyre repair, first aid, tow rope; 4.9★ | €39.35 | Dropship | At checkout | est. 3–8 days | Test | https://www.aliexpress.com/item/1005013158624091.html |
+| Outdoor wilderness rescue pack | Kaplot Atelier EU, ships from Spain | First aid + SOS tools (new listing) | €46.08 | Dropship | At checkout | est. 3–7 days | Test | https://www.aliexpress.com/item/1005013407747516.html |
+| Waterproof emergency survival tent | Trustiva, ships from Spain | Family emergency shelter | €28.88 | Dropship | At checkout | est. 3–7 days | Add-on | https://www.aliexpress.com/item/1005012952047510.html |
+| JBM first aid kit DIN 13164:2022 | JBM (Spain) | Certified car first aid kit | €15.73 | Dropship | At checkout | est. 2–5 days | Add-on | https://www.aliexpress.com/item/1005007607785541.html |
+| Ortoprime large first aid kit | Ortoprime (Madrid) | Large home first aid kit | €22.94 | Dropship | At checkout | est. 2–5 days | Add-on | https://www.aliexpress.com/item/1005008000040321.html |
+| 40L tactical medical first aid backpack | AliExpress Choice (GUJOIN, China) | Medical backpack base for own kit; 600 orders | €26.41 | Dropship | **€1.99** | **8–12 days** | Test | https://www.aliexpress.com/item/1005009874772143.html |
+| 25L/50L 1000D tactical backpack | AliExpress Choice (Stone's Store, China) | Empty bag for own 72h kit; 10,000+ orders | €7.76–19.53 | Dropship | **€1.99** | **8–12 days** | Add-on | https://www.aliexpress.com/item/1005013266296245.html |
+| Disaster relief rescue backpack | AliExpress Choice (IGRARK, China) | Oversized goods | €44.94–52.86 | — | €1.99 | **39–48 days** | Skip | https://www.aliexpress.com/item/1005005265735740.html |
+| KOCHAR Survival Kit 142 pieces | Kochar (Decathlon ES marketplace) | Survival + first aid kit | €69.99 retail | Dropship (ask) | Ask | Spain | Test | https://www.decathlon.es/es/brands/kochar |
+
+New providers added to the tracker: AliExpress EU/Spain sellers, Spocket (EU/US supplier platform), JBM (Spanish distributor: jbm@jbmcamp.com, +34 972 40 57 21), Ortoprime SL (Madrid, informacion@ortoprime.es).
+
 ## Skip
 | Product | Supplier | Why | Link |
 |---|---|---|---|
@@ -47,3 +74,17 @@ Expected once suppliers reply: Katadyn filters + Micropur tablets + Trek'n Eat m
 - **Fast (1–5 days):** Liofilizado & Co, MILITARY.EU (Poland, ships immediately), StockEtik (ES/PT warehouses, 3–5 days), EmerPlan (Spain), BigBuy (Spain).
 - **Slow (~2 weeks):** CJdropshipping from China. CJ EU warehouses had no stock of our items when filtered by "ship from Germany".
 - **Own stock route:** OEM kit (Risen/Yonoel) → sea freight → EU warehouse (CJ Germany or PT 3PL) → 2–4 day delivery.
+
+## MILITARY.EU ready kits (found 22 Nov) — Poland, ships immediately
+| Product | Retail | Link | Website use |
+|---|---|---|---|
+| Brytzky Tactical Polygon 36 L bug-out bag with equipment | €128.86 | https://military.eu/p/tm/brytzky-tactical-polygon-large-medium-bug-out-bag-36-l-coyote-with-equipment-2684631 | Primary source, 72H Crisis Pack (€149) |
+| Badger Outdoor Recon 40 L with equipment | €122.45 | https://military.eu/p/tm/badger-outdoor-recon-40-l-olive-medium-evacuation-backpack-with-equipment-2684622 | Alt source, 72H Crisis Pack |
+| Helikon Bail Out Bag 25 L with equipment | TBC | https://military.eu/p/tm/helikon-bail-out-bag-25-l-evacuation-backpack-shadow-grey-with-equipment-2685180 | Primary source, Wilderness Field Kit (€119) — ask for version without pepper spray |
+| First-aid kits (65 listed) | from €23.51 | military.eu → First-aid kits | Trauma/first-aid kit (€39.90) |
+| HELP BAG MAX | €661.17 | https://militaria.pl/en/p/help-bag-max-emergency-kit-shadow-black-852758 | Not on site (ultra-premium test) |
+
+Retail prices above are MILITARY.EU's own; B2B prices are asked in Monday's email. At €149 retail the 72H pack only works if the B2B price is well under retail — check margin when the price list arrives.
+
+## Website ↔ supplier map
+See the "Website products" and "On website as" columns in `business/data/calmokit-suppliers-products.xlsx`. Every product row now has **Supplier country** and **Source type** (EU dropship platform / EU B2B distributor / EU brand / Dropship agent / OEM bulk / Marketplace benchmark).

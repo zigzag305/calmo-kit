@@ -42,6 +42,26 @@ Legend — **Dropship?**: Yes / Ask (unknown, asking) / Wholesale only / Affilia
 | **Kits de Emergência** | Kits | Ask | geral@kitsemergencias.pt · WhatsApp +351 927 076 282 | Portugal | Email (Portuguese) scheduled Thu 26 Nov 11:25 | Also a possible local competitor. |
 | **Droplo** | Dropship platform (EU suppliers) | Yes | droplo.com | Poland | Needs live website | Free B2B account; Basic €79/yr, Premium €249/yr. |
 
+## Added 22 Nov (evening)
+| Supplier | Category | Dropship? | Contact | Country | Status | Notes |
+|---|---|---|---|---|---|---|
+| **AliExpress sellers with Spain/EU warehouses** | Radios, V16 beacons, filters, blankets, car kits | Yes | AliExpress account / DSers | Spain, Poland, France | Order samples | Real per-product prices now; see 05-products. |
+| **Spocket** | EU/US supplier platform | Yes | spocket.co (Shopify app) | EU + US | Needs store | Product-level shipping estimates, samples; ~$39.99–99.99/month (free plan). |
+| **JBM (JBM Camp)** | First aid (DIN 13164), V16 beacons, safety | Ask | jbm@jbmcamp.com · +34 972 40 57 21 | Spain (Girona) | Email batch 3 | Spanish distributor, 30+ years, 7,000+ items. |
+| **Ortoprime SL** | First aid / medical | Ask | informacion@ortoprime.es | Spain (Madrid) | Backup | Sells on AliExpress, Leroy Merlin, MediaMarkt. |
+
+## Added 22 Nov (night) — real EU B2B routes (not AliExpress)
+| Supplier | Country | Route | Next |
+|---|---|---|---|
+| Bered (Bered Sverige AB) | Sweden | Premium home crisis box from 2,690 SEK; already wholesale on Faire | Email batch 3 (Tue 1 Dec) |
+| Ankorstore | France (EU-wide) | Wholesale marketplace: €100 brand minimum, €300 checkout, free shipping | Matias signs up once site is live |
+| Faire (EU) | EU + US | Wholesale marketplace; filter to EU brands (Bered etc.) | Matias signs up once site is live |
+| Mil-Tec (Sturm Handels) | Germany | Covered through MILITARY.EU (official distributor) | Ask in MILITARY.EU follow-up |
+
+**AliExpress / Alibaba policy:** not real dropship partners (no blind shipping, no B2B terms). AliExpress = price benchmark and samples only; Alibaba = bulk/OEM for the own-brand kit (Phase 2). Accounts already active: BigBuy, CJdropshipping, Alibaba.
+
+Full list with country, status and next action: `business/data/calmokit-suppliers-products.xlsx`.
+
 ## Questions we ask every supplier
 1. Do you dropship to end customers in PT/ES/EU? Blind shipping (no prices, our name on slip)? Per-order fee?
 2. Reseller price vs retail (discount %)? Minimum advertised price policy?

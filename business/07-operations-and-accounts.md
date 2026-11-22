@@ -34,9 +34,19 @@
 - **AI agent (Claude):** research, supplier emails, drafts, scheduling, sheet updates, reply tracking, product research, filling forms (founder clicks submit).
 - **Matias:** passwords, SMS/2FA, CAPTCHAs, accepting terms, payments, Alibaba sends, final decisions, legal/tax.
 
-## Website (this repo) — gaps vs business plan
-- Site is **EN/ES + USD/EUR**; business needs **PT + ES**, EUR default.
-- Prices in `src/data/products.ts` are placeholders (USD) — update once supplier costs are known.
-- Product names/contents are generic; map each to a real supplier SKU (see `05-products-sourcing.md`).
+## Website (this repo) — status after 22 Nov update
+Done:
+- EUR is the base currency and the default (USD only as a converted view, rate in `src/utils/currency.ts`).
+- Real retail prices: 72H Crisis Pack €149 · Wilderness Field Kit €119 · Blackout Home Kit €249 · Food & Hydration Case €129 · water filter €34.90 · trauma/first-aid kit €39.90 · solar crank radio €39.90 · meal trio €29.90.
+- Free shipping from €69 in PT/ES, otherwise €5.90 (cart, checkout and Stripe edge function match).
+- Invented ratings/review counts and fake "compare-at" discounts removed (EU Omnibus); rating UI hides when there are no reviews. Only badge kept: "Launch edition" on the 72H pack.
+- US-only NOAA wording replaced with AM/FM. "Ships worldwide" → "Ships from Europe".
+- Each product in `src/data/products.ts` has an internal `sourcing` block (primary supplier, country, fallback, status).
+- `index.html` JSON-LD and `public/llms.txt` updated (EUR, no fake aggregateRating).
+
+Still open:
+- Add PT language (site is EN/ES).
+- Product contents/photos still generic: replace once MILITARY.EU / Liofilizado confirm SKUs.
+- Security: `calmo-create-checkout` trusts prices sent by the browser. Look prices up server-side before going live.
 - Domain: site uses `www.calmokit.com`; email uses `calmokit.eu`.
-- Add PT/ES legal pages: terms, privacy (GDPR), returns (14-day withdrawal), shipping, contact.
+- PT/ES legal pages: terms, privacy (GDPR), returns (14-day withdrawal), shipping, contact.
