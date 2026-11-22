@@ -1,0 +1,202 @@
+import React, { useState } from 'react';
+import { X, Lock, CheckCircle2 } from 'lucide-react';
+import { CartItem, Currency, Lang } from '../types';
+import { formatPrice } from '../utils/currency';
+import { getCopy } from '../i18n/translations';
+
+interface CheckoutModalProps {
+  open: boolean;
+  items: CartItem[];
+  lang: Lang;
+  currency: Currency;
+  onClose: () => void;
+  onOrderComplete: () => void;
+}
+
+export const CheckoutModal: React.FC<CheckoutModalProps> = ({
+  open,
+  items,
+  lang,
+  currency,
+  onClose,
+  onOrderComplete,
+}) => {
+  const copy = getCopy(lang);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('United States');
+  const [confirmedRef, setConfirmedRef] = useState<string | null>(null);
+
+  if (!open) return null;
+
+  const subtotalUsd = items.reduce(
+    (sum, i) => sum + i.product.priceUsd * i.quantity,
+    0
+  );
+  const shippingUsd = subtotalUsd >= 99 ? 0 : 12;
+  const totalUsd = subtotalUsd + shippingUsd;
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    /**
+     * LIVE PAYMENT HOOK:
+     * To connect live Stripe Checkout or Shopify Storefront API later:
+     * Replace this simulated confirmation with a POST to your serverless checkout
+     * endpoint or redirect to a Stripe Payment Link / Shopify cart permalink.
+     */
+    const orderId = `CK-${Math.floor(100000 + Math.random() * 900000)}`;
+    setConfirmedRef(orderId);
+    onOrderComplete();
+  };
+
+  const handleDone = () => {
+    setConfirmedRef(null);
+    onClose();
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-md p-4 overflow-y-auto"
+      onClick={handleDone}
+    >
+      <div
+        className="w-full max-w-xl rounded-3xl bg-white text-slate-950 shadow-2xl overflow-hidden my-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="px-6 py-5 border-b border-slate-200 flex items-center justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Lock className="w-4 h-4 text-emerald-600" />
+              <h2 className="font-display text-lg font-bold">
+                {copy.checkout.title}
+              </h2>
+            </div>
+            <p className="text-xs font-mono text-slate-500 mt-0.5">
+              {copy.checkout.subtitle}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={handleDone}
+            className="p-2 rounded-full hover:bg-slate-100 text-slate-500 cursor-pointer"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+
+        {confirmedRef ? (
+          <div className="p-8 text-center space-y-4">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+              <CheckCircle2 className="w-9 h-9" />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-slate-950">
+              {copy.checkout.orderConfirmed}
+            </h3>
+            <p className="text-sm text-slate-600 max-w-sm mx-auto">
+              {copy.checkout.orderConfirmedDesc}
+            </p>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#F5F5F7] border border-slate-200 px-4 py-2 font-mono text-xs font-bold text-slate-900">
+              <span>{copy.checkout.orderNumber}:</span>
+              <span className="text-emerald-700">{confirmedRef}</span>
+            </div>
+            <div className="pt-4">
+              <button
+                type="button"
+                onClick={handleDone}
+                className="rounded-full bg-slate-950 text-white px-7 py-3 text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition cursor-pointer"
+              >
+                {copy.checkout.backToStore}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="p-6 space-y-5">
+            <div className="rounded-2xl bg-[#F5F5F7] p-4 space-y-2 max-h-40 overflow-y-auto">
+              {items.map((item) => (
+                <div
+                  key={`${item.product.id}-${item.variantId}`}
+                  className="flex items-center justify-between text-xs"
+                >
+                  <span className="font-medium text-slate-800">
+                    {item.quantity}× {item.product.name[lang]}
+                  </span>
+                  <span className="font-mono font-semibold text-slate-950">
+                    {formatPrice(item.product.priceUsd * item.quantity, currency)}
+                  </span>
+                </div>
+              ))}
+              <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-sm font-bold">
+                <span>{copy.cart.total}</span>
+                <span>{formatPrice(totalUsd, currency)}</span>
+              </div>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="font-display text-xs font-bold uppercase tracking-wider text-slate-500">
+                {copy.checkout.contact}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  required
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder={copy.checkout.fullName}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-950"
+                />
+                <input
+                  required
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder={copy.checkout.email}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-950"
+                />
+              </div>
+              <input
+                required
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder={copy.checkout.address}
+                className="w-full rounded-xl border border-slate-200 bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-950"
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  required
+                  type="text"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  placeholder={copy.checkout.city}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-950"
+                />
+                <input
+                  required
+                  type="text"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  placeholder={copy.checkout.country}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F9FAFB] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-slate-950"
+                />
+              </div>
+            </div>
+
+            <p className="text-[11px] text-slate-500 leading-relaxed bg-blue-50/70 border border-blue-100 rounded-xl p-3">
+              {copy.checkout.paymentNote}
+            </p>
+
+            <button
+              type="submit"
+              className="w-full rounded-full bg-slate-950 hover:bg-slate-800 text-white py-3.5 px-6 text-sm font-bold transition shadow-lg cursor-pointer"
+            >
+              {copy.checkout.placeOrder} · {formatPrice(totalUsd, currency)}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+};
