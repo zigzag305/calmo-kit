@@ -18,16 +18,16 @@ export const translations = {
       headlineLine1: '72 horas resolvidas.',
       headlineLine2: 'Sem improvisar.',
       subcopy:
-        'Quando falta a luz ou há cheias, ninguém quer procurar pilhas às escuras. Reunimos filtração de água, refeições europeias de longa duração, botiquim CE e rádio solar em mochilas prontas a guardar num armário.',
+        'Quando falta a luz ou há cheias, ninguém quer procurar pilhas às escuras. Reunimos filtração de água, refeições europeias de longa duração, kit de primeiros socorros CE e rádio solar em mochilas prontas a guardar num armário.',
       primaryCta: 'Ver kits 72 h',
       secondaryCta: 'Inspecionar em 3D',
       trust1: 'Envio da UE (1–5 dias úteis)',
       trust2: 'Comida europeia 10–25 anos',
-      trust3: '30 dias para devolução',
+      trust3: '14 dias para devolver',
     },
     showcase: {
       eyebrow: 'Quatro kits, quatro usos',
-      title: 'Escolhe o que faz sentido em tua casa',
+      title: 'Escolhe o que faz sentido na tua casa',
       viewPhoto: 'Foto Real',
       view3d: 'Modelo 3D',
       addToCart: 'Adicionar ao carrinho',
@@ -139,11 +139,11 @@ export const translations = {
       specs: 'Ficha técnica',
       addToCart: 'Adicionar ao Carrinho',
       outOfStock: 'Temporariamente esgotado',
-      shipsWorldwide: 'Envio com seguimento em Portugal, Espanha e UE (1–5 dias)',
+      shipsWorldwide: 'Envio com seguimento para Portugal e Espanha (1–5 dias úteis)',
       curatedNote:
-        'Montado com equipamento selecionado para famílias em Portugal e Espanha — sem artigos descartáveis.',
+        'Montado com material escolhido para casas em Portugal e Espanha.',
       partnerNote:
-        'Expedido diretamente de fornecedores europeus verificados para reduzir prazos de entrega.',
+        'Enviado diretamente de fornecedores europeus, por isso chega mais depressa.',
     },
     cart: {
       title: 'Carrinho',
@@ -151,7 +151,7 @@ export const translations = {
       emptyDesc:
         'Escolhe um kit de 72 horas ou um artigo avulso para começar.',
       emptyCta: 'Ver produtos',
-      freeShippingUnlocked: 'Tens ENVIO GRÁTIS com seguimento!',
+      freeShippingUnlocked: 'Tens envio grátis com seguimento.',
       freeShippingRemaining: 'para ter ENVIO GRÁTIS',
       upsellTitle: 'Costumam juntar ao pedido',
       subtotal: 'Subtotal',
@@ -163,7 +163,7 @@ export const translations = {
     },
     checkout: {
       title: 'Finalizar Pedido',
-      subtitle: 'Pagamento seguro Stripe · CalmoKit (PT / ES / UE)',
+      subtitle: 'Pagamento seguro com Stripe · envio para Portugal e Espanha',
       contact: 'Dados de envio',
       fullName: 'Nome completo',
       email: 'Email',
@@ -203,15 +203,15 @@ export const translations = {
     },
     footer: {
       tagline:
-        'Kits de 72 horas, comida de longa duração e filtração de água para casas em Portugal, Espanha e UE.',
+        'Kits de 72 horas, comida de longa duração e filtração de água para casas em Portugal e Espanha.',
       shop: 'Loja',
       company: 'Informação',
-      newsletterTitle: 'Checklist UE de 72 Horas (PDF grátis)',
+      newsletterTitle: '10% na primeira encomenda',
       newsletterDesc:
-        'Deixa o teu email para receber a lista prática de 72h e 10% no primeiro pedido (CALMO10).',
+        'Deixa o teu email e mostramos-te o código já. Só enviamos novidades úteis.',
       newsletterPlaceholder: 'tu@email.com',
-      newsletterBtn: 'Enviar',
-      newsletterThanks: 'Enviado! Usa o código CALMO10 no teu primeiro pedido.',
+      newsletterBtn: 'Quero o código',
+      newsletterThanks: 'Feito! Usa o código CALMO10 no pagamento da primeira encomenda.',
       rights: 'Todos os direitos reservados.',
     },
   },
@@ -237,7 +237,7 @@ export const translations = {
       secondaryCta: 'Ver en 3D',
       trust1: 'Envío desde la UE (1–5 días)',
       trust2: 'Comida europea 10–25 años',
-      trust3: '30 días de devolución',
+      trust3: '14 días para devolver',
     },
     showcase: {
       eyebrow: 'Cuatro kits, cuatro usos',
@@ -353,11 +353,11 @@ export const translations = {
       specs: 'Ficha técnica',
       addToCart: 'Añadir al Carrito',
       outOfStock: 'Temporalmente agotado',
-      shipsWorldwide: 'Envío con seguimiento en España, Portugal y UE (1–5 días)',
+      shipsWorldwide: 'Envío con seguimiento a España y Portugal (1–5 días laborables)',
       curatedNote:
-        'Montado con equipo seleccionado para hogares en España y Portugal — sin relleno barato.',
+        'Montado con material elegido para hogares en España y Portugal.',
       partnerNote:
-        'Enviado directamente desde proveedores europeos verificados para acortar plazos.',
+        'Se envía directamente desde proveedores europeos, así llega antes.',
     },
     cart: {
       title: 'Carrito',
@@ -365,7 +365,7 @@ export const translations = {
       emptyDesc:
         'Elige un kit de 72 horas o una pieza suelta para empezar.',
       emptyCta: 'Ver productos',
-      freeShippingUnlocked: '¡Tienes ENVÍO GRATIS con seguimiento!',
+      freeShippingUnlocked: 'Tienes envío gratis con seguimiento.',
       freeShippingRemaining: 'para conseguir ENVÍO GRATIS',
       upsellTitle: 'Suelen añadir al pedido',
       subtotal: 'Subtotal',
@@ -377,7 +377,7 @@ export const translations = {
     },
     checkout: {
       title: 'Finalizar Pedido',
-      subtitle: 'Pago seguro Stripe · CalmoKit (ES / PT / UE)',
+      subtitle: 'Pago seguro con Stripe · envío a España y Portugal',
       contact: 'Datos de envío',
       fullName: 'Nombre completo',
       email: 'Correo electrónico',
@@ -417,15 +417,15 @@ export const translations = {
     },
     footer: {
       tagline:
-        'Kits de 72 horas, comida de larga duración y filtración de agua para hogares en España, Portugal y la UE.',
+        'Kits de 72 horas, comida de larga duración y filtración de agua para hogares en España y Portugal.',
       shop: 'Tienda',
       company: 'Información',
-      newsletterTitle: 'Checklist UE de 72 Horas (PDF gratis)',
+      newsletterTitle: '10% en tu primer pedido',
       newsletterDesc:
-        'Deja tu correo para recibir la lista práctica de 72h y 10% en tu primer pedido (CALMO10).',
+        'Déjanos tu correo y te mostramos el código al momento. Solo enviamos novedades útiles.',
       newsletterPlaceholder: 'tu@correo.com',
-      newsletterBtn: 'Recibir',
-      newsletterThanks: '¡Hecho! Usa el código CALMO10 en tu primer pedido.',
+      newsletterBtn: 'Ver código',
+      newsletterThanks: 'Hecho. Usa el código CALMO10 al pagar tu primer pedido.',
       rights: 'Todos los derechos reservados.',
     },
   },
@@ -451,7 +451,7 @@ export const translations = {
       secondaryCta: 'Inspect in 3D',
       trust1: 'Dispatched from EU (1–5 days)',
       trust2: '10–25 yr European meals',
-      trust3: '30-day returns',
+      trust3: '14-day returns',
     },
     showcase: {
       eyebrow: 'Four kits, four needs',
@@ -567,18 +567,18 @@ export const translations = {
       specs: 'Specifications',
       addToCart: 'Add to Cart',
       outOfStock: 'Temporarily out of stock',
-      shipsWorldwide: 'Tracked delivery across Portugal, Spain & EU (1–5 days)',
+      shipsWorldwide: 'Tracked delivery to Spain and Portugal (1–5 working days)',
       curatedNote:
-        'Assembled for households in Portugal & Spain — practical gear, no disposable filler.',
+        'Put together for homes in Spain and Portugal.',
       partnerNote:
-        'Dispatched from vetted European suppliers for fast delivery.',
+        'Shipped directly from European suppliers, so it arrives sooner.',
     },
     cart: {
       title: 'Cart',
       emptyTitle: 'Your cart is empty',
       emptyDesc: 'Pick a 72-hour kit or a single item to get started.',
       emptyCta: 'Browse products',
-      freeShippingUnlocked: 'FREE tracked shipping unlocked!',
+      freeShippingUnlocked: 'You get free tracked shipping.',
       freeShippingRemaining: 'away from FREE shipping',
       upsellTitle: 'Often added together',
       subtotal: 'Subtotal',
@@ -590,7 +590,7 @@ export const translations = {
     },
     checkout: {
       title: 'Complete Order',
-      subtitle: 'Secure Stripe Checkout · CalmoKit (PT / ES / EU)',
+      subtitle: 'Secure payment with Stripe · shipping to Spain and Portugal',
       contact: 'Shipping details',
       fullName: 'Full name',
       email: 'Email address',
@@ -630,15 +630,15 @@ export const translations = {
     },
     footer: {
       tagline:
-        '72-hour kits, long-life European food, and water filtration for homes in Portugal, Spain, and the EU.',
+        '72-hour kits, long-life European food and water filtration for homes in Spain and Portugal.',
       shop: 'Shop',
       company: 'Info',
-      newsletterTitle: 'Free EU 72-Hour Checklist (PDF)',
+      newsletterTitle: '10% off your first order',
       newsletterDesc:
-        'Get our 1-page household 72h checklist and 10% off your first order (CALMO10).',
+        'Leave your email and we show you the code straight away. Only useful updates, no spam.',
       newsletterPlaceholder: 'you@domain.com',
-      newsletterBtn: 'Send',
-      newsletterThanks: 'Sent! Use code CALMO10 on your first order.',
+      newsletterBtn: 'Get code',
+      newsletterThanks: 'Done. Use code CALMO10 when you pay for your first order.',
       rights: 'All rights reserved.',
     },
   },

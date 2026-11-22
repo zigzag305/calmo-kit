@@ -15,6 +15,7 @@ export interface CreateCheckoutResponse {
   orderRef: string;
   url: string | null;
   mode: 'stripe' | 'order-recorded' | 'preview';
+  totalCents?: number;
 }
 
 /**
@@ -50,17 +51,17 @@ export async function submitCalmoCheckout(params: {
         apikey: SUPABASE_ANON_KEY,
         Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
       },
+      // Prices are looked up on the server (supabase/functions/_shared/calmoCatalog.ts);
+      // the browser only says what and how many.
       body: JSON.stringify({
-        currency: params.currency,
+        lang: params.lang,
         customer: params.customer,
         items: params.items.map((i) => ({
           id: i.product.id,
-          sku: i.product.sku,
-          name: i.product.name[params.lang],
+          variantId: i.variantId,
           variant: i.product.variants.find((v) => v.id === i.variantId)?.name[
             params.lang
           ],
-          priceEur: i.product.priceEur,
           quantity: i.quantity,
           image: i.product.image,
         })),
