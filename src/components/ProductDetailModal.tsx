@@ -117,7 +117,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 <img
                   src={product.image}
                   alt={product.name[lang]}
-                  className="w-full h-full object-contain p-6 bg-white"
+                  className="w-full h-full object-cover bg-white"
                 />
               )}
             </div>
