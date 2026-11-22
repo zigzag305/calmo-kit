@@ -18,33 +18,38 @@
     <link rel="alternate" hreflang="es" href="https://calmokit.eu/?lang=es" />
     <link rel="alternate" hreflang="x-default" href="https://calmokit.eu/" />
 
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#1C1F1D" />
+
     <!-- Open Graph / Social -->
-    <meta property="og:site_name" content="Calmo Kit" />
-    <meta property="og:title" content="CALMO KIT — Stay Calm. Stay Ready." />
+    <meta property="og:site_name" content="CalmoKit" />
+    <meta property="og:title" content="CalmoKit — Mochilas de emergencia 72 h para España y Portugal" />
     <meta
       property="og:description"
-      content="Curated 72H emergency, food, and blackout kits plus individual vetted survival gear — inspect every kit in interactive 3D."
+      content="Mochilas de emergencia 72 horas, comida liofilizada europea, filtros de agua y radios. Envío desde Europa en 1–5 días."
     />
     <meta property="og:url" content="https://calmokit.eu/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://calmokit.eu/images/hero-mountain.jpg" />
+    <meta property="og:image" content="https://calmokit.eu/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter / X Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="CALMO KIT — Emergency &amp; Survival Preparedness Store" />
+    <meta name="twitter:title" content="CalmoKit — Mochilas de emergencia 72 h para España y Portugal" />
     <meta
       name="twitter:description"
-      content="72H Crisis Packs, 25-Year Freeze-Dried Food Cases, Home Blackout Power Kits &amp; Vetted Gear. Explore in 3D at calmokit.eu."
+      content="Mochilas de emergencia 72 horas, comida liofilizada europea, filtros de agua y radios. Envío desde Europa en 1–5 días."
     />
-    <meta name="twitter:image" content="https://calmokit.eu/images/hero-mountain.jpg" />
+    <meta name="twitter:image" content="https://calmokit.eu/og-image.png" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts are self-hosted (@fontsource, imported in src/main.tsx): loading
+         Google Fonts from Google's servers sends visitors' IPs to Google
+         without consent, which a German court fined a site for in 2022. -->
 
     <!-- Structured Data (SEO + AEO/GEO Rich Results) -->
     <script type="application/ld+json">
@@ -53,20 +58,20 @@
         "@graph": [
           {
             "@type": "Organization",
-            "name": "Calmo Kit",
+            "name": "CalmoKit",
             "url": "https://calmokit.eu",
-            "logo": "https://calmokit.eu/images/kit-crisis.jpg",
+            "logo": "https://calmokit.eu/icon-512.png",
             "description": "Curated emergency, survival, blackout, and 25-year food preparedness kits alongside individual vetted gear."
           },
           {
             "@type": "WebSite",
-            "name": "Calmo Kit",
+            "name": "CalmoKit",
             "url": "https://calmokit.eu",
             "inLanguage": ["en", "es"]
           },
           {
             "@type": "ItemList",
-            "name": "Calmo Kit Flagship Emergency Kits",
+            "name": "CalmoKit Flagship Emergency Kits",
             "itemListElement": [
               {
                 "@type": "Product",
@@ -75,7 +80,7 @@
                 "sku": "CK-CRISIS-72H",
                 "image": "https://calmokit.eu/images/kit-crisis.jpg",
                 "description": "32-piece waterproof evacuation and survival pack with 25-year freeze-dried meals, water filter, weather radio, and trauma kit.",
-                "brand": { "@type": "Brand", "name": "Calmo Kit" },
+                "brand": { "@type": "Brand", "name": "CalmoKit" },
                 "offers": {
                   "@type": "Offer",
                   "priceCurrency": "EUR",
@@ -91,7 +96,7 @@
                 "sku": "CK-WILD-PRO",
                 "image": "https://calmokit.eu/images/kit-wilderness.jpg",
                 "description": "24-piece backcountry, overland, and vehicle emergency loadout with thermal shelter, ferro fire rod, and titanium canteen cup.",
-                "brand": { "@type": "Brand", "name": "Calmo Kit" },
+                "brand": { "@type": "Brand", "name": "CalmoKit" },
                 "offers": {
                   "@type": "Offer",
                   "priceCurrency": "EUR",
@@ -107,7 +112,7 @@
                 "sku": "CK-BLK-PWR",
                 "image": "https://calmokit.eu/images/kit-blackout.jpg",
                 "description": "300Wh LiFePO4 portable power station, 60W folding solar panel, tactical LED lanterns, and AM/FM emergency radio.",
-                "brand": { "@type": "Brand", "name": "Calmo Kit" },
+                "brand": { "@type": "Brand", "name": "CalmoKit" },
                 "offers": {
                   "@type": "Offer",
                   "priceCurrency": "EUR",
@@ -123,7 +128,7 @@
                 "sku": "CK-FOOD-72H",
                 "image": "https://calmokit.eu/images/kit-food.jpg",
                 "description": "18 servings of 25-year freeze-dried emergency meals, 1L stainless canteen, and 5,000L hollow-fiber water filter inside an IP67 hard case.",
-                "brand": { "@type": "Brand", "name": "Calmo Kit" },
+                "brand": { "@type": "Brand", "name": "CalmoKit" },
                 "offers": {
                   "@type": "Offer",
                   "priceCurrency": "EUR",
@@ -139,10 +144,10 @@
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Do you sell both complete Calmo Kits and individual products?",
+                "name": "Do you sell both complete CalmoKit kits and individual products?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. Calmo Kit offers curated multi-item kits assembled for specific emergencies (72-hour evacuation, blackout, food reserve, wilderness) as well as individual vetted products from trusted survival and preparedness brands."
+                  "text": "Yes. CalmoKit offers curated multi-item kits assembled for specific emergencies (72-hour evacuation, blackout, food reserve, wilderness) as well as individual vetted products from trusted survival and preparedness brands."
                 }
               },
               {

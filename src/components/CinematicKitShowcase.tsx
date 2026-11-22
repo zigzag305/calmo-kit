@@ -45,25 +45,16 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
   return (
     <section
       id="showcase"
-      className="relative min-h-[820px] py-20 lg:py-28 overflow-hidden transition-[background] duration-700"
-      style={{
-        background: `radial-gradient(circle at 62% 46%, ${showcase.bgFrom} 0%, ${showcase.bgVia} 46%, ${showcase.bgTo} 100%)`,
-      }}
+      className="relative min-h-[820px] py-20 lg:py-28 overflow-hidden bg-[#1C1F1D]"
     >
-      {/* Subtle atmospheric glow orb synced to active kit */}
-      <div
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[780px] rounded-full opacity-20 blur-[140px] transition-colors duration-700"
-        style={{ backgroundColor: showcase.accentHex }}
-      />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Eyebrow + Mode Switch */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div>
-            <span className="font-mono text-xs tracking-[0.26em] uppercase text-white/65">
+            <span className="text-xs text-white/65">
               {copy.showcase.eyebrow} — {showcase.order} / 0{kits.length}
             </span>
-            <h2 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-white mt-1">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white mt-1">
               {copy.showcase.title}
             </h2>
           </div>
@@ -87,7 +78,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
               onClick={() => setStageMode('3d')}
               className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold transition cursor-pointer ${
                 stageMode === '3d'
-                  ? 'bg-[#39FF14] text-black'
+                  ? 'bg-[#0B6E4F] text-white'
                   : 'text-white/75 hover:text-white'
               }`}
             >
@@ -114,7 +105,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                   {showcase.scenarios.map((sc, i) => (
                     <span
                       key={i}
-                      className="rounded-full bg-white/10 border border-white/15 px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-white/90"
+                      className="rounded-full bg-white/10 border border-white/15 px-3 py-1 text-[11px] uppercase tracking-wider text-white/90"
                     >
                       {sc[lang]}
                     </span>
@@ -122,13 +113,13 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                 </div>
 
                 {/* Big Uppercase Title (NUPTSE JACKET vibe) */}
-                <h3 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold uppercase leading-[0.98] tracking-tight text-white">
+                <h3 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold leading-[0.98] tracking-tight text-white">
                   {activeKit.name[lang]}
                 </h3>
 
                 {/* Highlight Metric */}
-                <div className="mt-4 inline-flex items-center gap-2 text-xs font-mono text-white/85 bg-black/30 border border-white/10 px-3.5 py-1.5 rounded-lg">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#39FF14]" />
+                <div className="mt-4 inline-flex items-center gap-2 text-xs text-white/85 bg-black/30 border border-white/10 px-3.5 py-1.5 rounded-lg">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#8FD1B4]" />
                   <span>{showcase.highlightMetric[lang]}</span>
                 </div>
 
@@ -143,7 +134,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                     {formatPrice(activeKit.priceEur, currency)}
                   </span>
                   {activeKit.compareAtEur && (
-                    <span className="text-base text-white/45 line-through font-mono">
+                    <span className="text-base text-white/45 line-through">
                       {formatPrice(activeKit.compareAtEur, currency)}
                     </span>
                   )}
@@ -154,7 +145,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                   <button
                     type="button"
                     onClick={() => onAddToCart(activeKit)}
-                    className="inline-flex items-center gap-2 rounded-full bg-black text-white border border-white/20 hover:bg-white hover:text-black px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-xl cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#0B6E4F] text-white border border-transparent hover:bg-[#08513A] px-7 py-3.5 text-xs sm:text-sm font-bold transition shadow-xl cursor-pointer"
                   >
                     <ShoppingBag className="w-4 h-4" />
                     {copy.showcase.addToCart}
@@ -162,9 +153,9 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                   <button
                     type="button"
                     onClick={() => onInspectProduct(activeKit)}
-                    className="inline-flex items-center gap-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/20 text-white px-6 py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider backdrop-blur-md transition cursor-pointer"
+                    className="inline-flex items-center gap-2 rounded-full bg-white/12 hover:bg-white/22 border border-white/20 text-white px-6 py-3.5 text-xs sm:text-sm font-semibold backdrop-blur-md transition cursor-pointer"
                   >
-                    <Box className="w-4 h-4 text-[#39FF14]" />
+                    <Box className="w-4 h-4 text-[#8FD1B4]" />
                     {copy.showcase.inspect3d}
                   </button>
                 </div>
@@ -229,7 +220,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
                     {activeKit.badge && (
-                      <span className="absolute top-4 left-4 rounded-full bg-black/65 backdrop-blur-md border border-white/15 px-3.5 py-1 font-mono text-[10px] font-bold tracking-widest uppercase text-[#39FF14]">
+                      <span className="absolute top-4 left-4 rounded-full bg-black/65 backdrop-blur-md border border-white/15 px-3.5 py-1 text-[10px] font-bold tracking-wider uppercase text-[#8FD1B4]">
                         {activeKit.badge[lang]}
                       </span>
                     )}
@@ -262,7 +253,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
 
           {/* RIGHT COLUMN: Depth-of-Field Blurred Variant Switchers (Video 3 signature!) */}
           <div className="lg:col-span-2 order-3 flex lg:flex-col items-center justify-center gap-4">
-            <span className="hidden lg:block font-mono text-[10px] tracking-[0.22em] text-white/55 uppercase mb-1">
+            <span className="hidden lg:block text-[10px] tracking-[0.06em] text-white/55 uppercase mb-1">
               {copy.showcase.nextKits}
             </span>
             {otherKits.map(({ kit, idx }) => (
@@ -279,7 +270,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                   className="w-full h-full object-cover blur-[2.5px] opacity-65 scale-105 group-hover:blur-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent flex flex-col justify-end p-2.5 text-left">
-                  <span className="font-mono text-[9px] text-white/65">
+                  <span className="text-[9px] text-white/65">
                     {kit.showcase?.order}
                   </span>
                   <span className="text-[11px] font-semibold text-white leading-tight line-clamp-1">

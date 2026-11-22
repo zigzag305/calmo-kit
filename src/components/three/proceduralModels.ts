@@ -43,7 +43,7 @@ function createRoundedBox(
 }
 
 /**
- * Builds high-craft procedural 3D PBR product assemblies for Calmo Kit
+ * Builds high-craft procedural 3D PBR product assemblies for CalmoKit
  */
 export function buildProductModel(
   type: Model3DType,

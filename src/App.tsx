@@ -145,7 +145,7 @@ export default function App() {
   const upsellProduct = PRODUCTS.find((p) => p.id === 'gear-water-filter');
 
   return (
-    <div className="min-h-screen bg-[#080B10] text-white">
+    <div className="min-h-screen bg-[#161917] text-white">
       <Navbar
         lang={lang}
         setLang={setLang}
@@ -244,7 +244,7 @@ export default function App() {
           onClick={() => setStripeReturnOrderRef(null)}
         >
           <div
-            className="w-full max-w-md rounded-3xl bg-white text-slate-950 p-8 text-center shadow-2xl space-y-4"
+            className="w-full max-w-md rounded-3xl bg-white text-stone-950 p-8 text-center shadow-2xl space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 font-bold text-2xl mx-auto">
@@ -257,21 +257,21 @@ export default function App() {
                 ? '¡Pago confirmado!'
                 : 'Payment confirmed!'}
             </h3>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-stone-600">
               {lang === 'pt'
                 ? 'Recebemos o teu pedido na CalmoKit. Para dúvidas: hola@calmokit.eu.'
                 : lang === 'es'
                 ? 'Hemos recibido tu pedido en CalmoKit. Cualquier duda: hola@calmokit.eu.'
                 : 'Your CalmoKit order is confirmed. Questions? Email hola@calmokit.eu.'}
             </p>
-            <div className="inline-block rounded-full bg-slate-100 px-4 py-1.5 font-mono text-xs font-bold text-slate-800">
+            <div className="inline-block rounded-full bg-stone-100 px-4 py-1.5 text-xs font-bold text-stone-800">
               Ref: {stripeReturnOrderRef}
             </div>
             <div>
               <button
                 type="button"
                 onClick={() => setStripeReturnOrderRef(null)}
-                className="mt-2 rounded-full bg-slate-950 text-white px-7 py-3 text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition cursor-pointer"
+                className="mt-2 rounded-full bg-stone-950 text-white px-7 py-3 text-xs font-bold uppercase tracking-wider hover:bg-stone-800 transition cursor-pointer"
               >
                 OK
               </button>
