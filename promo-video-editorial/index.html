@@ -1,0 +1,112 @@
+<!doctype html>
+<html
+  lang="en"
+  data-composition-variables='[
+    {"id":"headline","type":"string","label":"Hook Headline","default":"72 HOURS\nNO POWER."},
+    {"id":"offerCode","type":"string","label":"Promo Code","default":"CODE: CALMO10"},
+    {"id":"storeUrl","type":"string","label":"Store URL","default":"WWW.CALMOKIT.COM"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --paper: #f4f1ea;
+        --ink: #111317;
+        --signal: #d92d20;
+        --lime: #39ff14;
+        --font-display: "Space Grotesk", "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-display);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1920"
+    >
+      <div
+        id="ed-problem"
+        class="clip"
+        data-composition-id="ed-problem"
+        data-composition-src="compositions/ed-problem.html"
+        data-start="0"
+        data-duration="3.5"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="ed-checklist"
+        class="clip"
+        data-composition-id="ed-checklist"
+        data-composition-src="compositions/ed-checklist.html"
+        data-start="3.5"
+        data-duration="4"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="ed-solution"
+        class="clip"
+        data-composition-id="ed-solution"
+        data-composition-src="compositions/ed-solution.html"
+        data-start="7.5"
+        data-duration="4"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+
+      <div
+        id="ed-offer"
+        class="clip"
+        data-composition-id="ed-offer"
+        data-composition-src="compositions/ed-offer.html"
+        data-start="11.5"
+        data-duration="3.5"
+        data-track-index="0"
+        data-track-kind="graphics"
+        data-width="1080"
+        data-height="1920"
+      ></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

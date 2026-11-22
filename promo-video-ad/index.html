@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/vendor/three.min.js"></script>
+    <style>
+      :root {
+        --ground: #060910;
+        --ink: #ffffff;
+        --lime: #39ff14;
+        --cyan: #38bdf8;
+        --font-display: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: var(--font-display);
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: radial-gradient(circle at 50% 42%, #111b2d 0%, #060910 75%);
+      }
+      #webgl-stage {
+        position: absolute;
+        inset: 0;
+        width: 1080px;
+        height: 1920px;
+        z-index: 1;
+      }
+      /* Subtle tactical HUD frame */
+      #hud-overlay {
+        position: absolute;
+        inset: 140px 96px;
+        z-index: 5;
+        pointer-events: none;
+      }
+      .bracket {
+        position: absolute;
+        width: 44px;
+        height: 44px;
+        border-color: rgba(57, 255, 20, 0.75);
+        border-style: solid;
+      }
+      .b-tl { top: 0; left: 0; border-width: 4px 0 0 4px; }
+      .b-tr { top: 0; right: 0; border-width: 4px 4px 0 0; border-color: rgba(56, 189, 248, 0.65); }
+      .b-bl { bottom: 0; left: 0; border-width: 0 0 4px 4px; border-color: rgba(56, 189, 248, 0.65); }
+      .b-br { bottom: 0; right: 0; border-width: 0 4px 4px 0; }
+
+      #top-tag {
+        position: absolute;
+        top: 175px;
+        left: 132px;
+        z-index: 10;
+        font-family: monospace;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: #39ff14;
+      }
+
+      /* Kinetic Video Captions (bottom third, safe-zone compliant) */
+      #caption-wrap {
+        position: absolute;
+        left: 110px;
+        right: 110px;
+        bottom: 270px;
+        z-index: 12;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+      }
+      .cap-line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+      }
+      .cap-big {
+        font-size: 82px;
+        font-weight: 800;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+        text-shadow: 0 10px 40px rgba(0, 0, 0, 0.85);
+      }
+      .cap-accent {
+        color: #39ff14;
+      }
+      .cap-pill {
+        padding: 16px 38px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.86);
+        border: 2px solid rgba(56, 189, 248, 0.45);
+        font-family: monospace;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #e2e8f0;
+      }
+      #cta-btn {
+        padding: 24px 54px;
+        border-radius: 999px;
+        background: #39ff14;
+        color: #060910;
+        font-family: monospace;
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        box-shadow: 0 0 50px rgba(57, 255, 20, 0.45);
+      }
+      #grain {
+        position: absolute;
+        inset: 0;
+        z-index: 20;
+        pointer-events: none;
+        opacity: 0.05;
+        background-image: repeating-radial-gradient(circle at 0 0, #ffffff 0, #000000 2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1920"
+    >
+      <canvas id="webgl-stage" width="1080" height="1920"></canvas>
+
+      <div id="hud-overlay">
+        <div class="bracket b-tl"></div>
+        <div class="bracket b-tr"></div>
+        <div class="bracket b-bl"></div>
+        <div class="bracket b-br"></div>
+      </div>
+
+      <div id="top-tag" class="clip" data-start="0" data-duration="15" data-track-index="0">
+        CALMO.SYS // LIVE 3D GEAR
+      </div>
+
+      <div id="caption-wrap">
+        <div id="cap-1" class="cap-line clip" data-start="0" data-duration="3.6" data-track-index="1">
+          <div class="cap-big">POWER OUT?<br /><span class="cap-accent">DON’T GUESS.</span></div>
+          <div class="cap-pill">72H REAL-WORLD READINESS</div>
+        </div>
+
+        <div id="cap-2" class="cap-line clip" data-start="3.6" data-duration="3.8" data-track-index="1">
+          <div class="cap-big">72H CRISIS<br /><span class="cap-accent">SURVIVAL PACK</span></div>
+          <div class="cap-pill">32 PIECES · WATER · FOOD · $189</div>
+        </div>
+
+        <div id="cap-3" class="cap-line clip" data-start="7.4" data-duration="3.8" data-track-index="1">
+          <div class="cap-big">SOLAR POWER<br /><span class="cap-accent">&amp; 25-YR FOOD</span></div>
+          <div class="cap-pill">COMPLETE KITS OR SOLO GEAR</div>
+        </div>
+
+        <div id="cap-4" class="cap-line clip" data-start="11.2" data-duration="3.8" data-track-index="1">
+          <div class="cap-big">INSPECT IN 3D</div>
+          <div id="cta-btn">WWW.CALMOKIT.COM</div>
+          <div class="cap-pill">CODE: CALMO10 · FREE SHIP $99+</div>
+        </div>
+      </div>
+
+      <div id="grain"></div>
+
+      <!-- Real Audio Mix: Voiceover + Electronic Pulse + Transition Impact -->
+      <audio id="bgm-track" src="assets/audio/beat.mp3" data-start="0" data-duration="15" data-volume="0.35" data-fade-in="0.4" data-fade-out="1.2"></audio>
+      <audio id="sfx-impact-1" src="assets/audio/impact.mp3" data-start="0.05" data-duration="3.5" data-volume="0.55"></audio>
+      <audio id="sfx-impact-2" src="assets/audio/impact.mp3" data-start="7.4" data-duration="3.5" data-volume="0.45"></audio>
+      <audio id="vo-track" src="assets/audio/voiceover.wav" data-start="0.3" data-duration="14.5" data-volume="1.0"></audio>
+    </div>
+
+    <script>
+      // Deterministic Three.js 3D Commercial Stage driven by GSAP timeline time (0 -> 15s)
+      const canvas = document.getElementById("webgl-stage");
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+      renderer.setSize(1080, 1920, false);
+      renderer.setPixelRatio(1);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.25;
+
+      const scene = new THREE.Scene();
+      scene.fog = new THREE.FogExp2(0x060910, 0.055);
+
+      const camera = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.1, 60);
+      camera.position.set(0, 1.8, 6.2);
+
+      // Studio 3-point lighting + sweeping neon rim
+      scene.add(new THREE.HemisphereLight(0xb8dcff, 0x0b1220, 1.0));
+      const keyLight = new THREE.DirectionalLight(0xffffff, 2.4);
+      keyLight.position.set(3, 6, 5);
+      scene.add(keyLight);
+
+      const limeRim = new THREE.PointLight(0x39ff14, 3.2, 18);
+      limeRim.position.set(-4, 2.5, -2);
+      scene.add(limeRim);
+
+      const cyanRim = new THREE.PointLight(0x38bdf8, 3.0, 18);
+      cyanRim.position.set(4, 2.5, -2);
+      scene.add(cyanRim);
+
+      // Cyber tactical grid floor
+      const grid = new THREE.GridHelper(32, 32, 0x38bdf8, 0x13243a);
+      grid.position.y = -1.35;
+      scene.add(grid);
+
+      // Glowing pedestal ring
+      const ring = new THREE.Mesh(
+        new THREE.RingGeometry(1.35, 1.46, 64),
+        new THREE.MeshBasicMaterial({ color: 0x39ff14, side: THREE.DoubleSide, transparent: true, opacity: 0.75 })
+      );
+      ring.rotation.x = -Math.PI / 2;
+      ring.position.y = -1.33;
+      scene.add(ring);
+
+      // Group 1: 3D 72H Crisis Tactical Pack
+      const packGroup = new THREE.Group();
+      const redMat = new THREE.MeshStandardMaterial({ color: 0xb92b27, roughness: 0.38, metalness: 0.22 });
+      const darkMat = new THREE.MeshStandardMaterial({ color: 0x181c24, roughness: 0.55, metalness: 0.3 });
+      const metalMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.25, metalness: 0.88 });
+      const glowMat = new THREE.MeshStandardMaterial({ color: 0x39ff14, emissive: 0x39ff14, emissiveIntensity: 0.9 });
+
+      const packBody = new THREE.Mesh(new THREE.BoxGeometry(1.35, 1.85, 0.72), redMat);
+      packGroup.add(packBody);
+      const packPanel = new THREE.Mesh(new THREE.BoxGeometry(1.02, 1.25, 0.16), darkMat);
+      packPanel.position.set(0, -0.08, 0.36);
+      packGroup.add(packPanel);
+      for (let i = -2; i <= 1; i++) {
+        const strap = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.07, 0.05), darkMat);
+        strap.position.set(0, i * 0.24 + 0.05, 0.45);
+        packGroup.add(strap);
+      }
+      const statusBar = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.06, 0.05), glowMat);
+      statusBar.position.set(0, 0.7, 0.38);
+      packGroup.add(statusBar);
+      const handle = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.05, 12, 24, Math.PI), darkMat);
+      handle.position.set(0, 0.93, 0);
+      packGroup.add(handle);
+      packGroup.position.set(0, 0.25, 0);
+      scene.add(packGroup);
+
+      // Group 2: 3D Blackout Power Station + Solar Array
+      const powerGroup = new THREE.Group();
+      const station = new THREE.Mesh(new THREE.BoxGeometry(1.45, 1.08, 0.9), darkMat);
+      powerGroup.add(station);
+      const lcd = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.36, 0.04), new THREE.MeshStandardMaterial({ color: 0x050a12 }));
+      lcd.position.set(0, 0.14, 0.46);
+      powerGroup.add(lcd);
+      for (let i = 0; i < 4; i++) {
+        const bar = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.18, 0.02), glowMat);
+        bar.position.set(-0.2 + i * 0.13, 0.14, 0.485);
+        powerGroup.add(bar);
+      }
+      const solar = new THREE.Mesh(
+        new THREE.BoxGeometry(1.3, 1.4, 0.07),
+        new THREE.MeshStandardMaterial({ color: 0x102544, roughness: 0.2, metalness: 0.8 })
+      );
+      solar.position.set(0.85, 0.15, -0.45);
+      solar.rotation.y = -0.45;
+      powerGroup.add(solar);
+      const topHandle = new THREE.Mesh(new THREE.BoxGeometry(0.95, 0.1, 0.14), metalMat);
+      topHandle.position.set(0, 0.65, 0);
+      powerGroup.add(topHandle);
+      powerGroup.position.set(0, 0.2, 0);
+      powerGroup.scale.set(0.001, 0.001, 0.001);
+      scene.add(powerGroup);
+
+      // Floating 3D tactical particles
+      const partGeo = new THREE.BufferGeometry();
+      const pCount = 90;
+      const pPos = new Float32Array(pCount * 3);
+      for (let i = 0; i < pCount; i++) {
+        pPos[i * 3] = ((i * 73) % 100) / 10 - 5;
+        pPos[i * 3 + 1] = ((i * 41) % 80) / 10 - 2;
+        pPos[i * 3 + 2] = ((i * 29) % 100) / 10 - 5;
+      }
+      partGeo.setAttribute("position", new THREE.BufferAttribute(pPos, 3));
+      const particles = new THREE.Points(
+        partGeo,
+        new THREE.PointsMaterial({ color: 0x39ff14, size: 0.06, transparent: true, opacity: 0.7 })
+      );
+      scene.add(particles);
+
+      function renderAtTime(t) {
+        // Continuous orbital 3D camera sweep across the 15s commercial
+        const angle = t * 0.42;
+        const radius = 5.4 - Math.sin(t * 0.35) * 0.85;
+        camera.position.x = Math.sin(angle) * radius;
+        camera.position.z = Math.cos(angle) * radius;
+        camera.position.y = 1.45 + Math.sin(t * 0.5) * 0.35;
+        camera.lookAt(0, 0.1, 0);
+
+        // Morph between Crisis Pack (0-7.2s) -> Blackout Power Kit (7.2-11.2s) -> Both/Pack Finale (11.2-15s)
+        const showPower = t >= 7.2 && t < 11.4 ? 1 : 0;
+        const packScale = showPower ? 0.001 : 1.05;
+        const powerScale = showPower ? 1.05 : 0.001;
+
+        packGroup.scale.setScalar(packScale);
+        powerGroup.scale.setScalar(powerScale);
+
+        packGroup.rotation.y = t * 0.85;
+        packGroup.position.y = 0.25 + Math.sin(t * 2.2) * 0.1;
+
+        powerGroup.rotation.y = t * 0.75;
+        powerGroup.position.y = 0.22 + Math.sin(t * 2.2) * 0.1;
+
+        particles.rotation.y = t * 0.12;
+        ring.scale.setScalar(1 + Math.sin(t * 4) * 0.04);
+
+        renderer.render(scene, camera);
+      }
+
+      const tl = gsap.timeline({ paused: true });
+      const driver = { t: 0 };
+      tl.to(
+        driver,
+        {
+          t: 15,
+          duration: 15,
+          ease: "none",
+          onUpdate: () => renderAtTime(driver.t),
+        },
+        0
+      );
+
+      // Kinetic captions synced to 4 beats
+      const beats = [
+        { id: "#cap-1", start: 0.1, end: 3.5 },
+        { id: "#cap-2", start: 3.6, end: 7.3 },
+        { id: "#cap-3", start: 7.4, end: 11.1 },
+        { id: "#cap-4", start: 11.2, end: 14.95 },
+      ];
+      beats.forEach((b, idx) => {
+        tl.fromTo(
+          b.id,
+          { opacity: 0, y: 40, scale: 0.94 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.35, ease: "power3.out" },
+          b.start
+        );
+        if (idx < beats.length - 1) {
+          tl.to(b.id, { opacity: 0, y: -24, duration: 0.25, ease: "power2.in" }, b.end - 0.25);
+        }
+      });
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      renderAtTime(0);
+    </script>
+  </body>
+</html>

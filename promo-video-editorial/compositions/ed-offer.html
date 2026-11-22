@@ -1,0 +1,72 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #111317;
+      color: #ffffff;
+      padding: 200px 110px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 38px;
+    }
+    #off-kicker {
+      font-family: monospace;
+      font-size: 30px;
+      letter-spacing: 0.2em;
+      color: #facc15;
+      font-weight: 700;
+    }
+    #off-brand {
+      font-size: 118px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    #off-code {
+      padding: 22px 46px;
+      border: 3px dashed #39ff14;
+      border-radius: 24px;
+      color: #39ff14;
+      font-family: monospace;
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+    #off-url {
+      padding: 26px 56px;
+      border-radius: 999px;
+      background: #f4f1ea;
+      color: #111317;
+      font-family: monospace;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+    #off-ship {
+      font-size: 32px;
+      color: #cbd5e1;
+    }
+  </style>
+
+  <div id="root" data-composition-id="ed-offer" data-width="1080" data-height="1920">
+    <div id="off-kicker">STAY CALM. STAY READY.</div>
+    <h2 id="off-brand">CALMO KIT</h2>
+    <div id="off-code" data-var-text="offerCode">CODE: CALMO10</div>
+    <div id="off-url" data-var-text="storeUrl">WWW.CALMOKIT.COM</div>
+    <p id="off-ship">10% OFF FIRST KIT · FREE SHIPPING $99+</p>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#off-kicker", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35 }, 0.1);
+    tl.fromTo("#off-brand", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" }, 0.25);
+    tl.fromTo("#off-code", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 0.55);
+    tl.fromTo("#off-url", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.8);
+    tl.fromTo("#off-ship", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 1.05);
+    window.__timelines["ed-offer"] = tl;
+  </script>
+</template>
