@@ -13,8 +13,11 @@ serve(async (req) => {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  const stripeKey = Deno.env.get("STRIPE_SECRET_KEY");
-  const webhookSecret = Deno.env.get("STRIPE_WEBHOOK_SECRET");
+  // Same secret names as the deployed v1: CALMO_* first (shared Supabase project).
+  const stripeKey =
+    Deno.env.get("CALMO_STRIPE_SECRET_KEY") ?? Deno.env.get("STRIPE_SECRET_KEY");
+  const webhookSecret =
+    Deno.env.get("CALMO_STRIPE_WEBHOOK_SECRET") ?? Deno.env.get("STRIPE_WEBHOOK_SECRET");
   if (!stripeKey || !webhookSecret) {
     return new Response("Stripe webhook not configured", { status: 500 });
   }
