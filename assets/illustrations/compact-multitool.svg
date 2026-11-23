@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <rect width="1000" height="1000" fill="#FFFFFF"/>
+  <ellipse cx="500" cy="850" rx="380" ry="30" fill="#E9E4D8"/>
+  <g transform="translate(520 520) rotate(-32) scale(1.02)">
+    <!-- pliers jaws (open, out of the top) -->
+    <path d="M-40 -300l-10 -170c0-20 18-30 34-20l30 190z" fill="#B9BDB8" stroke="#1C1F1D" stroke-width="10" stroke-linejoin="round"/>
+    <path d="M40 -300l10 -170c0-20-18-30-34-20l-30 190z" fill="#CDD0CC" stroke="#1C1F1D" stroke-width="10" stroke-linejoin="round"/>
+    <circle cx="0" cy="-300" r="34" fill="#8A8F8B" stroke="#1C1F1D" stroke-width="10"/>
+    <!-- handles -->
+    <rect x="-92" y="-300" width="88" height="560" rx="30" fill="#3A3F3B" stroke="#1C1F1D" stroke-width="10"/>
+    <rect x="4" y="-300" width="88" height="560" rx="30" fill="#4A504B" stroke="#1C1F1D" stroke-width="10"/>
+    <!-- folded blade -->
+    <path d="M100 -220h70c20 0 30 30 10 50l-80 300z" fill="#DADDD8" stroke="#1C1F1D" stroke-width="10" stroke-linejoin="round"/>
+    <!-- grip inlays -->
+    <rect x="-70" y="-180" width="44" height="300" rx="18" fill="#0B6E4F"/>
+    <rect x="26" y="-180" width="44" height="300" rx="18" fill="#0B6E4F"/>
+    <circle cx="-48" cy="220" r="14" fill="#B9BDB8"/><circle cx="48" cy="220" r="14" fill="#B9BDB8"/>
+    <!-- bit / screwdriver peeking -->
+    <rect x="-120" y="120" width="36" height="150" rx="10" fill="#B9BDB8" stroke="#1C1F1D" stroke-width="8"/>
+  </g>
+</svg>

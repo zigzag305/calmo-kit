@@ -79,6 +79,35 @@ export const CALMO_CATALOG: Record<string, CatalogEntry> = {
     variants: ['classic', 'plant'],
     inStock: true,
   },
+  // New lines (Nov 2026): not orderable until a supplier confirms (inStock: false).
+  'gear-home-safety-duo': {
+    sku: 'PG-HOME-CODUO',
+    priceEur: 44.9,
+    name: 'Dúo Seguridad Hogar: Detector de CO + Manta Ignífuga',
+    variants: ['standard'],
+    inStock: false,
+  },
+  'gear-car-escape-tool': {
+    sku: 'PG-CAR-ESCAPE',
+    priceEur: 19.9,
+    name: 'Rompecristales y Cortacinturones de Llavero',
+    variants: ['standard'],
+    inStock: false,
+  },
+  'gear-dual-power-lantern': {
+    sku: 'PG-LGT-DUAL',
+    priceEur: 49.9,
+    name: 'Farol LED Doble Energía (Recargable + Pila AA)',
+    variants: ['standard'],
+    inStock: false,
+  },
+  'gear-compact-multitool': {
+    sku: 'PG-TOOL-MULTI',
+    priceEur: 79.9,
+    name: 'Multiherramienta Compacta de Acero Inoxidable',
+    variants: ['standard'],
+    inStock: false,
+  },
 };
 
 /** Free shipping from this subtotal (EUR, VAT included). */
@@ -105,6 +134,11 @@ export function catalogPrice(id: string): number {
   const entry = CALMO_CATALOG[id];
   if (!entry) throw new Error(`Unknown catalog id: ${id}`);
   return entry.priceEur;
+}
+
+/** Whether the item can be ordered now (false = "coming soon"). */
+export function catalogInStock(id: string): boolean {
+  return Boolean(CALMO_CATALOG[id]?.inStock);
 }
 
 export function catalogSku(id: string): string {

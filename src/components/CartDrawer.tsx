@@ -15,6 +15,7 @@ import {
   FREE_SHIPPING_EUR,
   FLAT_SHIPPING_EUR,
 } from '../utils/currency';
+import { productSrcSet } from '../lib/images';
 import { getCopy } from '../i18n/translations';
 
 interface CartDrawerProps {
@@ -148,6 +149,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   >
                     <img
                       src={item.product.image}
+                      srcSet={productSrcSet(item.product.image)}
+                      sizes="120px"
+                      loading="lazy"
+                      decoding="async"
                       alt={item.product.name[lang]}
                       className="w-20 h-20 rounded-xl object-cover bg-[#F4F1EA] shrink-0"
                     />
@@ -221,6 +226,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   <div className="mt-2 flex items-center gap-3">
                     <img
                       src={upsellProduct.image}
+                      srcSet={productSrcSet(upsellProduct.image)}
+                      sizes="120px"
+                      loading="lazy"
+                      decoding="async"
                       alt={upsellProduct.name[lang]}
                       className="w-12 h-12 rounded-lg object-cover bg-white shrink-0"
                     />

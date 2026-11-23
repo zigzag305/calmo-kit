@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Currency, Lang, Product } from '../types';
 import { formatPrice } from '../utils/currency';
+import { productSrcSet } from '../lib/images';
 import { getCopy } from '../i18n/translations';
 import { Product3DViewer } from './three/Product3DViewer';
 
@@ -215,6 +216,10 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                   >
                     <img
                       src={activeKit.image}
+                      srcSet={productSrcSet(activeKit.image)}
+                      sizes="(min-width: 1024px) 520px, 92vw"
+                      loading="lazy"
+                      decoding="async"
                       alt={activeKit.name[lang]}
                       className="w-full h-full object-cover"
                     />
@@ -234,6 +239,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                     transition={{ duration: 0.35 }}
                     className="w-full h-full rounded-[2rem] overflow-hidden border border-white/20 bg-black/25 backdrop-blur-sm shadow-[0_32px_90px_rgba(0,0,0,0.5)]"
                   >
+                    {activeKit.model3D && (
                     <Product3DViewer
                       modelType={activeKit.model3D.type}
                       primaryColor={activeKit.model3D.primaryColor}
@@ -245,6 +251,7 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
                       resetLabel={copy.pdp.resetView}
                       autoSpinLabel={copy.pdp.autoSpin}
                     />
+                    )}
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -266,6 +273,10 @@ export const CinematicKitShowcase: React.FC<CinematicKitShowcaseProps> = ({
               >
                 <img
                   src={kit.image}
+                  srcSet={productSrcSet(kit.image)}
+                  sizes="120px"
+                  loading="lazy"
+                  decoding="async"
                   alt={kit.name[lang]}
                   className="w-full h-full object-cover blur-[2.5px] opacity-65 scale-105 group-hover:blur-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500"
                 />

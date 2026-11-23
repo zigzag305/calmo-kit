@@ -51,6 +51,8 @@ export interface Product {
   reviewCount: number;
   badge?: LocalizedText;
   image: string;
+  /** True while the image is a CalmoKit illustration, not a photo of the real item. */
+  illustration?: boolean;
   /** Whether the photo is a dark moody studio shot vs clean light #F5F5F7 studio shot */
   imageTheme: 'dark' | 'light';
   /** Cinematic showcase gradient theme (used for flagship kits in Section 2) */
@@ -63,7 +65,8 @@ export interface Product {
     scenarios: LocalizedText[];
     highlightMetric: LocalizedText;
   };
-  model3D: {
+  /** Procedural 3D model. Products without one show only their image. */
+  model3D?: {
     type: Model3DType;
     primaryColor: string;
     accentColor: string;

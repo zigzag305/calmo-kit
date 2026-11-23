@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Currency, Lang, Product } from '../types';
 import { formatPrice } from '../utils/currency';
+import { productSrcSet } from '../lib/images';
 import { getCopy } from '../i18n/translations';
 import { Product3DViewer } from './three/Product3DViewer';
 
@@ -41,7 +42,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
     if (product) {
       setSelectedVariantId(product.variants[0]?.id ?? 'default');
       setQuantity(1);
-      setViewMode('3d');
+      setViewMode(product.model3D ? '3d' : 'photo');
     }
   }, [product]);
 
@@ -101,7 +102,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* LEFT: Interactive 3D Viewport / Studio Photo */}
           <div className="lg:col-span-6 p-5 sm:p-8 bg-[#F4F1EA] flex flex-col gap-4">
             <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#F4F1EA] border border-stone-200/80">
-              {viewMode === '3d' ? (
+              {viewMode === '3d' && product.model3D ? (
                 <Product3DViewer
                   modelType={product.model3D.type}
                   primaryColor={activeVariant?.hex ?? product.model3D.primaryColor}
@@ -116,13 +117,21 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               ) : (
                 <img
                   src={product.image}
+                  srcSet={productSrcSet(product.image)}
+                  sizes="(min-width: 1024px) 560px, 92vw"
                   alt={product.name[lang]}
+                  decoding="async"
                   className="w-full h-full object-cover bg-white"
                 />
               )}
             </div>
 
-            {/* 3D / Studio Photo Switcher */}
+            {product.illustration && (
+              <p className="text-center text-[12px] text-stone-500">{copy.pdp.illustrationNote}</p>
+            )}
+
+            {/* 3D / Studio Photo Switcher (only when a 3D model exists) */}
+            {product.model3D && (
             <div className="flex items-center justify-center gap-2">
               <button
                 type="button"
@@ -149,6 +158,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 {copy.pdp.studioPhoto}
               </button>
             </div>
+            )}
           </div>
 
           {/* RIGHT: Product Details, Variants, Contents, Specs & Add to Cart */}
@@ -308,7 +318,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   type="button"
                   disabled={!product.inStock}
                   onClick={handleAdd}
-                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-stone-900 hover:bg-stone-800 disabled:bg-stone-300 text-white py-3.5 px-6 text-sm font-semibold transition shadow-md cursor-pointer"
+                  className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0B6E4F] hover:bg-[#08513A] disabled:bg-stone-300 disabled:text-stone-700 text-white py-3.5 px-6 text-sm font-semibold transition shadow-md cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   {product.inStock

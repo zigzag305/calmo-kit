@@ -16,6 +16,7 @@ import {
   ProductCategory,
 } from '../types';
 import { formatPrice } from '../utils/currency';
+import { productSrcSet } from '../lib/images';
 import { getCopy } from '../i18n/translations';
 
 interface CatalogSectionProps {
@@ -205,8 +206,11 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                   >
                     <img
                       src={product.image}
+                      srcSet={productSrcSet(product.image)}
+                      sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 92vw"
                       alt={product.name[lang]}
                       loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover bg-white transition-transform duration-500 group-hover:scale-105"
                     />
 
@@ -224,13 +228,20 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                           : copy.catalog.partnerBadge}
                       </span>
 
-                      <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 px-2.5 py-1 text-[10px] font-bold text-stone-900 shadow-xs">
-                        <Box className="w-3 h-3 text-emerald-700" />
-                        {copy.catalog.view3dBadge}
-                      </span>
+                      {product.model3D && (
+                        <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 px-2.5 py-1 text-[10px] font-bold text-stone-900 shadow-xs">
+                          <Box className="w-3 h-3 text-emerald-700" />
+                          {copy.catalog.view3dBadge}
+                        </span>
+                      )}
                     </div>
 
-                    {/* Hover Quick Add Pill */}
+                    {/* Hover Quick Add Pill (or "coming soon" when not orderable yet) */}
+                    {!product.inStock ? (
+                      <span className="absolute bottom-3 right-3 rounded-full bg-[#F4F1EA] border border-stone-300 px-3.5 py-2 text-xs font-semibold text-stone-800">
+                        {copy.catalog.comingSoon}
+                      </span>
+                    ) : (
                     <button
                       type="button"
                       onClick={(e) => handleQuickAdd(e, product)}
@@ -252,6 +263,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                         </>
                       )}
                     </button>
+                    )}
                   </div>
 
                   {/* Minimalist Meta Below Image (Video 2 style) */}
@@ -315,8 +327,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
         <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative rounded-3xl overflow-hidden bg-stone-950 text-white p-8 sm:p-10 min-h-[280px] flex flex-col justify-between group">
             <img
-              src="./images/kit-crisis.jpg"
-              alt="Curated Kits"
+              src="/images/banner-kits.webp"
+              alt=""
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-full object-cover opacity-35 transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-stone-950 via-stone-950/75 to-transparent" />
@@ -348,8 +362,10 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
 
           <div className="relative rounded-3xl overflow-hidden bg-[#F4F1EA] border border-stone-200 text-stone-950 p-8 sm:p-10 min-h-[280px] flex flex-col justify-between group">
             <img
-              src="./images/gear-filter.jpg"
-              alt="Individual Vetted Gear"
+              src="/images/banner-gear.webp"
+              alt=""
+              loading="lazy"
+              decoding="async"
               className="absolute right-0 bottom-0 w-56 h-56 object-cover opacity-85 mix-blend-multiply transition-transform duration-700 group-hover:scale-105 pointer-events-none"
             />
             <div className="relative z-10 max-w-md">

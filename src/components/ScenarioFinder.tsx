@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Currency, Lang, Product } from '../types';
 import { formatPrice } from '../utils/currency';
+import { productSrcSet } from '../lib/images';
 import { getCopy } from '../i18n/translations';
 import { LineArtScenarioScene, ScenarioId } from './LineArtScenarioScene';
 
@@ -125,6 +126,10 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
               >
                 <img
                   src={primaryProduct.image}
+                  srcSet={productSrcSet(primaryProduct.image)}
+                  sizes="120px"
+                  loading="lazy"
+                  decoding="async"
                   alt={primaryProduct.name[lang]}
                   className="w-24 h-24 rounded-xl object-cover shrink-0"
                 />
@@ -158,6 +163,10 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
               >
                 <img
                   src={addonProduct.image}
+                  srcSet={productSrcSet(addonProduct.image)}
+                  sizes="120px"
+                  loading="lazy"
+                  decoding="async"
                   alt={addonProduct.name[lang]}
                   className="w-24 h-24 rounded-xl object-cover bg-[#F4F1EA] shrink-0"
                 />
