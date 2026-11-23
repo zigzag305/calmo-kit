@@ -35,11 +35,11 @@ Rules for these listings:
 | When | What | Who |
 |---|---|---|
 | Mon 23 – Mon 30 Nov | 17 scheduled first emails (batches 1–3) go out automatically | Claude |
-| Tue 24 Nov 11:20 | **X-Sense** (CO alarm, season-critical) | Claude, once Matias OKs |
+| Tue 24 Nov 11:20 | **X-Sense** (CO alarm, season-critical) | Claude (scheduled) |
 | Tue 24 Nov | X-Sense partner form (needs company details) | Matias |
-| Fri 27 Nov 11:40 | **J. Esteller** (Leatherman + Katadyn Iberia) — in time for Christmas | Claude, once Matias OKs |
+| Fri 27 Nov 11:40 | **J. Esteller** (Leatherman + Katadyn Iberia) — in time for Christmas | Claude (scheduled) |
 | Fri 27 Nov | Review all replies: landed cost, margin, go/no-go for the 72H pack | Claude + Matias |
-| Tue 1 Dec 10:30 / 11:40 | **resqme**, **Reiberco** (+ Bered at 09:30) | Claude, once Matias OKs |
+| Tue 1 Dec 10:30 / 11:40 | **resqme**, **Reiberco** (+ Bered at 09:30) | Claude (scheduled) |
 | Wed 2 Dec | Backups (By Demes, Lifehammer, Relags, Leatherman EU) only where needed | Claude / Matias |
 | Day 5 after each send | One short follow-up if no answer, then the backup | Claude |
 
@@ -51,6 +51,6 @@ Rules for these listings:
 5. Flip `inStock` to `true` in the catalog, merge, and add the product to the ad plan.
 
 ## Where things are
-- Gmail drafts (not scheduled yet): X-Sense, J. Esteller, resqme, Reiberco.
+- Gmail drafts, scheduled: X-Sense (Tue 24 11:20), J. Esteller (Fri 27 11:40), resqme (Tue 1 Dec 10:30), Reiberco (Tue 1 Dec 11:40).
 - Excel: `business/data/calmokit-suppliers-products.xlsx` (new tab **Outreach calendar**).
 - Live tracker: Claude Sheet https://claude.ai/artifact/86SvkwLNmEKHPnTVUgGCCg (same tabs).

@@ -5,7 +5,7 @@ Already done: accounts open on BigBuy, CJdropshipping, Alibaba; Liofilizado part
 ## Matias
 - [x] Point the website domain to the host (keep email DNS records).
 - [ ] **Deploy the 2 checkout functions** (`calmo-create-checkout`, `calmo-stripe-webhook`): PR #5 is live and needs them.
-- [ ] OK the 4 new supplier drafts (X-Sense Tue 24, J. Esteller Fri 27, resqme + Reiberco Tue 1 Dec) so Claude schedules them.
+- [x] OK the 4 new supplier drafts — scheduled: X-Sense Tue 24 11:20, J. Esteller Fri 27 11:40, resqme Tue 1 Dec 10:30, Reiberco Tue 1 Dec 11:40.
 - [ ] Submit the X-Sense partner form and the resqme reseller form (company details).
 - [ ] Fill `legal/company.json` (company name, NIF, address, registry), create `hola@calmokit.eu`, create Stripe code CALMO10.
 - [ ] Paste the Portuguese Safe Kit message (Gmail draft "[Para formulário / Instagram]") into their form + Instagram DM.
