@@ -14,10 +14,14 @@ serve(async (req) => {
   }
 
   // Same secret names as the deployed v1: CALMO_* first (shared Supabase project).
-  const stripeKey =
-    Deno.env.get("CALMO_STRIPE_SECRET_KEY") ?? Deno.env.get("STRIPE_SECRET_KEY");
-  const webhookSecret =
-    Deno.env.get("CALMO_STRIPE_WEBHOOK_SECRET") ?? Deno.env.get("STRIPE_WEBHOOK_SECRET");
+  // trim(): the first sandbox payment (CK-3B9CA108) failed signature checks because
+  // the pasted whsec_ value carried a trailing space/newline.
+  const stripeKey = (
+    Deno.env.get("CALMO_STRIPE_SECRET_KEY") ?? Deno.env.get("STRIPE_SECRET_KEY")
+  )?.trim();
+  const webhookSecret = (
+    Deno.env.get("CALMO_STRIPE_WEBHOOK_SECRET") ?? Deno.env.get("STRIPE_WEBHOOK_SECRET")
+  )?.trim();
   if (!stripeKey || !webhookSecret) {
     return new Response("Stripe webhook not configured", { status: 500 });
   }

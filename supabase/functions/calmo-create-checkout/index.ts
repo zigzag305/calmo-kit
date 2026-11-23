@@ -70,8 +70,10 @@ serve(async (req) => {
     // 2. Stripe Checkout Session (always EUR; amounts come from the catalog).
     // The project stores CalmoKit's key as CALMO_STRIPE_SECRET_KEY (the Cuyo apps
     // share this Supabase project); STRIPE_SECRET_KEY is the fallback.
-    const stripeKey =
-      Deno.env.get("CALMO_STRIPE_SECRET_KEY") ?? Deno.env.get("STRIPE_SECRET_KEY");
+    // trim(): pasted dashboard secrets can carry a trailing space/newline.
+    const stripeKey = (
+      Deno.env.get("CALMO_STRIPE_SECRET_KEY") ?? Deno.env.get("STRIPE_SECRET_KEY")
+    )?.trim();
     let stripeSessionId: string | null = null;
     let checkoutUrl: string | null = null;
 
