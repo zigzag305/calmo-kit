@@ -28,48 +28,48 @@ export const CALMO_CATALOG: Record<string, CatalogEntry> = {
     priceEur: 149,
     name: 'Mochila Familiar 72H',
     variants: ['ember', 'obsidian', 'olive'],
-    inStock: true,
+    inStock: false,
   },
   'calmo-wilderness-pro': {
     sku: 'CK-CAR-PRO',
     priceEur: 119,
     name: 'Kit Coche y Exterior',
     variants: ['pine', 'coyote', 'charcoal'],
-    inStock: true,
+    inStock: false,
   },
   'calmo-blackout-home': {
     sku: 'CK-BLK-PWR',
     priceEur: 249,
     name: 'Kit Apagón y Energía Hogar',
     variants: ['slate', 'titanium'],
-    inStock: true,
+    inStock: false,
   },
   'calmo-food-hydration': {
     sku: 'CK-FOOD-25Y',
     priceEur: 129,
     name: 'Maletín Comida y Agua',
     variants: ['bronze', 'olive'],
-    inStock: true,
+    inStock: false,
   },
   'gear-water-filter': {
     sku: 'PG-HYD-5000',
     priceEur: 34.9,
     name: 'Filtro Portátil de Agua + Bolsa 1L',
     variants: ['graphite', 'cobalt'],
-    inStock: true,
+    inStock: false,
   },
   'gear-trauma-kit': {
     sku: 'PG-MED-CE85',
     priceEur: 39.9,
     name: 'Botiquín Impermeable EVA (CE)',
     variants: ['signal-red', 'stealth-black'],
-    inStock: true,
+    inStock: false,
   },
   'gear-weather-radio': {
-    sku: 'PG-RAD-EU4',
-    priceEur: 39.9,
-    name: 'Radio Solar y Dinamo de Emergencia',
-    variants: ['graphite', 'rescue-orange'],
+    sku: 'CJYD197457506EV',
+    priceEur: 44.9,
+    name: 'Radio de Emergencia Solar y Dinamo',
+    variants: ['red'],
     inStock: true,
   },
   'gear-meal-pack': {
@@ -77,7 +77,7 @@ export const CALMO_CATALOG: Record<string, CatalogEntry> = {
     priceEur: 29.9,
     name: 'Pack 3 Comidas Liofilizadas (UE)',
     variants: ['classic', 'plant'],
-    inStock: true,
+    inStock: false,
   },
   // New lines (Nov 2026): not orderable until a supplier confirms (inStock: false).
   'gear-home-safety-duo': {
@@ -122,10 +122,10 @@ export const SHIPPING_EUR = 5.9;
  */
 export const SHIPPING_COUNTRIES = ['ES', 'PT'] as const;
 
-/** Postcodes we cannot serve yet: Canarias 35/38, Ceuta 51, Melilla 52, PT islands 9xxx. */
+/** Postcodes we cannot serve yet: Baleares 07, Canarias 35/38, Ceuta 51, Melilla 52, PT islands 9xxx. */
 export function isExcludedPostcode(country: string, postcode: string): boolean {
   const pc = (postcode || '').trim();
-  if (country === 'ES') return /^(35|38|51|52)\d{3}$/.test(pc);
+  if (country === 'ES') return /^(07|35|38|51|52)\d{3}$/.test(pc);
   if (country === 'PT') return /^9\d{3}(-\d{3})?$/.test(pc);
   return false;
 }

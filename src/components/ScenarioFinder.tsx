@@ -40,12 +40,13 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
 
   if (!primaryProduct || !addonProduct) return null;
 
-  const bundleTotal = primaryProduct.priceEur + addonProduct.priceEur;
+  const inStockItems = [primaryProduct, addonProduct].filter((p) => p.inStock);
+  const orderableTotal = inStockItems.reduce((sum, p) => sum + p.priceEur, 0);
 
   return (
     <section
       id="scenarios"
-      className="bg-[#1C1F1D] text-white py-20 lg:py-28 border-t border-white/10"
+      className="bg-[#1C1F1D] text-white py-16 sm:py-20 lg:py-28 border-t border-white/10 content-auto"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
@@ -106,14 +107,22 @@ export const ScenarioFinder: React.FC<ScenarioFinderProps> = ({
               </p>
 
               <div className="pt-2">
-                <button
-                  type="button"
-                  onClick={() => onAddBundle([primaryProduct, addonProduct])}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#0B6E4F] text-white hover:bg-[#08513A] px-6 py-3.5 text-xs sm:text-sm font-bold transition cursor-pointer"
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  {copy.scenarios.addBundle} · {formatPrice(bundleTotal, currency)}
-                </button>
+                {inStockItems.length > 0 ? (
+                  <button
+                    type="button"
+                    onClick={() => onAddBundle(inStockItems)}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 min-h-[44px] rounded-full bg-[#0B6E4F] text-white hover:bg-[#08513A] px-6 py-3.5 text-xs sm:text-sm font-bold transition cursor-pointer"
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    {inStockItems.length === 1
+                      ? `${copy.pdp.addToCart} · ${formatPrice(orderableTotal, currency)}`
+                      : `${copy.scenarios.addBundle} · ${formatPrice(orderableTotal, currency)}`}
+                  </button>
+                ) : (
+                  <span className="inline-flex items-center min-h-[44px] rounded-full bg-white/10 border border-white/20 text-white/80 px-5 py-3 text-xs sm:text-sm font-semibold">
+                    {copy.catalog.comingSoon}
+                  </span>
+                )}
               </div>
             </div>
 

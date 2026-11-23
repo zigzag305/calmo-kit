@@ -150,6 +150,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </span>
                 </div>
               ))}
+              <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-xs text-stone-600">
+                <span>{copy.cart.deliveryLabel}</span>
+                <span className="font-medium text-stone-800">{copy.cart.deliveryEstimate}</span>
+              </div>
               <div className="pt-2 border-t border-stone-200 flex items-center justify-between text-sm font-bold">
                 <span>{copy.cart.total}</span>
                 <span>{formatPrice(totalEur, currency)}</span>
@@ -164,36 +168,40 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <input
                   required
                   type="text"
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={copy.checkout.fullName}
-                  className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
+                  className="w-full min-h-[44px] rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
                 />
                 <input
                   required
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={copy.checkout.email}
-                  className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
+                  className="w-full min-h-[44px] rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
                 />
               </div>
               <input
                 required
                 type="text"
+                autoComplete="street-address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder={copy.checkout.address}
-                className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
+                className="w-full min-h-[44px] rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <input
                   required
                   type="text"
+                  autoComplete="address-level2"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   placeholder={copy.checkout.city}
-                  className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
+                  className="w-full min-h-[44px] rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
                 />
                 {/* Only ES and PT: the checkout function refuses anything else. */}
                 <select
@@ -201,7 +209,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   aria-label={copy.checkout.country}
                   value={country}
                   onChange={(e) => setCountry(e.target.value === 'PT' ? 'PT' : 'ES')}
-                  className="w-full rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
+                  className="w-full min-h-[44px] rounded-xl border border-stone-200 bg-[#F4F1EA] px-3.5 py-2.5 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-stone-950"
                 >
                   <option value="ES">{lang === 'pt' ? 'Espanha' : lang === 'en' ? 'Spain' : 'España'}</option>
                   <option value="PT">Portugal</option>

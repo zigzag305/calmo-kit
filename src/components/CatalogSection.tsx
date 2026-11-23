@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import {
   Search,
   Star,
-  Box,
   Plus,
   Check,
   ArrowUpRight,
@@ -64,6 +63,8 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
       list = [...list].sort((a, b) => a.priceEur - b.priceEur);
     } else if (sortBy === 'desc') {
       list = [...list].sort((a, b) => b.priceEur - a.priceEur);
+    } else {
+      list = [...list].sort((a, b) => Number(b.inStock) - Number(a.inStock));
     }
     return list;
   }, [products, category, fulfillmentFilter, searchQuery, sortBy]);
@@ -88,7 +89,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
   return (
     <section
       id="catalog"
-      className="bg-white text-stone-950 py-20 lg:py-28"
+      className="bg-white text-stone-950 py-16 sm:py-20 lg:py-28 content-auto"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Row (Video 2 Apple/Stripe minimalist tone) */}
@@ -113,7 +114,7 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={copy.nav.searchPlaceholder}
-              className="w-full rounded-full bg-[#F4F1EA] border border-stone-200 pl-10 pr-4 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 transition"
+              className="w-full rounded-full bg-[#F4F1EA] border border-stone-200 pl-10 pr-4 py-2.5 text-base sm:text-sm text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-900 transition"
             />
           </div>
         </div>
@@ -208,13 +209,15 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                       src={product.image}
                       srcSet={productSrcSet(product.image)}
                       sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 92vw"
+                      width={480}
+                      height={480}
                       alt={product.name[lang]}
                       loading="lazy"
                       decoding="async"
                       className="w-full h-full object-cover bg-white transition-transform duration-500 group-hover:scale-105"
                     />
 
-                    {/* Top badges: Fulfillment type + 3D interactive pill */}
+                    {/* Top badge: Fulfillment type */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
                       <span
                         className={`rounded-full px-2.5 py-1 text-[10px] font-semibold tracking-wider uppercase backdrop-blur-md ${
@@ -227,13 +230,6 @@ export const CatalogSection: React.FC<CatalogSectionProps> = ({
                           ? copy.catalog.curatedBadge
                           : copy.catalog.partnerBadge}
                       </span>
-
-                      {product.model3D && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-md border border-stone-200/80 px-2.5 py-1 text-[10px] font-bold text-stone-900 shadow-xs">
-                          <Box className="w-3 h-3 text-emerald-700" />
-                          {copy.catalog.view3dBadge}
-                        </span>
-                      )}
                     </div>
 
                     {/* Hover Quick Add Pill (or "coming soon" when not orderable yet) */}

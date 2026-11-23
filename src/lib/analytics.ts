@@ -1,45 +1,59 @@
 /**
- * Google Analytics 4 + Google Ads conversion tracking, with Consent Mode v2.
+ * Google Tag (Google Ads) + Meta Pixel conversion tracking, with consent gating.
  *
- * Basic consent mode: gtag.js is NOT loaded until the visitor accepts
- * analytics or ads cookies, so a visitor who declines sends nothing to Google.
- * Events fired before consent are dropped, not queued.
+ * Strict consent mode: neither gtag.js nor Meta Pixel (fbevents.js) loads or
+ * fires until the visitor grants consent. Events before consent are dropped.
  *
- * IDs come from build env vars (set them in netlify.toml or the Netlify UI).
- * With none set, every function here is a no-op:
- *   VITE_GA4_ID                    G-XXXXXXXXXX
- *   VITE_GADS_ID                   AW-XXXXXXXXXX
- *   VITE_GADS_PURCHASE_LABEL       conversion label for "Purchase"
- *   VITE_GADS_ADD_TO_CART_LABEL    conversion label for "Add to cart" (optional)
- *   VITE_GADS_BEGIN_CHECKOUT_LABEL conversion label for "Begin checkout" (optional)
+ * Replace placeholders via build env vars or directly here:
+ *   VITE_GADS_ID                   GOOGLE_TAG_ID
+ *   VITE_GADS_PURCHASE_LABEL       GOOGLE_ADS_CONVERSION_LABEL
+ *   VITE_META_PIXEL_ID             META_PIXEL_ID
  */
 import { CartItem, Product } from '../types';
 import { ConsentState, onConsentChange, readConsent } from './consent';
 
 const GA4_ID = import.meta.env.VITE_GA4_ID as string | undefined;
-const ADS_ID = import.meta.env.VITE_GADS_ID as string | undefined;
+const GOOGLE_TAG_ID =
+  (import.meta.env.VITE_GADS_ID as string | undefined) || 'GOOGLE_TAG_ID';
+const GOOGLE_ADS_CONVERSION_LABEL =
+  (import.meta.env.VITE_GADS_PURCHASE_LABEL as string | undefined) ||
+  'GOOGLE_ADS_CONVERSION_LABEL';
+const META_PIXEL_ID =
+  (import.meta.env.VITE_META_PIXEL_ID as string | undefined) || 'META_PIXEL_ID';
+
 const LABELS = {
-  purchase: import.meta.env.VITE_GADS_PURCHASE_LABEL as string | undefined,
+  purchase: GOOGLE_ADS_CONVERSION_LABEL,
   add_to_cart: import.meta.env.VITE_GADS_ADD_TO_CART_LABEL as string | undefined,
   begin_checkout: import.meta.env.VITE_GADS_BEGIN_CHECKOUT_LABEL as string | undefined,
 };
 
 type Gtag = (...args: unknown[]) => void;
+type Fbq = ((...args: unknown[]) => void) & {
+  callMethod?: (...args: unknown[]) => void;
+  queue?: unknown[];
+  push?: (...args: unknown[]) => void;
+  loaded?: boolean;
+  version?: string;
+};
+
 declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: Gtag;
+    fbq?: Fbq;
+    _fbq?: Fbq;
   }
 }
 
-let loaded = false;
+let googleLoaded = false;
+let metaLoaded = false;
 let consent: ConsentState | null = null;
 
 const granted = (yes: boolean) => (yes ? 'granted' : 'denied');
 
-function load(state: ConsentState): void {
-  if (loaded || (!GA4_ID && !ADS_ID)) return;
-  loaded = true;
+function loadGoogle(state: ConsentState): void {
+  if (googleLoaded || (!GA4_ID && !GOOGLE_TAG_ID)) return;
+  googleLoaded = true;
   window.dataLayer = window.dataLayer || [];
   // gtag must push the `arguments` object itself, not an array copy.
   window.gtag = function gtag() {
@@ -61,19 +75,46 @@ function load(state: ConsentState): void {
   });
   g('js', new Date());
   if (GA4_ID && state.analytics) g('config', GA4_ID, { anonymize_ip: true });
-  if (ADS_ID && state.ads) g('config', ADS_ID);
+  if (GOOGLE_TAG_ID && state.ads) g('config', GOOGLE_TAG_ID);
 
   const s = document.createElement('script');
   s.async = true;
-  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA4_ID || ADS_ID || '')}`;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
+    GOOGLE_TAG_ID || GA4_ID || ''
+  )}`;
   document.head.appendChild(s);
+}
+
+function loadMetaPixel(): void {
+  if (metaLoaded || !META_PIXEL_ID) return;
+  metaLoaded = true;
+  if (!window.fbq) {
+    const n: Fbq = function fbq(...args: unknown[]) {
+      if (n.callMethod) {
+        n.callMethod(...args);
+      } else {
+        n.queue!.push(args);
+      }
+    };
+    if (!window._fbq) window._fbq = n;
+    n.push = n;
+    n.loaded = true;
+    n.version = '2.0';
+    n.queue = [];
+    window.fbq = n;
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(s);
+  }
+  window.fbq('init', META_PIXEL_ID);
+  window.fbq('track', 'PageView');
 }
 
 function apply(state: ConsentState): void {
   consent = state;
   if (!state.analytics && !state.ads) {
-    // Withdrawn after loading: tell gtag to stop using cookies.
-    if (loaded && window.gtag) {
+    if (googleLoaded && window.gtag) {
       window.gtag('consent', 'update', {
         analytics_storage: 'denied',
         ad_storage: 'denied',
@@ -83,8 +124,8 @@ function apply(state: ConsentState): void {
     }
     return;
   }
-  if (!loaded) {
-    load(state);
+  if (!googleLoaded) {
+    loadGoogle(state);
   } else if (window.gtag) {
     window.gtag('consent', 'update', {
       analytics_storage: granted(state.analytics),
@@ -92,6 +133,9 @@ function apply(state: ConsentState): void {
       ad_user_data: granted(state.ads),
       ad_personalization: granted(state.ads),
     });
+  }
+  if (state.ads && !metaLoaded) {
+    loadMetaPixel();
   }
 }
 
@@ -103,7 +147,7 @@ export function initAnalytics(): void {
 }
 
 export function analyticsConfigured(): boolean {
-  return Boolean(GA4_ID || ADS_ID);
+  return Boolean(GA4_ID || GOOGLE_TAG_ID || META_PIXEL_ID);
 }
 
 const toItem = (product: Product, quantity = 1, variantId?: string) => ({
@@ -116,15 +160,31 @@ const toItem = (product: Product, quantity = 1, variantId?: string) => ({
 });
 
 function send(event: string, params: Record<string, unknown>, adsLabel?: string): void {
-  if (!loaded || !window.gtag || !consent) return;
-  if (consent.analytics && GA4_ID) window.gtag('event', event, params);
-  if (consent.ads && ADS_ID && adsLabel) {
-    window.gtag('event', 'conversion', {
-      send_to: `${ADS_ID}/${adsLabel}`,
-      value: params.value,
-      currency: 'EUR',
-      transaction_id: params.transaction_id,
-    });
+  if (!consent) return;
+  if (googleLoaded && window.gtag) {
+    if (consent.analytics && GA4_ID) window.gtag('event', event, params);
+    if (consent.ads && GOOGLE_TAG_ID && adsLabel) {
+      window.gtag('event', 'conversion', {
+        send_to: `${GOOGLE_TAG_ID}/${adsLabel}`,
+        value: params.value,
+        currency: 'EUR',
+        transaction_id: params.transaction_id,
+      });
+    }
+  }
+  if (metaLoaded && window.fbq && consent.ads) {
+    if (event === 'view_item') {
+      window.fbq('track', 'ViewContent', { value: params.value, currency: 'EUR' });
+    } else if (event === 'add_to_cart') {
+      window.fbq('track', 'AddToCart', { value: params.value, currency: 'EUR' });
+    } else if (event === 'begin_checkout') {
+      window.fbq('track', 'InitiateCheckout', { value: params.value, currency: 'EUR' });
+    } else if (event === 'purchase') {
+      window.fbq('track', 'Purchase', {
+        value: params.value,
+        currency: 'EUR',
+      });
+    }
   }
 }
 

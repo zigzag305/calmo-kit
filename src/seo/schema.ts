@@ -24,8 +24,8 @@ const shippingDetails = [
     })),
     deliveryTime: {
       '@type': 'ShippingDeliveryTime',
-      handlingTime: { '@type': 'QuantitativeValue', minValue: 0, maxValue: 1, unitCode: 'DAY' },
-      transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'DAY' },
+      handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+      transitTime: { '@type': 'QuantitativeValue', minValue: 13, maxValue: 18, unitCode: 'DAY' },
     },
   },
 ];
@@ -128,7 +128,7 @@ export function buildLlmsTxt(): string {
     ...gear.map(line),
     '',
     '## Shipping, returns, contact',
-    `- Ships to mainland Spain, the Balearic Islands and mainland Portugal (not the Canary Islands, Ceuta, Melilla, Madeira or the Azores). Free tracked shipping from €${FREE_SHIPPING} (otherwise ${eur(SHIPPING_EUR)}), 1–5 working days.`,
+    `- Ships to mainland Spain and mainland Portugal only (not the Balearic Islands, Canary Islands, Ceuta, Melilla, Madeira or the Azores). Free tracked shipping from €${FREE_SHIPPING} (otherwise ${eur(SHIPPING_EUR)}). Ships in 2–3 weeks for the emergency radio.`,
     '- 14-day returns; 3-year legal guarantee.',
     '- Legal information: https://calmokit.eu/legal/en.html',
     '- Contact: hola@calmokit.eu',

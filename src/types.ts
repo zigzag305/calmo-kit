@@ -9,16 +9,6 @@ export type ProductCategory =
 
 export type FulfillmentType = 'curated-kit' | 'partner-gear';
 
-export type Model3DType =
-  | 'crisis-pack'
-  | 'wilderness-pack'
-  | 'blackout-station'
-  | 'food-case'
-  | 'water-filter'
-  | 'trauma-kit'
-  | 'weather-radio'
-  | 'meal-pouches';
-
 export interface LocalizedText {
   pt: string;
   es: string;
@@ -64,13 +54,6 @@ export interface Product {
     accentHex: string;
     scenarios: LocalizedText[];
     highlightMetric: LocalizedText;
-  };
-  /** Procedural 3D model. Products without one show only their image. */
-  model3D?: {
-    type: Model3DType;
-    primaryColor: string;
-    accentColor: string;
-    secondaryColor: string;
   };
   variants: ProductVariant[];
   contents?: LocalizedText[];

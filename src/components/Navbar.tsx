@@ -45,7 +45,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks = [
     { href: '#showcase', label: copy.nav.kits },
-    { href: '#showroom', label: copy.nav.showroom },
     { href: '#catalog', label: copy.nav.catalog },
     { href: '#scenarios', label: copy.nav.scenarios },
     { href: '#faq', label: copy.nav.faq },
@@ -53,12 +52,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top Announcement Bar (Video 2 & Video 3 fusion) */}
+      {/* Top Announcement Bar */}
       <div className="bg-black text-white border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-3 text-[11px] sm:text-xs tracking-wider">
           <span className="truncate text-white/90">{copy.announcement}</span>
           <a
-            href="#showroom"
+            href="#catalog"
             className="hidden sm:inline-flex items-center rounded-full bg-[#0B6E4F] px-2.5 py-0.5 text-[10px] font-bold uppercase text-white hover:bg-[#08513A] transition shrink-0"
           >
             {copy.announcementCta}
@@ -99,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setSearchOpen((s) => !s)}
-              className="p-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-full text-white/80 hover:text-white hover:bg-white/10 transition cursor-pointer"
               aria-label="Search"
             >
               <Search className="w-4 h-4" />
@@ -112,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={code}
                   type="button"
                   onClick={() => setLang(code)}
-                  className={`px-2 py-1 rounded-full uppercase transition cursor-pointer ${
+                  className={`px-2.5 py-1.5 rounded-full uppercase transition cursor-pointer ${
                     lang === code
                       ? 'bg-white text-black font-bold'
                       : 'text-white/75 hover:text-white'
@@ -127,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={onOpenCart}
-              className="relative inline-flex items-center gap-2 rounded-full bg-white text-[#1C1F1D] px-3.5 py-2 text-xs font-semibold hover:bg-[#F4F1EA] transition cursor-pointer"
+              className="relative min-h-[40px] inline-flex items-center gap-2 rounded-full bg-white text-[#1C1F1D] px-3.5 py-2 text-xs font-semibold hover:bg-[#F4F1EA] transition cursor-pointer"
               aria-label="Open Cart"
             >
               <ShoppingBag className="w-4 h-4" />
@@ -138,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setMobileOpen((o) => !o)}
-              className="lg:hidden p-2 rounded-full text-white/85 hover:bg-white/10 transition cursor-pointer"
+              className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-white/85 hover:bg-white/10 transition cursor-pointer"
               aria-label="Menu"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -160,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder={copy.nav.searchPlaceholder}
-                className="w-full bg-transparent text-sm text-white placeholder:text-stone-400 focus:outline-none"
+                className="w-full bg-transparent text-base sm:text-sm text-white placeholder:text-stone-400 focus:outline-none"
               />
               <button
                 type="submit"
@@ -181,7 +180,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm font-medium text-white/85 hover:text-[#8FD1B4]"
+                  className="min-h-[44px] flex items-center text-base font-medium text-white/85 hover:text-[#8FD1B4]"
                 >
                   {link.label}
                 </a>

@@ -1,18 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { CartItem, Currency, Lang, Product } from './types';
 import { FLAGSHIP_KITS, PRODUCTS } from './data/products';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
-import { CinematicKitShowcase } from './components/CinematicKitShowcase';
-import { VirtualShowroom3D } from './components/three/VirtualShowroom3D';
 import { CatalogSection } from './components/CatalogSection';
-import { ScenarioFinder } from './components/ScenarioFinder';
-import { FaqAndFooter } from './components/FaqAndFooter';
-import { ProductDetailModal } from './components/ProductDetailModal';
-import { CartDrawer } from './components/CartDrawer';
-import { CheckoutModal } from './components/CheckoutModal';
 import { CookieBanner } from './components/CookieBanner';
 import { trackAddToCart, trackPurchaseOnReturn, trackViewItem } from './lib/analytics';
+
+// Code-split below-the-fold sections and interactive modals for fast mobile FCP/LCP.
+const CinematicKitShowcase = lazy(() =>
+  import('./components/CinematicKitShowcase').then((m) => ({ default: m.CinematicKitShowcase }))
+);
+const ScenarioFinder = lazy(() =>
+  import('./components/ScenarioFinder').then((m) => ({ default: m.ScenarioFinder }))
+);
+const FaqAndFooter = lazy(() =>
+  import('./components/FaqAndFooter').then((m) => ({ default: m.FaqAndFooter }))
+);
+const ProductDetailModal = lazy(() =>
+  import('./components/ProductDetailModal').then((m) => ({ default: m.ProductDetailModal }))
+);
+const CartDrawer = lazy(() =>
+  import('./components/CartDrawer').then((m) => ({ default: m.CartDrawer }))
+);
+const CheckoutModal = lazy(() =>
+  import('./components/CheckoutModal').then((m) => ({ default: m.CheckoutModal }))
+);
 
 const CART_STORAGE_KEY = 'calmo_kit_cart_v1';
 
@@ -151,7 +164,23 @@ export default function App() {
   }, [selectedProduct]);
 
   const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
+  const heroRadio = PRODUCTS.find((p) => p.id === 'gear-weather-radio');
   const upsellProduct = PRODUCTS.find((p) => p.id === 'gear-water-filter');
+
+  const handleBuyNow = (product: Product) => {
+    const chosenVariant = product.variants[0]?.id ?? 'default';
+    trackAddToCart(product, 1, chosenVariant);
+    setCartItems((prev) => {
+      const idx = prev.findIndex(
+        (item) =>
+          item.product.id === product.id && item.variantId === chosenVariant
+      );
+      if (idx > -1) return prev;
+      return [...prev, { product, variantId: chosenVariant, quantity: 1 }];
+    });
+    setCartOpen(false);
+    setCheckoutOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-[#161917] text-white">
@@ -166,27 +195,15 @@ export default function App() {
       />
 
       <main>
-        {/* 1. Full-Bleed Cinematic Alpine Hero (Video 3) */}
-        <HeroSection lang={lang} />
-
-        {/* 2. Color-Adaptive Cinematic Flagship Kit Switcher (Video 3 + Live 3D Toggle) */}
-        <CinematicKitShowcase
-          kits={FLAGSHIP_KITS}
+        {/* 1. Hero featuring the Emergency Radio */}
+        <HeroSection
           lang={lang}
           currency={currency}
-          onAddToCart={(p, v) => handleAddToCart(p, v, 1)}
-          onInspectProduct={(p) => setSelectedProduct(p)}
+          product={heroRadio}
+          onBuyNow={handleBuyNow}
         />
 
-        {/* 3. Interactive Dark Tactical 3D Virtual Showroom (Video 1: KALLE HUD + WebGL) */}
-        <VirtualShowroom3D
-          products={PRODUCTS}
-          lang={lang}
-          currency={currency}
-          onSelectProduct={(p) => setSelectedProduct(p)}
-        />
-
-        {/* 4. Minimalist Clean Light Storefront Grid (Video 2: Your Next Store) */}
+        {/* 2. Storefront Grid (Emergency Radio available now + upcoming kits/gear) */}
         <CatalogSection
           products={PRODUCTS}
           lang={lang}
@@ -197,54 +214,69 @@ export default function App() {
           onAddToCart={(p) => handleAddToCart(p)}
         />
 
-        {/* 5. Interactive Situation Finder / Recommended Loadouts */}
-        <ScenarioFinder
-          products={PRODUCTS}
-          lang={lang}
-          currency={currency}
-          onInspectProduct={(p) => setSelectedProduct(p)}
-          onAddBundle={handleAddBundle}
-        />
+        {/* 3. Below-the-fold sections (lazy-loaded for faster mobile paint) */}
+        <Suspense fallback={null}>
+          <CinematicKitShowcase
+            kits={FLAGSHIP_KITS}
+            lang={lang}
+            currency={currency}
+            onAddToCart={(p, v) => handleAddToCart(p, v, 1)}
+            onInspectProduct={(p) => setSelectedProduct(p)}
+          />
 
-        {/* 6. FAQ + Dark Flagship Footer */}
-        <FaqAndFooter lang={lang} />
+          <ScenarioFinder
+            products={PRODUCTS}
+            lang={lang}
+            currency={currency}
+            onInspectProduct={(p) => setSelectedProduct(p)}
+            onAddBundle={handleAddBundle}
+          />
+
+          <FaqAndFooter lang={lang} />
+        </Suspense>
       </main>
 
-      {/* Interactive 3D Product Detail Modal (Video 2 PDP) */}
-      <ProductDetailModal
-        product={selectedProduct}
-        lang={lang}
-        currency={currency}
-        onClose={() => setSelectedProduct(null)}
-        onAddToCart={handleAddToCart}
-      />
+      {/* Lazy-loaded Interactive Modals */}
+      <Suspense fallback={null}>
+        {selectedProduct && (
+          <ProductDetailModal
+            product={selectedProduct}
+            lang={lang}
+            currency={currency}
+            onClose={() => setSelectedProduct(null)}
+            onAddToCart={handleAddToCart}
+          />
+        )}
 
-      {/* Slide-out Shopping Bag */}
-      <CartDrawer
-        open={cartOpen}
-        items={cartItems}
-        upsellProduct={upsellProduct}
-        lang={lang}
-        currency={currency}
-        onClose={() => setCartOpen(false)}
-        onUpdateQty={handleUpdateQty}
-        onRemove={handleRemove}
-        onAddUpsell={(p) => handleAddToCart(p)}
-        onProceedToCheckout={() => {
-          setCartOpen(false);
-          setCheckoutOpen(true);
-        }}
-      />
+        {cartOpen && (
+          <CartDrawer
+            open={cartOpen}
+            items={cartItems}
+            upsellProduct={upsellProduct}
+            lang={lang}
+            currency={currency}
+            onClose={() => setCartOpen(false)}
+            onUpdateQty={handleUpdateQty}
+            onRemove={handleRemove}
+            onAddUpsell={(p) => handleAddToCart(p)}
+            onProceedToCheckout={() => {
+              setCartOpen(false);
+              setCheckoutOpen(true);
+            }}
+          />
+        )}
 
-      {/* Express Checkout Modal */}
-      <CheckoutModal
-        open={checkoutOpen}
-        items={cartItems}
-        lang={lang}
-        currency={currency}
-        onClose={() => setCheckoutOpen(false)}
-        onOrderComplete={() => setCartItems([])}
-      />
+        {checkoutOpen && (
+          <CheckoutModal
+            open={checkoutOpen}
+            items={cartItems}
+            lang={lang}
+            currency={currency}
+            onClose={() => setCheckoutOpen(false)}
+            onOrderComplete={() => setCartItems([])}
+          />
+        )}
+      </Suspense>
 
       {/* Stripe Return Order Confirmed Toast/Modal */}
       {stripeReturnOrderRef && (

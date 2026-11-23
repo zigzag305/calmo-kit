@@ -57,7 +57,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const totalEur = subtotalEur + shippingEur;
 
   const showUpsell =
-    upsellProduct && !items.some((i) => i.product.id === upsellProduct.id);
+    upsellProduct && upsellProduct.inStock && !items.some((i) => i.product.id === upsellProduct.id);
 
   return (
     <div
@@ -270,6 +270,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                     ? copy.cart.free
                     : formatPrice(shippingEur, currency)}
                 </span>
+              </div>
+              <div className="flex justify-between text-stone-600">
+                <span>{copy.cart.deliveryLabel}</span>
+                <span className="font-medium text-stone-800">{copy.cart.deliveryEstimate}</span>
               </div>
               <div className="flex justify-between text-base font-bold text-stone-950 pt-2 border-t border-stone-100">
                 <span>{copy.cart.total}</span>

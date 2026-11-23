@@ -45,7 +45,7 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
       {/* FAQ Section */}
       <section
         id="faq"
-        className="bg-white text-stone-950 py-20 lg:py-24 border-t border-stone-200"
+        className="bg-white text-stone-950 py-16 sm:py-20 lg:py-24 border-t border-stone-200 content-auto"
       >
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -116,11 +116,6 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
                   </a>
                 </li>
                 <li>
-                  <a href="#showroom" className="hover:text-white transition">
-                    {copy.nav.showroom}
-                  </a>
-                </li>
-                <li>
                   <a href="#catalog" className="hover:text-white transition">
                     {copy.nav.catalog}
                   </a>
@@ -155,15 +150,16 @@ export const FaqAndFooter: React.FC<FaqAndFooterProps> = ({ lang }) => {
                     <input
                       type="email"
                       required
+                      autoComplete="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder={copy.footer.newsletterPlaceholder}
-                      className="w-full rounded-full bg-white/5 border border-white/15 pl-10 pr-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-[#8FD1B4]"
+                      className="w-full min-h-[44px] rounded-full bg-white/5 border border-white/15 pl-10 pr-4 py-2.5 text-base sm:text-sm text-white placeholder:text-stone-500 focus:outline-none focus:border-[#8FD1B4]"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="rounded-full bg-[#0B6E4F] text-white hover:bg-[#08513A] px-5 py-2.5 text-xs font-bold transition cursor-pointer shrink-0"
+                    className="min-h-[44px] rounded-full bg-[#0B6E4F] text-white hover:bg-[#08513A] px-5 py-2.5 text-xs font-bold transition cursor-pointer shrink-0"
                   >
                     {copy.footer.newsletterBtn}
                   </button>

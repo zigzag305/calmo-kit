@@ -3,8 +3,8 @@ import { Lang } from '../types';
 export const translations = {
   pt: {
     announcement:
-      'Envio grátis +€69 · entrega 1–5 dias em Portugal e Espanha · guia UE 72 h',
-    announcementCta: 'Ver em 3D',
+      'Entrega em 2–3 semanas em Portugal continental e Espanha peninsular · Envio grátis +€69',
+    announcementCta: 'Ver produto',
     nav: {
       kits: 'Kits 72H',
       showroom: 'Vista 3D',
@@ -14,15 +14,15 @@ export const translations = {
       searchPlaceholder: 'Procurar mochila, rádio, filtro...',
     },
     hero: {
-      systemTag: 'Guia UE 72 horas · Portugal e Espanha',
-      headlineLine1: '72 horas resolvidas.',
-      headlineLine2: 'Sem improvisar.',
+      systemTag: 'Rádio de Emergência · Portugal e Espanha',
+      headlineLine1: 'Prepare-se para',
+      headlineLine2: 'o próximo apagão',
       subcopy:
-        'Quando falta a luz ou há cheias, ninguém quer procurar pilhas às escuras. Reunimos filtração de água, refeições europeias de longa duração, kit de primeiros socorros CE e rádio solar em mochilas prontas a guardar num armário.',
-      primaryCta: 'Ver kits 72 h',
-      secondaryCta: 'Inspecionar em 3D',
-      trust1: 'Envio da UE (1–5 dias úteis)',
-      trust2: 'Comida europeia 10–25 anos',
+        'Notícias, luz e bateria para o telemóvel quando falha a luz. Carrega com o sol ou rodando a manivela, sem depender de tomadas nem pilhas.',
+      primaryCta: 'Comprar',
+      secondaryCta: 'Ver detalhes',
+      trust1: 'Entrega em 2–3 semanas',
+      trust2: 'Solar, dínamo e USB',
       trust3: '14 dias para devolver',
     },
     showcase: {
@@ -31,7 +31,7 @@ export const translations = {
       viewPhoto: 'Foto Real',
       view3d: 'Modelo 3D',
       addToCart: 'Adicionar ao carrinho',
-      inspect3d: 'Ver conteúdo e 3D',
+      inspect3d: 'Ver conteúdo',
       nextKits: 'Outros kits',
       dragHint: 'Arrasta para rodar 360°',
     },
@@ -141,23 +141,25 @@ export const translations = {
       addToCart: 'Adicionar ao Carrinho',
       outOfStock: 'Brevemente: ainda não disponível',
       illustrationNote: 'Imagem ilustrativa. Foto real do produto em breve.',
-      shipsWorldwide: 'Envio com seguimento para Portugal e Espanha (1–5 dias úteis)',
+      shipsWorldwide: 'Entrega em 2–3 semanas',
       curatedNote:
         'Montado com material escolhido para casas em Portugal e Espanha.',
       partnerNote:
-        'Enviado diretamente de fornecedores europeus, por isso chega mais depressa.',
+        'Entrega em 2–3 semanas para Portugal continental e Espanha peninsular.',
     },
     cart: {
       title: 'Carrinho',
       emptyTitle: 'O carrinho está vazio',
       emptyDesc:
-        'Escolhe um kit de 72 horas ou um artigo avulso para começar.',
+        'Escolhe um artigo disponível para começar.',
       emptyCta: 'Ver produtos',
       freeShippingUnlocked: 'Tens envio grátis com seguimento.',
       freeShippingRemaining: 'para ter ENVIO GRÁTIS',
       upsellTitle: 'Costumam juntar ao pedido',
       subtotal: 'Subtotal',
       shipping: 'Envio',
+      deliveryLabel: 'Prazo',
+      deliveryEstimate: 'Entrega em 2–3 semanas',
       free: 'Grátis',
       total: 'Total',
       checkoutCta: 'Pagar com Stripe',
@@ -195,7 +197,7 @@ export const translations = {
         },
         {
           q: 'Quanto custa e quanto demora o envio para Portugal e Espanha?',
-          a: 'O envio custa €5,90 e passa a grátis a partir de €69. Os kits principais saem de armazéns na Europa e chegam em 1 a 5 dias úteis.',
+          a: 'O envio custa €5,90 e passa a grátis a partir de €69. Enviamos para Portugal continental e Espanha peninsular; o rádio de emergência tem entrega em 2–3 semanas.',
         },
         {
           q: 'Vendem kits para empresas ou escritórios?',
@@ -219,8 +221,8 @@ export const translations = {
   },
   es: {
     announcement:
-      'Envío gratis +€69 · entrega 1–5 días en España y Portugal · guía UE 72 h',
-    announcementCta: 'Ver en 3D',
+      'Envío en 2–3 semanas a España peninsular y Portugal continental · Envío gratis +€69',
+    announcementCta: 'Ver producto',
     nav: {
       kits: 'Kits 72H',
       showroom: 'Vista 3D',
@@ -230,15 +232,15 @@ export const translations = {
       searchPlaceholder: 'Buscar mochila, radio, filtro...',
     },
     hero: {
-      systemTag: 'Guía UE 72 horas · España y Portugal',
-      headlineLine1: '72 horas resueltas.',
-      headlineLine2: 'Sin improvisar.',
+      systemTag: 'Radio de Emergencia · España y Portugal',
+      headlineLine1: 'Prepárate para',
+      headlineLine2: 'el próximo apagón',
       subcopy:
-        'Cuando se va la luz o llega una DANA, nadie quiere buscar pilas a oscuras. Reunimos filtro de agua, comida europea de larga duración, botiquín CE y radio solar en mochilas listas para guardar en un armario y olvidarte.',
-      primaryCta: 'Ver kits 72 h',
-      secondaryCta: 'Ver en 3D',
-      trust1: 'Envío desde la UE (1–5 días)',
-      trust2: 'Comida europea 10–25 años',
+        'Noticias, luz y batería para el móvil cuando se va la luz. Se carga con el sol o girando la manivela, sin depender de enchufes ni pilas.',
+      primaryCta: 'Comprar',
+      secondaryCta: 'Ver detalles',
+      trust1: 'Envío en 2–3 semanas',
+      trust2: 'Solar, dinamo y USB',
       trust3: '14 días para devolver',
     },
     showcase: {
@@ -247,7 +249,7 @@ export const translations = {
       viewPhoto: 'Foto Real',
       view3d: 'Modelo 3D',
       addToCart: 'Añadir al carrito',
-      inspect3d: 'Ver contenido y 3D',
+      inspect3d: 'Ver contenido',
       nextKits: 'Otros kits',
       dragHint: 'Arrastra para girar 360°',
     },
@@ -357,23 +359,25 @@ export const translations = {
       addToCart: 'Añadir al Carrito',
       outOfStock: 'Próximamente: aún no disponible',
       illustrationNote: 'Imagen ilustrativa. Foto real del producto próximamente.',
-      shipsWorldwide: 'Envío con seguimiento a España y Portugal (1–5 días laborables)',
+      shipsWorldwide: 'Envío en 2–3 semanas',
       curatedNote:
         'Montado con material elegido para hogares en España y Portugal.',
       partnerNote:
-        'Se envía directamente desde proveedores europeos, así llega antes.',
+        'Envío en 2–3 semanas a España peninsular y Portugal continental.',
     },
     cart: {
       title: 'Carrito',
       emptyTitle: 'Tu carrito está vacío',
       emptyDesc:
-        'Elige un kit de 72 horas o una pieza suelta para empezar.',
+        'Elige un artículo disponible para empezar.',
       emptyCta: 'Ver productos',
       freeShippingUnlocked: 'Tienes envío gratis con seguimiento.',
       freeShippingRemaining: 'para conseguir ENVÍO GRATIS',
       upsellTitle: 'Suelen añadir al pedido',
       subtotal: 'Subtotal',
       shipping: 'Envío',
+      deliveryLabel: 'Plazo',
+      deliveryEstimate: 'Envío en 2–3 semanas',
       free: 'Gratis',
       total: 'Total',
       checkoutCta: 'Pagar con Stripe',
@@ -411,7 +415,7 @@ export const translations = {
         },
         {
           q: '¿Cuánto cuesta y cuánto tarda el envío a España y Portugal?',
-          a: 'El envío cuesta €5,90 y es gratis desde €69. Los kits principales salen de almacenes en Europa con entrega de 1 a 5 días hábiles.',
+          a: 'El envío cuesta €5,90 y es gratis desde €69. Enviamos a España peninsular y Portugal continental; la radio de emergencia tiene envío en 2–3 semanas.',
         },
         {
           q: '¿Vendéis kits para oficinas o empresas?',
@@ -435,8 +439,8 @@ export const translations = {
   },
   en: {
     announcement:
-      'Free shipping over €69 · 1–5 day delivery in Portugal & Spain · EU 72 h guide',
-    announcementCta: 'View in 3D',
+      'Ships in 2–3 weeks to mainland Spain & Portugal · Free shipping over €69',
+    announcementCta: 'View product',
     nav: {
       kits: '72H Kits',
       showroom: '3D View',
@@ -446,15 +450,15 @@ export const translations = {
       searchPlaceholder: 'Search backpack, radio, filter...',
     },
     hero: {
-      systemTag: 'EU 72-hour guide · Portugal & Spain',
-      headlineLine1: '72 hours covered.',
-      headlineLine2: 'Zero guesswork.',
+      systemTag: 'Emergency Radio · Spain & Portugal',
+      headlineLine1: 'Be ready for',
+      headlineLine2: 'the next blackout',
       subcopy:
-        'When the grid drops or heavy rain hits, nobody wants to hunt for batteries in the dark. We pack water filtration, European long-life meals, CE first aid, and a solar crank radio into one tidy bag you can store and forget.',
-      primaryCta: 'Shop 72 h kits',
-      secondaryCta: 'Inspect in 3D',
-      trust1: 'Dispatched from EU (1–5 days)',
-      trust2: '10–25 yr European meals',
+        'News, light, and phone power when the lights go out. Charges with sunlight or by turning the hand crank, no wall sockets or disposable batteries needed.',
+      primaryCta: 'Buy now',
+      secondaryCta: 'View details',
+      trust1: 'Ships in 2–3 weeks',
+      trust2: 'Solar, crank & USB',
       trust3: '14-day returns',
     },
     showcase: {
@@ -463,7 +467,7 @@ export const translations = {
       viewPhoto: 'Real Photo',
       view3d: '3D Model',
       addToCart: 'Add to cart',
-      inspect3d: 'Contents & 3D view',
+      inspect3d: 'View contents',
       nextKits: 'Other kits',
       dragHint: 'Drag to rotate 360°',
     },
@@ -573,22 +577,24 @@ export const translations = {
       addToCart: 'Add to Cart',
       outOfStock: 'Coming soon: not available yet',
       illustrationNote: 'Illustration. Real product photo coming soon.',
-      shipsWorldwide: 'Tracked delivery to Spain and Portugal (1–5 working days)',
+      shipsWorldwide: 'Ships in 2–3 weeks',
       curatedNote:
         'Put together for homes in Spain and Portugal.',
       partnerNote:
-        'Shipped directly from European suppliers, so it arrives sooner.',
+        'Ships in 2–3 weeks to mainland Spain and Portugal.',
     },
     cart: {
       title: 'Cart',
       emptyTitle: 'Your cart is empty',
-      emptyDesc: 'Pick a 72-hour kit or a single item to get started.',
+      emptyDesc: 'Pick an available item to get started.',
       emptyCta: 'Browse products',
       freeShippingUnlocked: 'You get free tracked shipping.',
       freeShippingRemaining: 'away from FREE shipping',
       upsellTitle: 'Often added together',
       subtotal: 'Subtotal',
       shipping: 'Shipping',
+      deliveryLabel: 'Delivery',
+      deliveryEstimate: 'Ships in 2–3 weeks',
       free: 'Free',
       total: 'Total',
       checkoutCta: 'Pay with Stripe',
@@ -626,7 +632,7 @@ export const translations = {
         },
         {
           q: 'How much is shipping to Portugal and Spain?',
-          a: 'Flat €5.90 shipping, free on orders over €69. Core kits dispatch from European warehouses in 1–5 business days.',
+          a: 'Flat €5.90 shipping, free on orders over €69. We ship to mainland Spain and Portugal; the emergency radio ships in 2–3 weeks.',
         },
         {
           q: 'Do you supply offices or small companies?',
