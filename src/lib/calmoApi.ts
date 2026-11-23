@@ -1,3 +1,4 @@
+import { productJpg } from './images';
 import { CartItem, Currency, Lang } from '../types';
 
 const SUPABASE_URL = import.meta.env.VITE_CALMO_SUPABASE_URL as
@@ -63,7 +64,8 @@ export async function submitCalmoCheckout(params: {
             params.lang
           ],
           quantity: i.quantity,
-          image: i.product.image,
+          // Stripe gets the JPEG twin of the WebP product image.
+          image: productJpg(i.product.image),
         })),
       }),
     }

@@ -57,6 +57,7 @@ export const translations = {
       inspectCta: 'Clicar para abrir ficha',
     },
     catalog: {
+      comingSoon: 'Brevemente',
       eyebrow: 'Preços em EUR · IVA incluído',
       title: 'Mochilas 72h e artigos avulsos',
       subtitle:
@@ -138,7 +139,8 @@ export const translations = {
       whatsInside: 'O que vem incluído',
       specs: 'Ficha técnica',
       addToCart: 'Adicionar ao Carrinho',
-      outOfStock: 'Temporariamente esgotado',
+      outOfStock: 'Brevemente: ainda não disponível',
+      illustrationNote: 'Imagem ilustrativa. Foto real do produto em breve.',
       shipsWorldwide: 'Envio com seguimento para Portugal e Espanha (1–5 dias úteis)',
       curatedNote:
         'Montado com material escolhido para casas em Portugal e Espanha.',
@@ -271,6 +273,7 @@ export const translations = {
       inspectCta: 'Clic para abrir ficha',
     },
     catalog: {
+      comingSoon: 'Próximamente',
       eyebrow: 'Precios en EUR · IVA incluido',
       title: 'Mochilas 72h y piezas sueltas',
       subtitle:
@@ -352,7 +355,8 @@ export const translations = {
       whatsInside: 'Qué incluye',
       specs: 'Ficha técnica',
       addToCart: 'Añadir al Carrito',
-      outOfStock: 'Temporalmente agotado',
+      outOfStock: 'Próximamente: aún no disponible',
+      illustrationNote: 'Imagen ilustrativa. Foto real del producto próximamente.',
       shipsWorldwide: 'Envío con seguimiento a España y Portugal (1–5 días laborables)',
       curatedNote:
         'Montado con material elegido para hogares en España y Portugal.',
@@ -485,6 +489,7 @@ export const translations = {
       inspectCta: 'Click to open specs',
     },
     catalog: {
+      comingSoon: 'Coming soon',
       eyebrow: 'EUR pricing · VAT included',
       title: '72h packs & individual gear',
       subtitle:
@@ -566,7 +571,8 @@ export const translations = {
       whatsInside: "What's included",
       specs: 'Specifications',
       addToCart: 'Add to Cart',
-      outOfStock: 'Temporarily out of stock',
+      outOfStock: 'Coming soon: not available yet',
+      illustrationNote: 'Illustration. Real product photo coming soon.',
       shipsWorldwide: 'Tracked delivery to Spain and Portugal (1–5 working days)',
       curatedNote:
         'Put together for homes in Spain and Portugal.',

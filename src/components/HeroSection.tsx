@@ -19,7 +19,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang }) => {
       {/* Full-bleed atmospheric alpine hero background (Video 3: The North Face style) */}
       <div className="absolute inset-0">
         <img
-          src="./images/hero-mountain.jpg"
+          src="/images/hero-mountain.webp"
+          srcSet="/images/hero-mountain-800.webp 800w, /images/hero-mountain.webp 1376w"
+          sizes="100vw"
+          fetchPriority="high"
+          decoding="async"
           alt="CalmoKit alpine emergency preparedness"
           className="h-full w-full object-cover object-center scale-[1.02]"
         />

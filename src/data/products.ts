@@ -1,7 +1,7 @@
 import { Product } from '../types';
 
 // Prices and SKUs come from the shared catalog so the site and checkout can't disagree.
-import { catalogPrice, catalogSku } from '../../supabase/functions/_shared/calmoCatalog';
+import { catalogInStock, catalogPrice, catalogSku } from '../../supabase/functions/_shared/calmoCatalog';
 
 export const PRODUCTS: Product[] = [
   {
@@ -10,7 +10,7 @@ export const PRODUCTS: Product[] = [
     slug: '72h-family-kit',
     category: 'kits',
     fulfillment: 'curated-kit',
-    brand: 'CALMOKIT',
+    brand: 'CalmoKit',
     name: {
       pt: 'Mochila Familiar 72H',
       es: 'Mochila Familiar 72H',
@@ -34,7 +34,7 @@ export const PRODUCTS: Product[] = [
       es: 'KIT PRINCIPAL',
       en: 'HERO KIT',
     },
-    image: './images/real/kit-crisis.jpg',
+    image: '/images/products/calmo-crisis-72h.webp',
     imageTheme: 'light',
     showcase: {
       order: '01',
@@ -45,7 +45,7 @@ export const PRODUCTS: Product[] = [
       scenarios: [
         { pt: 'Recomendação UE 72H', es: 'Recomendación UE 72H', en: 'EU 72H Standard' },
         { pt: 'Famílias e Casais', es: 'Familias y Parejas', en: 'Families & Couples' },
-        { pt: 'Entrega UE 1–5d', es: 'Envío UE 1–5d', en: '1–5d EU Delivery' },
+        { pt: 'Entrega PT/ES 1–5d', es: 'Envío ES/PT 1–5d', en: 'ES/PT delivery 1–5d' },
       ],
       highlightMetric: {
         pt: '32 Essenciais · Autonomia Tranquila 72H',
@@ -57,7 +57,7 @@ export const PRODUCTS: Product[] = [
       type: 'crisis-pack',
       primaryColor: '#B92B27',
       secondaryColor: '#181B20',
-      accentColor: '#39FF14',
+      accentColor: '#3FA37A',
     },
     variants: [
       { id: 'ember', name: { pt: 'Vermelho Sinal', es: 'Rojo Señal', en: 'Signal Ember' }, hex: '#B92B27' },
@@ -75,10 +75,10 @@ export const PRODUCTS: Product[] = [
     specs: [
       { label: { pt: 'Autonomia', es: 'Autonomía', en: 'Autonomy' }, value: { pt: '72 Horas (1–2 Adultos)', es: '72 Horas (1–2 Adultos)', en: '72 Hours (1–2 Adults)' } },
       { label: { pt: 'Peso Total', es: 'Peso Total', en: 'Total Weight' }, value: { pt: '3.9 kg', es: '3.9 kg', en: '3.9 kg' } },
-      { label: { pt: 'Conformidade', es: 'Conformidad', en: 'Compliance' }, value: { pt: 'Alimentos UE · Botiquín CE', es: 'Alimentos UE · Botiquín CE', en: 'EU Food · CE First Aid' } },
-      { label: { pt: 'Entrega', es: 'Entrega', en: 'Delivery' }, value: { pt: '1–5 Dias Úteis (PT/ES)', es: '1–5 Días Hábiles (ES/PT)', en: '1–5 Business Days (EU)' } },
+      { label: { pt: 'Conformidade', es: 'Conformidad', en: 'Compliance' }, value: { pt: 'Alimentos UE · Primeiros socorros CE', es: 'Alimentos UE · Botiquín CE', en: 'EU Food · CE First Aid' } },
+      { label: { pt: 'Entrega', es: 'Entrega', en: 'Delivery' }, value: { pt: '1–5 Dias Úteis (PT/ES)', es: '1–5 Días Hábiles (ES/PT)', en: '1–5 Business Days (ES/PT)' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('calmo-crisis-72h'),
     featured: true,
     sourcing: {
       primary: 'MILITARY.EU ready evacuation backpack (Brytzky 36 L / Badger 40 L) or Liofilizado & Co 72h kit',
@@ -93,7 +93,7 @@ export const PRODUCTS: Product[] = [
     slug: 'car-outdoor-kit',
     category: 'kits',
     fulfillment: 'curated-kit',
-    brand: 'CALMOKIT',
+    brand: 'CalmoKit',
     name: {
       pt: 'Kit Auto e Exterior',
       es: 'Kit Coche y Exterior',
@@ -117,7 +117,7 @@ export const PRODUCTS: Product[] = [
       es: 'COMPACTO',
       en: 'COMPACT',
     },
-    image: './images/real/kit-wilderness.png',
+    image: '/images/products/calmo-wilderness-pro.webp',
     imageTheme: 'light',
     showcase: {
       order: '02',
@@ -159,9 +159,9 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Capacidade', es: 'Capacidad', en: 'Pack Volume' }, value: { pt: '28 Litros Ripstop', es: '28 Litros Ripstop', en: '28 Liters Ripstop' } },
       { label: { pt: 'Peso Total', es: 'Peso Total', en: 'Total Weight' }, value: { pt: '2.9 kg', es: '2.9 kg', en: '2.9 kg' } },
       { label: { pt: 'Uso Ideal', es: 'Uso Ideal', en: 'Ideal For' }, value: { pt: 'Carro, Viagem, Escritório', es: 'Coche, Viaje, Oficina', en: 'Car, Travel, Office' } },
-      { label: { pt: 'Entrega', es: 'Entrega', en: 'Delivery' }, value: { pt: '1–5 Dias Úteis (PT/ES)', es: '1–5 Días Hábiles (ES/PT)', en: '1–5 Business Days (EU)' } },
+      { label: { pt: 'Entrega', es: 'Entrega', en: 'Delivery' }, value: { pt: '1–5 Dias Úteis (PT/ES)', es: '1–5 Días Hábiles (ES/PT)', en: '1–5 Business Days (ES/PT)' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('calmo-wilderness-pro'),
     featured: true,
     sourcing: {
       primary: 'Helikon Bail Out Bag 25 L via MILITARY.EU',
@@ -176,7 +176,7 @@ export const PRODUCTS: Product[] = [
     slug: 'home-blackout-kit',
     category: 'power-med',
     fulfillment: 'curated-kit',
-    brand: 'CALMOKIT',
+    brand: 'CalmoKit',
     name: {
       pt: 'Kit Apagão e Energia Casa',
       es: 'Kit Apagón y Energía Hogar',
@@ -200,7 +200,7 @@ export const PRODUCTS: Product[] = [
       es: 'ESENCIAL HOGAR',
       en: 'HOME ESSENTIAL',
     },
-    image: './images/real/kit-blackout.png',
+    image: '/images/products/calmo-blackout-home.webp',
     imageTheme: 'light',
     showcase: {
       order: '03',
@@ -242,7 +242,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Saída AC UE', es: 'Salida AC UE', en: 'AC Output (EU)' }, value: { pt: '300W Onda Pura (230V)', es: '300W Onda Pura (230V)', en: '300W Pure Sine (230V)' } },
       { label: { pt: 'Garantia UE', es: 'Garantía UE', en: 'EU Warranty' }, value: { pt: '2 Anos', es: '2 Años', en: '2 Years' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('calmo-blackout-home'),
     featured: true,
     sourcing: {
       primary: 'Searching EU supplier for portable power station + solar panel',
@@ -256,7 +256,7 @@ export const PRODUCTS: Product[] = [
     slug: 'food-hydration-case',
     category: 'food-water',
     fulfillment: 'curated-kit',
-    brand: 'CALMOKIT',
+    brand: 'CalmoKit',
     name: {
       pt: 'Mala de Comida e Água',
       es: 'Maletín Comida y Agua',
@@ -280,7 +280,7 @@ export const PRODUCTS: Product[] = [
       es: 'HASTA 25 AÑOS',
       en: 'UP TO 25 YRS',
     },
-    image: './images/real/kit-food.webp',
+    image: '/images/products/calmo-food-hydration.webp',
     imageTheme: 'light',
     showcase: {
       order: '04',
@@ -322,7 +322,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Preparação', es: 'Preparación', en: 'Prep Time' }, value: { pt: '8 Min (Água Quente/Fria)', es: '8 Min (Agua Caliente/Fría)', en: '8 Min (Hot or Cold)' } },
       { label: { pt: 'Origem', es: 'Origen', en: 'Origin' }, value: { pt: 'Fabricado na UE', es: 'Fabricado en la UE', en: 'Made in EU' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('calmo-food-hydration'),
     featured: true,
     sourcing: {
       primary: 'Convar / Katadyn Trek’n Eat / Lyofood + Katadyn or LifeStraw filter',
@@ -336,7 +336,7 @@ export const PRODUCTS: Product[] = [
     slug: 'portable-water-filter',
     category: 'food-water',
     fulfillment: 'partner-gear',
-    brand: 'HYDROAPEX EU',
+    brand: 'CalmoKit',
     name: {
       pt: 'Filtro Portátil de Água + Bolsa 1L',
       es: 'Filtro Portátil de Agua + Bolsa 1L',
@@ -356,11 +356,11 @@ export const PRODUCTS: Product[] = [
     rating: 0,
     reviewCount: 0,
     badge: {
-      pt: 'MAIS PEDIDO',
-      es: 'TOP COMPLEMENTO',
-      en: 'TOP ADD-ON',
+      pt: 'BOM COMPLEMENTO',
+      es: 'BUEN COMPLEMENTO',
+      en: 'GOOD ADD-ON',
     },
-    image: './images/real/gear-filter.png',
+    image: '/images/products/gear-water-filter.webp',
     imageTheme: 'light',
     model3D: {
       type: 'water-filter',
@@ -378,7 +378,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Peso', es: 'Peso', en: 'Weight' }, value: { pt: '65g', es: '65g', en: '65g' } },
       { label: { pt: 'Inclui', es: 'Incluye', en: 'Included' }, value: { pt: 'Filtro + Bolsa 1L + Seringa', es: 'Filtro + Bolsa 1L + Jeringa', en: 'Filter + 1L Pouch + Syringe' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('gear-water-filter'),
     sourcing: {
       primary: 'Katadyn / LifeStraw (EU wholesale)',
       country: 'Germany / EU',
@@ -392,7 +392,7 @@ export const PRODUCTS: Product[] = [
     slug: 'ce-waterproof-first-aid-kit',
     category: 'power-med',
     fulfillment: 'partner-gear',
-    brand: 'MEDSHIELD CE',
+    brand: 'CalmoKit',
     name: {
       pt: 'Estojo Primeiros Socorros EVA (CE)',
       es: 'Botiquín Impermeable EVA (CE)',
@@ -411,7 +411,7 @@ export const PRODUCTS: Product[] = [
     priceEur: catalogPrice('gear-trauma-kit'),
     rating: 0,
     reviewCount: 0,
-    image: './images/real/gear-medkit.jpg',
+    image: '/images/products/gear-trauma-kit.webp',
     imageTheme: 'light',
     model3D: {
       type: 'trauma-kit',
@@ -429,7 +429,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Dimensões', es: 'Dimensiones', en: 'Dimensions' }, value: { pt: '21 × 14 × 7 cm', es: '21 × 14 × 7 cm', en: '21 × 14 × 7 cm' } },
       { label: { pt: 'Certificação', es: 'Certificación', en: 'Compliance' }, value: { pt: 'Marcação CE (declaração do fabricante)', es: 'Marcado CE (declaración del fabricante)', en: 'CE marking (manufacturer declaration)' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('gear-trauma-kit'),
     sourcing: {
       primary: 'MILITARY.EU first-aid kits / JBM DIN 13164 kit',
       country: 'Poland / Spain',
@@ -442,7 +442,7 @@ export const PRODUCTS: Product[] = [
     slug: 'solar-crank-emergency-radio',
     category: 'survival',
     fulfillment: 'partner-gear',
-    brand: 'SIGNALCORE EU',
+    brand: 'CalmoKit',
     name: {
       pt: 'Rádio Solar e Dínamo de Emergência',
       es: 'Radio Solar y Dinamo de Emergencia',
@@ -461,7 +461,7 @@ export const PRODUCTS: Product[] = [
     priceEur: catalogPrice('gear-weather-radio'),
     rating: 0,
     reviewCount: 0,
-    image: './images/real/gear-radio.jpg',
+    image: '/images/products/gear-weather-radio.webp',
     imageTheme: 'light',
     model3D: {
       type: 'weather-radio',
@@ -479,7 +479,7 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Bandas', es: 'Bandas', en: 'Bands' }, value: { pt: 'AM / FM', es: 'AM / FM', en: 'AM / FM' } },
       { label: { pt: 'Proteção', es: 'Resistencia', en: 'Protection' }, value: { pt: 'IPX4 Salpicos', es: 'IPX4 Salpicaduras', en: 'IPX4 Splash Resistant' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('gear-weather-radio'),
     sourcing: {
       primary: 'MILITARY.EU or Spanish stock (solar + crank AM/FM radio)',
       country: 'Poland / Spain',
@@ -493,7 +493,7 @@ export const PRODUCTS: Product[] = [
     slug: '72h-freeze-dried-meal-trio',
     category: 'food-water',
     fulfillment: 'partner-gear',
-    brand: 'PEAKRATION EU',
+    brand: 'CalmoKit',
     name: {
       pt: 'Pack 3 Refeições Liofilizadas (UE)',
       es: 'Pack 3 Comidas Liofilizadas (UE)',
@@ -512,7 +512,7 @@ export const PRODUCTS: Product[] = [
     priceEur: catalogPrice('gear-meal-pack'),
     rating: 0,
     reviewCount: 0,
-    image: './images/real/gear-rations.webp',
+    image: '/images/products/gear-meal-pack.webp',
     imageTheme: 'light',
     model3D: {
       type: 'meal-pouches',
@@ -530,11 +530,198 @@ export const PRODUCTS: Product[] = [
       { label: { pt: 'Energia', es: 'Energía', en: 'Energy' }, value: { pt: '2.450 kcal', es: '2.450 kcal', en: '2,450 kcal' } },
       { label: { pt: 'Origem', es: 'Origen', en: 'Origin' }, value: { pt: 'União Europeia', es: 'Unión Europea', en: 'European Union' } },
     ],
-    inStock: true,
+    inStock: catalogInStock('gear-meal-pack'),
     sourcing: {
       primary: 'Lyofood / Adventure Menu (via MILITARY.EU) / Convar',
       country: 'Poland / Czech Republic / Germany',
       status: 'pending-terms',
+    },
+  },
+  // ---------------------------------------------------------------------------
+  // New lines (Nov 2026 research). Shown as "coming soon" (inStock: false in the
+  // shared catalog) until a supplier confirms price and stock. Generic names on
+  // purpose: no brand names or brand photos until we are an authorised reseller.
+  // ---------------------------------------------------------------------------
+  {
+    id: 'gear-home-safety-duo',
+    sku: catalogSku('gear-home-safety-duo'),
+    slug: 'home-safety-duo-co-alarm-fire-blanket',
+    category: 'power-med',
+    fulfillment: 'partner-gear',
+    brand: 'CalmoKit',
+    name: {
+      pt: 'Duo Segurança Casa: Detetor de CO + Manta Ignífuga',
+      es: 'Dúo Seguridad Hogar: Detector de CO + Manta Ignífuga',
+      en: 'Home Safety Duo: CO Alarm + Fire Blanket',
+    },
+    shortTagline: {
+      pt: 'Detetor de monóxido de carbono com ecrã + manta ignífuga 1 × 1 m',
+      es: 'Detector de monóxido de carbono con pantalla + manta ignífuga 1 × 1 m',
+      en: 'Carbon-monoxide alarm with display + 1 × 1 m fire blanket',
+    },
+    description: {
+      pt: 'Para casa, autocaravana ou durante um apagão, quando se usam braseiras, aquecedores a gás ou geradores. O detetor dá alarme sonoro se o monóxido de carbono subir, um gás que não se vê nem se cheira. A manta ignífuga apaga um pequeno fogo de frigideira em segundos. Inclui guia rápido em português e espanhol.',
+      es: 'Para casa, autocaravana o durante un apagón, cuando se usan braseros, estufas de gas o generadores. El detector avisa con una alarma si sube el monóxido de carbono, un gas que no se ve ni se huele. La manta ignífuga apaga un fuego pequeño de sartén en segundos. Incluye guía rápida en español y portugués.',
+      en: 'For home, campervan or a blackout, when braziers, gas heaters or generators are in use. The alarm sounds if carbon monoxide rises, a gas you cannot see or smell. The fire blanket smothers a small pan fire in seconds. Includes a quick guide in Spanish and Portuguese.',
+    },
+    priceEur: catalogPrice('gear-home-safety-duo'),
+    rating: 0,
+    reviewCount: 0,
+    badge: { pt: 'NOVIDADE', es: 'NOVEDAD', en: 'NEW' },
+    image: '/images/products/gear-home-safety-duo.webp',
+    illustration: true,
+    imageTheme: 'light',
+    variants: [{ id: 'standard', name: { pt: 'Standard', es: 'Estándar', en: 'Standard' }, hex: '#F4F1EA' }],
+    contents: [
+      { pt: 'Detetor de CO com ecrã de ppm e botão de teste', es: 'Detector de CO con pantalla de ppm y botón de prueba', en: 'CO alarm with ppm display and test button' },
+      { pt: 'Manta ignífuga 1 × 1 m em bolsa de parede', es: 'Manta ignífuga 1 × 1 m en funda de pared', en: '1 × 1 m fire blanket in wall pouch' },
+      { pt: 'Guia rápido PT/ES + cartão "testar todos os meses"', es: 'Guía rápida ES/PT + tarjeta «probar cada mes»', en: 'ES/PT quick guide + "test monthly" card' },
+    ],
+    specs: [
+      { label: { pt: 'Norma', es: 'Norma', en: 'Standard' }, value: { pt: 'EN 50291 (detetor) · EN 1869 (manta)', es: 'EN 50291 (detector) · EN 1869 (manta)', en: 'EN 50291 (alarm) · EN 1869 (blanket)' } },
+      { label: { pt: 'Alimentação', es: 'Alimentación', en: 'Power' }, value: { pt: 'Pilhas (funciona sem luz)', es: 'Pilas (funciona sin luz)', en: 'Batteries (works in a blackout)' } },
+      { label: { pt: 'Uso', es: 'Uso', en: 'Use' }, value: { pt: 'Casa, autocaravana, barco', es: 'Casa, autocaravana, barco', en: 'Home, campervan, boat' } },
+    ],
+    inStock: catalogInStock('gear-home-safety-duo'),
+    sourcing: {
+      primary: 'X-Sense Europe B.V. (partners@x-sense.com) or By Demes (Madrid), fire blanket via BigBuy/CJ',
+      country: 'Netherlands / Germany / Spain',
+      fallback: 'By Demes Group (official X-Sense distributor in Spain)',
+      status: 'searching',
+    },
+  },
+  {
+    id: 'gear-car-escape-tool',
+    sku: catalogSku('gear-car-escape-tool'),
+    slug: 'keychain-car-escape-tool',
+    category: 'survival',
+    fulfillment: 'partner-gear',
+    brand: 'CalmoKit',
+    name: {
+      pt: 'Quebra-Vidros e Corta-Cintos de Porta-Chaves',
+      es: 'Rompecristales y Cortacinturones de Llavero',
+      en: 'Keychain Car Escape Tool',
+    },
+    shortTagline: {
+      pt: 'Vai nas chaves, por isso está à mão quando é preciso',
+      es: 'Va en el llavero, así está a mano cuando hace falta',
+      en: 'Lives on your keys, so it is within reach when it matters',
+    },
+    description: {
+      pt: 'Parte o vidro lateral com um golpe de mola e corta um cinto preso com uma lâmina protegida. Pensado para cheias e acidentes, sem ocupar espaço no porta-luvas. Funciona em vidros laterais temperados; não parte vidros laminados (veja no seu carro).',
+      es: 'Rompe la ventanilla lateral con un golpe de muelle y corta un cinturón atascado con una cuchilla protegida. Pensado para inundaciones y accidentes, sin ocupar sitio en la guantera. Funciona en ventanillas laterales de vidrio templado; no rompe vidrio laminado (compruébalo en tu coche).',
+      en: 'Breaks a side window with a spring-loaded punch and cuts a jammed seatbelt with a guarded blade. Made for floods and accidents, without living in the glovebox. Works on tempered side windows; it does not break laminated glass (check your car).',
+    },
+    priceEur: catalogPrice('gear-car-escape-tool'),
+    rating: 0,
+    reviewCount: 0,
+    badge: { pt: 'NOVIDADE', es: 'NOVEDAD', en: 'NEW' },
+    image: '/images/products/gear-car-escape-tool.webp',
+    illustration: true,
+    imageTheme: 'light',
+    variants: [{ id: 'standard', name: { pt: 'Standard', es: 'Estándar', en: 'Standard' }, hex: '#0B6E4F' }],
+    specs: [
+      { label: { pt: 'Funções', es: 'Funciones', en: 'Functions' }, value: { pt: 'Quebra-vidros de mola + corta-cintos', es: 'Rompecristales de muelle + cortacinturones', en: 'Spring window punch + belt cutter' } },
+      { label: { pt: 'Vidro', es: 'Vidrio', en: 'Glass' }, value: { pt: 'Lateral temperado (não laminado)', es: 'Lateral templado (no laminado)', en: 'Tempered side (not laminated)' } },
+      { label: { pt: 'Formato', es: 'Formato', en: 'Format' }, value: { pt: 'Porta-chaves', es: 'Llavero', en: 'Keychain' } },
+    ],
+    inStock: catalogInStock('gear-car-escape-tool'),
+    sourcing: {
+      primary: 'resqme Europe SAS (Nantes) — info@resqme.com / resqme.fr/partners',
+      country: 'France',
+      fallback: 'Lifehammer Products B.V. (NL) — info@lifehammerproducts.com',
+      status: 'searching',
+    },
+  },
+  {
+    id: 'gear-dual-power-lantern',
+    sku: catalogSku('gear-dual-power-lantern'),
+    slug: 'dual-power-led-lantern',
+    category: 'survival',
+    fulfillment: 'partner-gear',
+    brand: 'CalmoKit',
+    name: {
+      pt: 'Lanterna LED Dupla Energia (Recarregável + Pilha AA)',
+      es: 'Farol LED Doble Energía (Recargable + Pila AA)',
+      en: 'Dual-Power LED Lantern (Rechargeable + AA)',
+    },
+    shortTagline: {
+      pt: 'Carrega por USB e, sem luz, funciona com uma pilha AA normal',
+      es: 'Se carga por USB y, sin luz, funciona con una pila AA normal',
+      en: 'Charges by USB, and runs on a normal AA battery when the power is out',
+    },
+    description: {
+      pt: 'Uma luz que não o deixa às escuras: se a bateria acabar durante um apagão, funciona com uma pilha AA. Luz quente e sem encandear para iluminar uma divisão, com gancho para pendurar. Inclui pilhas AA de reserva.',
+      es: 'Una luz que no te deja a oscuras: si la batería se agota durante un apagón, funciona con una pila AA. Luz cálida y sin deslumbrar para iluminar una habitación, con gancho para colgar. Incluye pilas AA de reserva.',
+      en: 'A light that will not leave you in the dark: if the battery runs out during a blackout, it runs on an AA. Warm, glare-free light for a whole room, with a hook to hang it. Spare AA batteries included.',
+    },
+    priceEur: catalogPrice('gear-dual-power-lantern'),
+    rating: 0,
+    reviewCount: 0,
+    badge: { pt: 'NOVIDADE', es: 'NOVEDAD', en: 'NEW' },
+    image: '/images/products/gear-dual-power-lantern.webp',
+    illustration: true,
+    imageTheme: 'light',
+    variants: [{ id: 'standard', name: { pt: 'Standard', es: 'Estándar', en: 'Standard' }, hex: '#0B6E4F' }],
+    contents: [
+      { pt: 'Lanterna LED com gancho', es: 'Farol LED con gancho', en: 'LED lantern with hook' },
+      { pt: 'Cabo de carga', es: 'Cable de carga', en: 'Charging cable' },
+      { pt: '4 pilhas AA de reserva', es: '4 pilas AA de reserva', en: '4 spare AA batteries' },
+    ],
+    specs: [
+      { label: { pt: 'Energia', es: 'Energía', en: 'Power' }, value: { pt: 'Bateria recarregável ou 1 pilha AA', es: 'Batería recargable o 1 pila AA', en: 'Rechargeable cell or 1 AA battery' } },
+      { label: { pt: 'Luz', es: 'Luz', en: 'Light' }, value: { pt: 'Quente, sem encandear', es: 'Cálida, sin deslumbrar', en: 'Warm, anti-glare' } },
+      { label: { pt: 'Uso', es: 'Uso', en: 'Use' }, value: { pt: 'Apagões, campismo, arrecadação', es: 'Apagones, acampada, trastero', en: 'Blackouts, camping, storage room' } },
+    ],
+    inStock: catalogInStock('gear-dual-power-lantern'),
+    sourcing: {
+      primary: 'Reiberco Internacional (Ledlenser ES/PT) — comercial@ledlenser.es',
+      country: 'Spain',
+      fallback: 'Relags GmbH (DE) dealer account; own-brand USB-C + AA lantern later',
+      status: 'searching',
+    },
+  },
+  {
+    id: 'gear-compact-multitool',
+    sku: catalogSku('gear-compact-multitool'),
+    slug: 'compact-stainless-multitool',
+    category: 'survival',
+    fulfillment: 'partner-gear',
+    brand: 'CalmoKit',
+    name: {
+      pt: 'Multiferramenta Compacta em Aço Inoxidável',
+      es: 'Multiherramienta Compacta de Acero Inoxidable',
+      en: 'Compact Stainless Multitool',
+    },
+    shortTagline: {
+      pt: 'Alicate, lâmina, chaves de fendas e tesoura numa só ferramenta',
+      es: 'Alicates, cuchilla, destornilladores y tijeras en una sola herramienta',
+      en: 'Pliers, blade, screwdrivers and scissors in one tool',
+    },
+    description: {
+      pt: 'Para pequenos arranjos em casa, no carro ou no campismo, quando não há caixa de ferramentas à mão. Lâmina de um só gume com menos de 11 cm e bloqueio. Ferramenta de trabalho; venda apenas a maiores de 18 anos.',
+      es: 'Para pequeños arreglos en casa, en el coche o de acampada, cuando no hay caja de herramientas a mano. Hoja de un solo filo de menos de 11 cm, con bloqueo. Herramienta de trabajo; venta solo a mayores de 18 años.',
+      en: 'For small fixes at home, in the car or camping, when there is no toolbox around. Single-edge blade under 11 cm, with lock. A work tool; sold to adults (18+) only.',
+    },
+    priceEur: catalogPrice('gear-compact-multitool'),
+    rating: 0,
+    reviewCount: 0,
+    badge: { pt: 'NOVIDADE', es: 'NOVEDAD', en: 'NEW' },
+    image: '/images/products/gear-compact-multitool.webp',
+    illustration: true,
+    imageTheme: 'light',
+    variants: [{ id: 'standard', name: { pt: 'Aço', es: 'Acero', en: 'Steel' }, hex: '#8A8F8B' }],
+    specs: [
+      { label: { pt: 'Ferramentas', es: 'Herramientas', en: 'Tools' }, value: { pt: 'Alicate, lâmina, chaves, tesoura, abre-latas', es: 'Alicates, cuchilla, destornilladores, tijeras, abrelatas', en: 'Pliers, blade, screwdrivers, scissors, can opener' } },
+      { label: { pt: 'Lâmina', es: 'Hoja', en: 'Blade' }, value: { pt: 'Um gume, < 11 cm, com bloqueio', es: 'Un filo, < 11 cm, con bloqueo', en: 'Single edge, < 11 cm, locking' } },
+      { label: { pt: 'Idade', es: 'Edad', en: 'Age' }, value: { pt: '18+', es: '18+', en: '18+' } },
+    ],
+    inStock: catalogInStock('gear-compact-multitool'),
+    sourcing: {
+      primary: 'J. Esteller S.L.U. (Leatherman ES/PT; also Katadyn) — info@esteller.com',
+      country: 'Spain',
+      fallback: 'Leatherman Europe GmbH (Ratingen) — info-spain@leatherman.com',
+      status: 'searching',
     },
   },
 ];

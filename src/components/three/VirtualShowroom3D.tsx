@@ -151,11 +151,13 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
     const hitTargets: THREE.Object3D[] = [];
 
     // Order products spatially by bay so camera presets focus cleanly on each group
+    // Only products with a procedural model appear in the 3D room.
+    const modelled = products.filter((p) => p.model3D);
     const orderedProducts = [
-      ...products.filter((p) => p.category === 'kits'),
-      ...products.filter((p) => p.category === 'food-water'),
-      ...products.filter((p) => p.category === 'survival'),
-      ...products.filter((p) => p.category === 'power-med'),
+      ...modelled.filter((p) => p.category === 'kits'),
+      ...modelled.filter((p) => p.category === 'food-water'),
+      ...modelled.filter((p) => p.category === 'survival'),
+      ...modelled.filter((p) => p.category === 'power-med'),
     ];
 
     const total = orderedProducts.length;
@@ -196,10 +198,10 @@ export const VirtualShowroom3D: React.FC<VirtualShowroom3DProps> = ({
       bayGroup.add(ring);
 
       // Product 3D model
-      const model = buildProductModel(product.model3D.type, {
-        primaryColor: product.model3D.primaryColor,
-        secondaryColor: product.model3D.secondaryColor,
-        accentColor: product.model3D.accentColor,
+      const model = buildProductModel(product.model3D!.type, {
+        primaryColor: product.model3D!.primaryColor,
+        secondaryColor: product.model3D!.secondaryColor,
+        accentColor: product.model3D!.accentColor,
       });
       const scale = 0.68;
       model.scale.setScalar(scale);

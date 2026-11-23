@@ -13,6 +13,7 @@ Everything an AI agent or a new teammate needs to understand and run CalmoKit. R
 | 07 | [Operations & accounts](07-operations-and-accounts.md) | Email/DNS, accounts created, tools, who does what, website gaps |
 | 08 | [Legal, tax & compliance](08-legal-tax-compliance.md) | PT tax notes, MDR/CE, batteries, food labels, EU consumer law |
 | 09 | [Next actions](09-next-actions.md) | Open tasks for Matias and the AI agent |
+| 10 | [New products & supplier approach](10-new-products-and-outreach-plan.md) | 4 new products (Nov 2026), suppliers, outreach rules and calendar |
 
 **Live tracker:** Claude Sheet "Europe Supplier List — Emergency Kits, Food & Water" — https://claude.ai/artifact/86SvkwLNmEKHPnTVUgGCCg (the sheet is the source of truth for statuses; these docs are a snapshot).
 
