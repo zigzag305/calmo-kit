@@ -1,9 +1,13 @@
-# 09 · Next Actions (as of 22 Nov 2026, night)
+# 09 · Next Actions (as of 23 Nov 2026, morning)
 
 Already done: accounts open on BigBuy, CJdropshipping, Alibaba; Liofilizado partnership form + Real Turmat retailer request sent; Risen replied; 15 supplier emails scheduled 23–30 Nov; website moved to EUR with real prices.
 
 ## Matias
-- [ ] Point the website domain to the host (keep email DNS records).
+- [x] Point the website domain to the host (keep email DNS records).
+- [ ] **Deploy the 2 checkout functions** (`calmo-create-checkout`, `calmo-stripe-webhook`): PR #5 is live and needs them.
+- [ ] OK the 4 new supplier drafts (X-Sense Tue 24, J. Esteller Fri 27, resqme + Reiberco Tue 1 Dec) so Claude schedules them.
+- [ ] Submit the X-Sense partner form and the resqme reseller form (company details).
+- [ ] Fill `legal/company.json` (company name, NIF, address, registry), create `hola@calmokit.eu`, create Stripe code CALMO10.
 - [ ] Paste the Portuguese Safe Kit message (Gmail draft "[Para formulário / Instagram]") into their form + Instagram DM.
 - [ ] Contabilista: CAE for online retail, VAT number / VIES / OSS, Art. 53 (unblocks Van Os, Katadyn, Ankorstore).
 - [ ] Pay the Risen sample on Alibaba (Trade Assurance) once the quote arrives.
@@ -15,7 +19,8 @@ Already done: accounts open on BigBuy, CJdropshipping, Alibaba; Liofilizado part
 - [ ] Find Bered B2B email; draft batch 3 for Tue 1 Dec.
 - [ ] Build landed-cost / margin table as soon as the first B2B price list arrives (MILITARY.EU or Risen).
 - [ ] When suppliers confirm: replace generic product contents/photos on the site with the real SKUs.
-- [ ] Before launch: server-side price check in the Stripe checkout function.
+- [x] Server-side price check in the Stripe checkout function (PR #5; needs deploy).
+- [ ] New products (see 10-new-products-and-outreach-plan.md): track X-Sense, Esteller, resqme, Reiberco; backups only if needed; flip `inStock` when a supplier confirms.
 
 ## Decision points coming
 1. Hero kit: EU-stocked (MILITARY.EU / Liofilizado / EmerPlan) vs own-brand OEM (Risen) — decide after B2B prices + sample.
