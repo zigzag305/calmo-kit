@@ -14,15 +14,15 @@ export const translations = {
       searchPlaceholder: 'Procurar mochila, rádio, filtro...',
     },
     hero: {
-      systemTag: 'Rádio de Emergência · Portugal e Espanha',
+      systemTag: 'Kit Apagão · Portugal e Espanha',
       headlineLine1: 'Prepare-se para',
       headlineLine2: 'o próximo apagão',
       subcopy:
-        'Notícias, luz e bateria para o telemóvel quando falha a luz. Carrega com o sol ou rodando a manivela, sem depender de tomadas nem pilhas.',
+        'Rádio solar e dínamo + lanterna LED recarregável. Notícias, luz e bateria para o telemóvel quando falha a luz, sem depender de tomadas nem pilhas.',
       primaryCta: 'Comprar',
       secondaryCta: 'Ver detalhes',
-      trust1: 'Entrega em 2–3 semanas',
-      trust2: 'Solar, dínamo e USB',
+      trust1: 'Envio grátis · 2–3 semanas',
+      trust2: 'Os dois carregam o telemóvel',
       trust3: '14 dias para devolver',
     },
     showcase: {
@@ -110,7 +110,7 @@ export const translations = {
           label: 'Apagão Elétrico',
           desc: 'Depois do apagão ibérico, mantém telemóveis, router Wi-Fi, luz e rádio AM/FM a funcionar sem gerador.',
           primaryId: 'calmo-blackout-home',
-          addonId: 'gear-weather-radio',
+          addonId: 'calmo-blackout-essentials',
         },
         {
           id: 'food-reserve',
@@ -232,15 +232,15 @@ export const translations = {
       searchPlaceholder: 'Buscar mochila, radio, filtro...',
     },
     hero: {
-      systemTag: 'Radio de Emergencia · España y Portugal',
+      systemTag: 'Kit Apagón · España y Portugal',
       headlineLine1: 'Prepárate para',
       headlineLine2: 'el próximo apagón',
       subcopy:
-        'Noticias, luz y batería para el móvil cuando se va la luz. Se carga con el sol o girando la manivela, sin depender de enchufes ni pilas.',
+        'Radio solar y dinamo + farol LED recargable. Noticias, luz y batería para el móvil cuando se va la luz, sin depender de enchufes ni pilas.',
       primaryCta: 'Comprar',
       secondaryCta: 'Ver detalles',
-      trust1: 'Envío en 2–3 semanas',
-      trust2: 'Solar, dinamo y USB',
+      trust1: 'Envío gratis · 2–3 semanas',
+      trust2: 'Los dos cargan el móvil',
       trust3: '14 días para devolver',
     },
     showcase: {
@@ -328,7 +328,7 @@ export const translations = {
           label: 'Apagón Eléctrico',
           desc: 'Tras el apagón ibérico, mantén móviles, router Wi-Fi, luz y radio AM/FM funcionando sin generadores ni ruido.',
           primaryId: 'calmo-blackout-home',
-          addonId: 'gear-weather-radio',
+          addonId: 'calmo-blackout-essentials',
         },
         {
           id: 'food-reserve',
@@ -450,15 +450,15 @@ export const translations = {
       searchPlaceholder: 'Search backpack, radio, filter...',
     },
     hero: {
-      systemTag: 'Emergency Radio · Spain & Portugal',
+      systemTag: 'Blackout Kit · Spain & Portugal',
       headlineLine1: 'Be ready for',
       headlineLine2: 'the next blackout',
       subcopy:
-        'News, light, and phone power when the lights go out. Charges with sunlight or by turning the hand crank, no wall sockets or disposable batteries needed.',
+        'Solar & crank radio + rechargeable LED lantern. News, light and phone power when the lights go out, no wall sockets or disposable batteries needed.',
       primaryCta: 'Buy now',
       secondaryCta: 'View details',
-      trust1: 'Ships in 2–3 weeks',
-      trust2: 'Solar, crank & USB',
+      trust1: 'Free shipping · 2–3 weeks',
+      trust2: 'Both charge your phone',
       trust3: '14-day returns',
     },
     showcase: {
@@ -546,7 +546,7 @@ export const translations = {
           label: 'Grid Blackout',
           desc: 'Keep phones, Wi-Fi routers, room lights, and AM/FM radio running silently without fuel generators.',
           primaryId: 'calmo-blackout-home',
-          addonId: 'gear-weather-radio',
+          addonId: 'calmo-blackout-essentials',
         },
         {
           id: 'food-reserve',

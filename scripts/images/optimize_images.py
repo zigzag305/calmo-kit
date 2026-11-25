@@ -23,7 +23,8 @@ PRODUCTS = {
     "calmo-food-hydration": "photos/kit-food.webp",
     "gear-water-filter": "photos/gear-filter.png",
     "gear-trauma-kit": "photos/gear-medkit.jpg",
-    "gear-weather-radio": "photos/gear-radio.jpg",
+    "gear-weather-radio": "photos/gear-radio-red.png",  # real CJ product photo (red, European Version)
+    "calmo-blackout-essentials": "photos/kit-apagon-esencial.png",  # radio + lantern, CJ product photos
     "gear-meal-pack": "photos/gear-rations.webp",
     # Illustrations until suppliers send licensed product photos.
     "gear-home-safety-duo": "illustrations/home-safety-duo.svg",

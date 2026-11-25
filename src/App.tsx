@@ -164,7 +164,7 @@ export default function App() {
   }, [selectedProduct]);
 
   const cartCount = cartItems.reduce((sum, i) => sum + i.quantity, 0);
-  const heroRadio = PRODUCTS.find((p) => p.id === 'gear-weather-radio');
+  const heroKit = PRODUCTS.find((p) => p.id === 'calmo-blackout-essentials');
   const upsellProduct = PRODUCTS.find((p) => p.id === 'gear-water-filter');
 
   const handleBuyNow = (product: Product) => {
@@ -195,15 +195,15 @@ export default function App() {
       />
 
       <main>
-        {/* 1. Hero featuring the Emergency Radio */}
+        {/* 1. Hero featuring the Kit Apagón (radio + lantern) */}
         <HeroSection
           lang={lang}
           currency={currency}
-          product={heroRadio}
+          product={heroKit}
           onBuyNow={handleBuyNow}
         />
 
-        {/* 2. Storefront Grid (Emergency Radio available now + upcoming kits/gear) */}
+        {/* 2. Storefront Grid (Kit Apagón available now + upcoming kits/gear) */}
         <CatalogSection
           products={PRODUCTS}
           lang={lang}
