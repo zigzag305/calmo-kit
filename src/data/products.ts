@@ -5,6 +5,61 @@ import { catalogInStock, catalogPrice, catalogSku } from '../../supabase/functio
 
 export const PRODUCTS: Product[] = [
   {
+    // Hero product since 25 Nov 2026. Two CJdropshipping items shipped to the customer.
+    id: 'calmo-blackout-essentials',
+    sku: catalogSku('calmo-blackout-essentials'),
+    slug: 'kit-apagon-esencial',
+    category: 'kits',
+    fulfillment: 'curated-kit',
+    brand: 'CalmoKit',
+    name: {
+      pt: 'Kit Apagão Essencial',
+      es: 'Kit Apagón Esencial',
+      en: 'Blackout Essentials Kit',
+    },
+    shortTagline: {
+      pt: 'Rádio solar e dínamo + lanterna LED. Os dois carregam o telemóvel.',
+      es: 'Radio solar y dinamo + farol LED. Los dos cargan el móvil.',
+      en: 'Solar & crank radio + LED lantern. Both charge your phone.',
+    },
+    description: {
+      pt: 'O essencial para quando falha a luz: saber o que se passa, ter luz em casa e manter o telemóvel com bateria. O rádio carrega com o sol ou rodando a manivela e tem lanterna, alarme SOS e porta USB. A lanterna recarregável dá luz branca ou quente, tem base magnética e gancho, e também serve de bateria para o telemóvel.',
+      es: 'Lo esencial para cuando se va la luz: saber qué está pasando, tener luz en casa y mantener el móvil con batería. La radio se carga con el sol o girando la manivela, e incluye linterna, alarma SOS y puerto USB. El farol recargable da luz blanca o cálida, tiene base magnética y gancho, y también sirve de batería para el móvil.',
+      en: 'The essentials for when the power goes out: know what is happening, have light at home and keep your phone charged. The radio charges with sunlight or the hand crank and has a torch, SOS alarm and USB port. The rechargeable lantern gives white or warm light, has a magnetic base and hook, and doubles as a phone power bank.',
+    },
+    priceEur: catalogPrice('calmo-blackout-essentials'),
+    rating: 0,
+    reviewCount: 0,
+    badge: {
+      pt: 'NOVO',
+      es: 'NUEVO',
+      en: 'NEW',
+    },
+    image: '/images/products/calmo-blackout-essentials.webp',
+    imageTheme: 'light',
+    variants: [
+      { id: 'standard', name: { pt: 'Rádio vermelho + lanterna verde', es: 'Radio roja + farol verde', en: 'Red radio + green lantern' }, hex: '#B92B27' },
+    ],
+    contents: [
+      { pt: 'Rádio de emergência solar e dínamo AM/FM, com lanterna, alarme SOS e saída USB', es: 'Radio de emergencia solar y dinamo AM/FM, con linterna, alarma SOS y salida USB', en: 'Solar & hand-crank AM/FM emergency radio with torch, SOS alarm and USB output' },
+      { pt: 'Lanterna LED recarregável 3000 mAh (USB-C), base magnética, gancho e função powerbank', es: 'Farol LED recargable 3000 mAh (USB-C), base magnética, gancho y función powerbank', en: 'Rechargeable 3000 mAh LED lantern (USB-C), magnetic base, hook and power bank function' },
+      { pt: 'Cabos de carregamento USB', es: 'Cables de carga USB', en: 'USB charging cables' },
+    ],
+    specs: [
+      { label: { pt: 'Carregamento', es: 'Carga', en: 'Charging' }, value: { pt: 'Rádio: sol, manivela e USB · Lanterna: USB-C', es: 'Radio: sol, manivela y USB · Farol: USB-C', en: 'Radio: sun, crank & USB · Lantern: USB-C' } },
+      { label: { pt: 'Luz', es: 'Luz', en: 'Light' }, value: { pt: 'Branca, quente e vermelha intermitente', es: 'Blanca, cálida y roja intermitente', en: 'White, warm and red flashing' } },
+      { label: { pt: 'Peso', es: 'Peso', en: 'Weight' }, value: { pt: '≈ 570 g (os dois)', es: '≈ 570 g (los dos)', en: '≈ 570 g (both)' } },
+      { label: { pt: 'Entrega', es: 'Envío', en: 'Delivery' }, value: { pt: 'Grátis · 2–3 semanas', es: 'Gratis · 2–3 semanas', en: 'Free · 2–3 weeks' } },
+    ],
+    inStock: catalogInStock('calmo-blackout-essentials'),
+    featured: true,
+    sourcing: {
+      primary: 'CJdropshipping: radio CJYD197457505EV (colour 086, European Version) $16.67 + lantern CJSD316113501AZ (D83-1) $4.93; shipped to ES ≈ $25.94 + $12.77',
+      country: 'China (13–16 days to Spain)',
+      status: 'confirmed',
+    },
+  },
+  {
     id: 'calmo-crisis-72h',
     sku: catalogSku('calmo-crisis-72h'),
     slug: '72h-family-kit',
@@ -433,7 +488,6 @@ export const PRODUCTS: Product[] = [
     contents: [
       { pt: 'Rádio de Emergência Solar e Dínamo (Vermelho · Versão Europeia)', es: 'Radio de Emergencia Solar y Dinamo (Rojo · Versión Europea)', en: 'Solar & Hand-Crank Emergency Radio (Red · European Version)' },
       { pt: 'Cabo de carregamento USB', es: 'Cable de carga USB', en: 'USB charging cable' },
-      { pt: 'Alça de pulso', es: 'Correa de muñeca', en: 'Wrist strap' },
     ],
     specs: [
       { label: { pt: 'Carregamento', es: 'Carga', en: 'Charging' }, value: { pt: 'Painel solar, manivela e USB', es: 'Panel solar, manivela y USB', en: 'Solar panel, hand crank & USB' } },
@@ -444,7 +498,7 @@ export const PRODUCTS: Product[] = [
     inStock: catalogInStock('gear-weather-radio'),
     featured: true,
     sourcing: {
-      primary: 'CJdropshipping CJYD197457506EV (European Version, Red, 320 g)',
+      primary: 'CJdropshipping CJYD197457505EV (colour 086, European Version, red, 320 g)',
       country: 'China (13–16 days to Spain)',
       status: 'confirmed',
     },

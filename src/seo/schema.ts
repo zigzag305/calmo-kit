@@ -128,7 +128,7 @@ export function buildLlmsTxt(): string {
     ...gear.map(line),
     '',
     '## Shipping, returns, contact',
-    `- Ships to mainland Spain and mainland Portugal only (not the Balearic Islands, Canary Islands, Ceuta, Melilla, Madeira or the Azores). Free tracked shipping from €${FREE_SHIPPING} (otherwise ${eur(SHIPPING_EUR)}). Ships in 2–3 weeks for the emergency radio.`,
+    `- Ships to mainland Spain and mainland Portugal only (not the Balearic Islands, Canary Islands, Ceuta, Melilla, Madeira or the Azores). Free tracked shipping from €${FREE_SHIPPING} (otherwise ${eur(SHIPPING_EUR)}). Ships in 2–3 weeks for the Blackout Essentials Kit (radio + lantern).`,
     '- 14-day returns; 3-year legal guarantee.',
     '- Legal information: https://calmokit.eu/legal/en.html',
     '- Contact: hola@calmokit.eu',

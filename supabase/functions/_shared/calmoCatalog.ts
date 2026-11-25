@@ -65,12 +65,22 @@ export const CALMO_CATALOG: Record<string, CatalogEntry> = {
     variants: ['signal-red', 'stealth-black'],
     inStock: false,
   },
+  // Hero product (25 Nov 2026): radio + lantern, both from CJdropshipping (China, 13–16 days).
+  // CJ order = radio CJYD197457505EV (colour 086, European Version) + lantern CJSD316113501AZ (D83-1).
+  'calmo-blackout-essentials': {
+    sku: 'CK-APAGON-ESS',
+    priceEur: 69,
+    name: 'Kit Apagón Esencial: Radio Solar + Farol LED',
+    variants: ['standard'],
+    inStock: true,
+  },
+  // Sold inside the kit only; on its own it can't compete on price.
   'gear-weather-radio': {
-    sku: 'CJYD197457506EV',
+    sku: 'CJYD197457505EV',
     priceEur: 44.9,
     name: 'Radio de Emergencia Solar y Dinamo',
     variants: ['red'],
-    inStock: true,
+    inStock: false,
   },
   'gear-meal-pack': {
     sku: 'PG-FOOD-EU3',

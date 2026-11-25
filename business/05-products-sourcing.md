@@ -4,6 +4,22 @@ Source: Claude Sheet tab *Products* (snapshot 22 Nov 2026). Prices are supplier 
 
 > Shipping costs from Alibaba factories are **not quoted yet** (asked 22 Nov). The only measured shipping cost is CJ's radio to Portugal.
 
+
+## Hero product (decided 25 Nov 2026): Kit Apagón Esencial, €69
+
+Radio alone (€44.90) dropped: Action Spain sells a 4-in-1 emergency radio for €9.95, Amazon €15–25. The kit is the hero; the radio stays "coming soon" on its own.
+
+| Part | CJ SKU | Product | Shipping to ES (CJPacket Eub) | Total |
+|---|---|---|---|---|
+| Solar/crank radio, colour 086, European Version, 320 g | CJYD197457505EV | $16.67 | $9.27 | $25.94 |
+| D83-1 LED lantern, 3000 mAh, USB-C, magnetic, power bank, 247 g | CJSD316113501AZ | $4.93 | $7.84 | $12.77 |
+| **Kit** | | | | **$38.71 (≈ €34–36)** |
+
+- Prices checked in CJ (logged in) on 25 Nov 2026. Ships from China, 1–3 days processing + 13–16 days. DDU: if customs inspects (<10%), the buyer pays fees.
+- CJ EU warehouses (ES/DE/FR) had no radio, lantern or power bank.
+- Standalone power bank skipped: $3.35 item but $19.27 shipping (pure battery line). Both kit items charge phones.
+- Retail €69 incl. VAT, free shipping (threshold €69). Net of 21% VAT €57.02 → ≈ €20 per kit before ads and Stripe fees.
+
 ## Hero kit candidates
 | Product | Supplier | What it is | Unit cost | MOQ | How we buy | Shipping cost to PT | Delivery to PT | Link |
 |---|---|---|---|---|---|---|---|---|
